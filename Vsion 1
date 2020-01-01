@@ -1,0 +1,5160 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% beamer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% To run - first, type this line into your terminal window - it allows you to use pdflatex:
+%            source /usr/local/skel/SYS.texlive.csh
+%          then, to compile your code:
+%            pdflatex filename.tex
+%            acroread filename.pdf
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[8pt]{beamer}
+\usepackage{tcolorbox}
+\usepackage{CJK}
+\mode<presentation>
+{
+
+\usetheme{Madrid}
+% other themes: AnnArbor, Antibes, Bergen, Berkeley, Berlin, Boadilla, boxes, CambridgeUS, Copenhagen, Darmstadt, default, Dresden, Frankfurt, Goettingen,
+% Hannover, Ilmenau, JuanLesPins, Luebeck, Madrid, Maloe, Marburg, Montpellier, PaloAlto, Pittsburg, Rochester, Singapore, Szeged, boxes, default
+
+%\usecolortheme{lily}
+%\usecolortheme{dove}  %beaver or try albatross, beaver, crane, ...
+%\usecolortheme{sidebartab}
+\usecolortheme{beaver}
+%\usecolortheme{beetle}
+\usefonttheme{serif} % or try serif, structurebold, ...
+% you can use other color themes as well: albatross, beaver, beetle, crane, default, dolphin, dove, fly, lily, orchid, rose, seagull, seahorse, sidebartab,
+% structure, whale, wolverine
+%\usefonttheme{serif}
+%\usefonttheme{professionalfonts}
+% you can also specify font themes: default, professionalfonts, serif, structurebold, structureitalicserif, structuresmallcapsserif
+%\hypersetup{pdfpagemode=FullScreen}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{caption}[numbered]
+}
+%\usepackage{amsmath}
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+%\usepackage{xcolor}
+
+\usepackage{listings}
+\lstset
+{
+    language=[LaTeX]TeX,
+    breaklines=true,
+    basicstyle=\tt\scriptsize,
+    %commentstyle=\color{green}
+    keywordstyle=\color{red},
+    %stringstyle=\color{black}
+    identifierstyle=\color{magenta},
+}
+
+
+
+
+%\setlength{\leftmargini}{0pt}
+
+\definecolor{Red}{rgb}{1,0,0} %can define colors
+\definecolor{Blue}{rgb}{1,0,0}
+\definecolor{Green}{rgb}{0.1,0.7,0.9}
+\definecolor{dgreen}{rgb}{0.1,0.5,0.0}
+\definecolor{magenta}{rgb}{1,0,.6}
+\definecolor{newcolor}{rgb}{0.2,0,0.6}
+%\myitem{1}{\small\red $\bullet$}
+
+% can also choose different themes for the "inside" and "outside"
+%\usepackage{beamerinnerthemedefault}
+%\usepackage{beamerinnerthemecircles}
+% inner themes include circles, default, inmargin, rectanges, rounded
+% \usepackage{beamerouterthemessplit}
+% outer themes include default, infolines, miniframes, shadow, sidebar, smoothbars, smoothtree, split, tree
+
+% to have pdflatex search for graphics??? - don't know if this actually does anything
+\newif\ifpdf\ifx\pdfoutput\undefined\pdffalse\else\pdfoutput=1\pdftrue\fi
+\newcommand{\pdfgraphics}{\ifpdf\DeclareGraphicsExtensions{.pdf,.eps}\fi}
+
+
+
+\def \hlambda{{\mbox{\boldmath $\lambda$}}}
+\def \hepsilon{{\mbox{\boldmath $\epsilon$}}}
+\def \a{{\mbox{\boldmath $a$}}}
+\def \b{{\mbox{\boldmath $b$}}}
+\def \c{{\mbox{\boldmath $c$}}}
+\def \d{{\mbox{\boldmath $d$}}}
+\def \e{{\mbox{\boldmath $e$}}}
+\def \f{{\mbox{\boldmath $f$}}}
+\def \g{{\mbox{\boldmath $\mathbf{g}$}}}
+\def \h{{\mbox{\boldmath $h$}}}
+\def \q{{\mbox{\boldmath $q$}}}
+\def \p{{\mbox{\boldmath $p$}}}
+\def \u{{\mbox{\boldmath $u$}}}
+\def \v{{\mbox{\boldmath $v$}}}
+\def \w{{\mbox{\boldmath $w$}}}
+\def \r{{\mbox{\boldmath $r$}}}
+\def \s{{\mbox{\boldmath ${s}$}}}
+\def \x{{\mbox{\boldmath $x$}}}
+\def \y{{\mbox{\boldmath $y$}}}
+%\def \s{{\mbox{\boldmath $\mathbf{s}$}}}
+\def \t{{\mbox{\boldmath $t$}}}
+%\def \x{{\mbox{\boldmath $\mathbf{x}$}}}
+\def \lx{{\mbox{\footnotesize $\x$}}}
+\def \ly{{\mbox{\footnotesize $\y$}}}
+
+%\def \y{{\mbox{\boldmath $\mathbf{y}$}}}
+%\def \z{{\mbox{\boldmath $\tilde{z}$}}}
+\def \z{{\mbox{\boldmath $\mathbf{z}$}}}
+\def \rz{{\mbox{\boldmath $\tilde{\mathbf{z}}$}}}
+\def \rs{{\mbox{\boldmath $\tilde{{s}}$}}}
+%\def \rs{{\mbox{\boldmath $\tilde{\mathbf{s}}$}}}
+\def \rw{{\mbox{\boldmath $\tilde{\mathbf{w}}$}}}
+\def \rrw{{\mbox{$\tilde{w}$}}}
+
+
+
+
+
+\def \hxi{{\mbox{\boldmath $\xi$}}}
+\def \hpi{{\mbox{\boldmath $\pi$}}}
+\def \hiota{{\mbox{\boldmath $\iota$}}}
+\def \hpsi{{\mbox{\boldmath $\psi$}}}
+\def \hvarpi{{\mbox{\boldmath $\varpi$}}}
+\def \hmu{{\mbox{\boldmath $\mu$}}}
+\def \hnu{{\mbox{\boldmath $\nu$}}}
+\def \hchi{{\mbox{\boldmath $\chi$}}}
+\def \hlambda{{\mbox{\boldmath $\lambda$}}}
+\def \halpha{{\mbox{\boldmath $\alpha$}}}
+\def \hbeta{{\mbox{\boldmath $\beta$}}}
+\def \hvarrho{{\mbox{\boldmath $\varrho$}}}
+\def \bxi{{\mbox{\boldmath {\footnotesize $\xi$}}}}
+\def \heta{{\mbox{\boldmath $\eta$}}}
+\def \hzeta{{\mbox{\boldmath $\zeta$}}}
+\def \htheta{{\mbox{\boldmath $\theta$}}}
+\def \hvartheta{{\mbox{\boldmath $\vartheta$}}}
+\def \hvarphi{{\mbox{\boldmath $\varphi$}}}
+\def \hdelta{{\mbox{\boldmath $\delta$}}}
+\def \hdelta{{\mbox{\boldmath $\delta$}}}
+\def \htau{{\mbox{\boldmath $\tau$}}}
+\def \hphi{{\mbox{\boldmath $\phi$}}}
+\def \hkappa{{\mbox{\boldmath $\kappa$}}}
+\def \homega{{\mbox{\boldmath $\omega$}}}
+\def \hgamma{{\mbox{\boldmath $\gamma$}}}
+\def \hsigma{{\mbox{\boldmath $\sigma$}}}
+\def \hGamma{{\mbox{\boldmath $\Gamma$}}}
+\def \hSigma{{\mbox{\boldmath $\Sigma$}}}
+\def \hvarsigma {{\mbox{\boldmath $\varsigma$}}}
+
+\def \fa{{\mbox{\boldmath $\tilde a$}}}
+
+
+
+\def \D{{\mbox{\boldmath $D$}}}
+\def \R{{\mbox{\boldmath $R$}}}
+\def \B{{\mbox{\boldmath $B$}}}
+\def \C{{\mbox{\boldmath $C$}}}
+\def \H{{\mbox{\boldmath $\mathbf{H}$}}}
+\def \A{{\mbox{\boldmath $A$}}}
+\def \T{{\mbox{\boldmath $T$}}}
+\def \X{{\mbox{\boldmath $X$}}}
+\def \Y{{\mbox{\boldmath $Y$}}}
+\def \bM{{\mbox{\boldmath $\mathbf{M}$}}}
+\def \bF{{\mbox{\boldmath $F$}}}
+\def \Z{{\mbox{\boldmath $Z$}}}
+\def \hL{{\mbox{\boldmath $\mathcal{L}$}}}
+\def \L{{\mbox{$\mathcal{L}$}}}
+\def \bV{{\mbox{$\boldsymbol{V}$}}}
+
+\def \hT{{\mbox{\boldmath $\mathcal{T}$}}}
+\def \U{{\mbox{$\mathcal{U}$}}}
+\def \hUpsilon{{\mbox{\boldmath $\Upsilon$}}}
+\def \bU{{\mbox{$\boldsymbol{U}$}}}
+%\def \F{{\mbox{\boldmath $\mathcal{F}$}}}
+\def \hP{{\mbox{$\mathcal{P}$}}}
+\def \bP{{\mbox{\boldmath $P$}}}
+\def \bI{{\mbox{\boldmath $I$}}}
+\def \bJ{{\mbox{\boldmath $J$}}}
+\def \T{{\mbox{\boldmath $T$}}}
+\def \W{{\mbox{$\mathcal{W}$}}}
+\def \bK{{\mbox{\boldmath $K$}}}
+\def \bQ{{\mbox{\boldmath $Q$}}}
+\def \bB{{\mbox{\boldmath $B$}}}
+\def \bC{{\mbox{\boldmath $C$}}}
+\def \0{{\mbox{\boldmath $0$}}}
+\def \bG{{\mbox{\boldmath $\mathbf{G}$}}}
+\def \bE{{\mbox{\boldmath $E$}}}
+
+%\def \S{{\mbox{\boldmath $\mathbf{S}$}}}
+\def \S{{\mbox{\boldmath ${S}$}}}
+%\def \rS{{\mbox{\boldmath $\tilde{\mathbf{S}}$}}}
+
+\def \I{{\mbox{\boldmath $\mathcal{I}$}}}
+\def \P{\mathbb{P}}
+\def \E{\mathbb{E}}
+\def \V{\mathbb{V}}
+\def \F{\mathbb{F}}
+\def \Q{\mathbb{Q}}
+\def \G{\mathcal{G}}
+\def \J{{\mbox{\boldmath $\mathcal{J}$}}}
+
+\def \K{{\mbox{\boldmath $\mathcal{K}$}}}
+\def \K{{\mbox{$\mathcal{K}$}}}
+\def \O{{\mbox{\boldmath $\mathcal{O}$}}}
+\def \M{{\mbox{$\mathcal{M}$}}}
+\def \hW{{\mbox{\boldmath $\mathcal{W}$}}}
+\def \N{{\mbox{\boldmath $\mathcal{N}$}}}
+
+\def \mbB{{\mbox{\boldmath $\mathcal{B}$}}}
+\def \mbX{{\mbox{\boldmath $\mathcal{X}$}}}
+\def \mbY{{\mbox{\boldmath $\mathcal{Y}$}}}
+
+\def \mQ{{\mbox{$\mathcal{Q}$}}}
+
+\def \rS{{\mbox{\boldmath $\tilde{{S}}$}}}
+
+
+
+\def\min{\mathop{\rm Min}}
+\def\max{\mathop{\rm Max}}
+
+\def\amax{\mathop{\rm argmax}}
+\def\amin{\mathop{\rm argmin}}
+\def \a{{\mbox{\boldmath $a$}}}
+\def \b{{\mbox{\boldmath $b$}}}
+\def \c{{\mbox{\boldmath $c$}}}
+\def \d{{\mbox{\boldmath $d$}}}
+\def \e{{\mbox{\boldmath $e$}}}
+\def \f{{\mbox{\boldmath $f$}}}
+\def \g{{\mbox{\boldmath $\mathbf{g}$}}}
+\def \h{{\mbox{\boldmath $h$}}}
+\def \q{{\mbox{\boldmath $q$}}}
+\def \p{{\mbox{\boldmath $p$}}}
+\def \u{{\mbox{\boldmath $u$}}}
+\def \v{{\mbox{\boldmath $v$}}}
+\def \w{{\mbox{\boldmath $w$}}}
+\def \r{{\mbox{\boldmath $r$}}}
+\def \s{{\mbox{\boldmath ${s}$}}}
+%\def \bm{x}{\mathbf{x}}
+\def \b{\mathbf{b}}
+\def \y{\mathbf{y}}
+\def \z{\mathbf{z}}
+\def \q{\mathbf{q}}
+\def \p{\mathbf{p}}
+\def \g{\mathbf{g}}
+\def \s{\mathbf{s}}
+\def \t{\mathbf{t}}
+\def \d{\mathbf{d}}
+\def \u{\mathbf{u}}
+\def \v{\mathbf{v}}
+\def \h{\mathbf{h}}
+\def \r{\mathbf{r}}
+%\def \s{{\mbox{\boldmath $\mathbf{s}$}}}
+\def \t{{\mbox{\boldmath $t$}}}
+%\def \mathbf{x}{{\mbox{\boldmath $\mathbf{x}$}}}
+\def \lx{{\mbox{\footnotesize $\mathbf{x}$}}}
+\def \ly{{\mbox{\footnotesize $\bm{y}$}}}
+%\def \bm{y}{{\mbox{\boldmath $\mathbf{y}$}}}
+%\def \z{{\mbox{\boldmath $\tilde{z}$}}}
+\def \z{{\mbox{\boldmath $\mathbf{z}$}}}
+\def \rz{{\mbox{\boldmath $\tilde{\mathbf{z}}$}}}
+\def \rs{{\mbox{\boldmath $\tilde{{s}}$}}}
+%\def \rs{{\mbox{\boldmath $\tilde{\mathbf{s}}$}}}
+\def \rw{{\mbox{\boldmath $\tilde{\mathbf{w}}$}}}
+\def \rrw{{\mbox{$\tilde{w}$}}}
+
+
+
+
+
+\def \hxi{{\mbox{\boldmath $\bm{x}i$}}}
+\def \hnu{{\mbox{\boldmath $\nu$}}}
+\def \hpi{{\mbox{\boldmath $\pi$}}}
+\def \hiota{{\mbox{\boldmath $\iota$}}}
+\def \hpsi{{\mbox{\boldmath $\psi$}}}
+\def \hvarpi{{\mbox{\boldmath $\varpi$}}}
+\def \hmu{{\mbox{\boldmath $\mu$}}}
+\def \hchi{{\mbox{\boldmath $\chi$}}}
+\def \hlambda{{\mbox{\boldmath $\lambda$}}}
+\def \halpha{{\mbox{\boldmath $\alpha$}}}
+\def \hbeta{{\mbox{\boldmath $\beta$}}}
+\def \hrho{{\mbox{\boldmath $\rho$}}}
+\def \hvarrho{{\mbox{\boldmath $\varrho$}}}
+\def \hkappa{{\mbox{\boldmath $\kappa$}}}
+\def \bxi{{\mbox{\boldmath {\footnotesize $z$}}}}
+\def \heta{{\mbox{\boldmath $\eta$}}}
+\def \hzeta{{\mbox{\boldmath $\zeta$}}}
+\def \htheta{{\mbox{\boldmath $\theta$}}}
+\def \hvartheta{{\mbox{\boldmath $\vartheta$}}}
+\def \hvarphi{{\mbox{\boldmath $\varphi$}}}
+\def \hdelta{{\mbox{\boldmath $\delta$}}}
+\def \hdelta{{\mbox{\boldmath $\delta$}}}
+\def \htau{{\mbox{\boldmath $\tau$}}}
+\def \hphi{{\mbox{\boldmath $\phi$}}}
+\def \hepsilon{{\mbox{\boldmath $\epsilon$}}}
+
+
+\def \homega{{\mbox{\boldmath $\omega$}}}
+\def \hgamma{{\mbox{\boldmath $\gamma$}}}
+\def \hsigma{{\mbox{\boldmath $\sigma$}}}
+\def \hGamma{{\mbox{\boldmath $\Gamma$}}}
+
+\def \hpi{{\mbox{\boldmath $\pi$}}}
+\def \hkappa{{\mbox{\boldmath $\kappa$}}}
+\def \htheta{{\mbox{\boldmath $\theta$}}}
+\def \hvartheta{{\mbox{\boldmath $\vartheta$}}}
+\def \hvarphi{{\mbox{\boldmath $\varphi$}}}
+\def \hphi{{\mbox{\boldmath $\phi$}}}
+\def \hvarsigma{{\mbox{\boldmath $\varsigma$}}}
+\def \hvarpi{{\mbox{\boldmath $\varpi$}}}
+\def \hUpsilon{{\mbox{\boldmath $\Upsilon$}}}
+
+\def \D{{\mbox{\boldmath $D$}}}
+
+\def \bB{{\mbox{\boldmath $B$}}}
+\def \C{{\mbox{\boldmath $C$}}}
+\def \H{{\mbox{\boldmath $\mathbf{H}$}}}
+\def \A{{\mbox{\boldmath $A$}}}
+\def \T{{\mbox{\boldmath $T$}}}
+\def \X{{\mbox{\boldmath $Y$}}}
+\def \Y{{\mbox{\boldmath $Y$}}}
+\def \bM{{\mbox{\boldmath $\mathbf{M}$}}}
+\def \bF{{\mbox{\boldmath $F$}}}
+\def \hL{{\mbox{\boldmath $\mathcal{L}$}}}
+\def \bV{{\mbox{$\boldsymbol{V}$}}}
+\def \bU{{\mbox{$\boldsymbol{U}$}}}
+\def \hT{{\mbox{\boldmath $\mathcal{T}$}}}
+\def \U{{\mbox{\boldmath $\mathcal{U}$}}}
+%\def \F{{\mbox{\boldmath $\mathcal{F}$}}}
+\def \hP{{\mbox{$\mathcal{P}$}}}
+\def \bI{{\mbox{\boldmath $I$}}}
+\def \T{{\mbox{\boldmath $T$}}}
+\def \W{{\mbox{\boldmath $W$}}}
+\def \bK{{\mbox{\boldmath $K$}}}
+\def \bQ{{\mbox{\boldmath $Q$}}}
+\def \bG{{\mbox{\boldmath $\mathbf{G}$}}}
+\def \bE{{\mbox{\boldmath $E$}}}
+\def \L{{\mbox{\boldmath $\mathcal{L}$}}}
+%\def \S{{\mbox{\boldmath $\mathbf{S}$}}}
+\def \S{{\mbox{\boldmath ${S}$}}}
+%\def \rS{{\mbox{\boldmath $\tilde{\mathbf{S}}$}}}
+\def \rS{{\mbox{\boldmath $\tilde{{S}}$}}}
+\def \I{{\mbox{\boldmath $\mathcal{I}$}}}
+\def \P{\mathbb{P}}
+\def \E{\mathbb{E}}
+\def \F{\mathcal{F}}
+\def \Q{\mathbb{Q}}
+\def \G{\mathcal{G}}
+\def \J{{\mbox{\boldmath $\mathcal{J}$}}}
+\def \B{{\mbox{\boldmath $\mathcal{B}$}}}
+\def \K{{\mbox{\boldmath $\mathcal{K}$}}}
+\def \K{{\mbox{$\mathcal{K}$}}}
+\def \O{{\mbox{\boldmath $\mathcal{O}$}}}
+\def \M{{\mbox{$\mathcal{M}$}}}
+\def \hW{{\mbox{\boldmath $\mathcal{W}$}}}
+\def \N{{\mbox{\boldmath $\mathcal{N}$}}}
+%
+\def \NN{ \boldsymbol{\rm N} }
+\def \hchi{{\mbox{\boldmath $\chi$}}}
+%
+%\newtheorem{definition}{Definition}
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{lem}[theorem]{Lemma}
+%\newtheorem{rmk}{Remark}
+\newtheorem{proposition}{Proposition}
+\newtheorem{observation}{Observation}
+%\newtheorem{corollary}{Corollary}
+%\newtheorem{example}{Example}
+%\newcommand{\pf}{\noindent{\bf Proof. }}
+%\def\qed{$\Box$}
+% to have the same footer on all slides
+%\setbeamertemplate{footline}[text line]{STUFF HERE!}
+
+\usepackage{subfigure}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{epsfig}
+\usepackage{bbm}
+\usepackage{color}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{float}
+%\textcolor{red/blue/green/black/white/cyan/magenta/yellow}{text}
+%\newtheorem{prop}{Proposition}
+%\newtheorem{thm}{Theorem}
+%\newtheorem{algorithm}{Algorithm}
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bgeqn}{\begin{eqnarray}}
+\newcommand{\edeqn}{\end{eqnarray}}
+\newcommand{\bgeq}{\begin{eqnarray*}}
+\newcommand{\edeq}{\end{eqnarray*}}
+\newcommand{\bec}{\begin{center}}
+\newcommand{\enc}{\end{center}}
+%\newcommand{\R}{{\rm I\!R}}
+
+\def\t{\tilde}
+
+%Melvyn Command
+\newcommand{\mb}[1]{\mbox{\boldmath $#1$}}
+\newcommand{\mbt}[1]{\mbox{\boldmath $\tilde{#1}$}}
+\newcommand{\mbst}[1]{{\mbox{\boldmath \scriptsize{$\tilde{#1}$}}}}
+\newcommand{\mbs}[1]{{\mbox{\boldmath \scriptsize{$#1$}}}}
+\newcommand{\mbss}[1]{{\mbox{\boldmath \tiny{$#1$}}}}
+\def\ev{\mathbb{E}_\mathbb{P}}
+
+%Zhi Command
+\def\eq{\mathbb{E}_\mathbb{Q}}
+\def\mcw{\mathcal{W}}
+\def\mcv{\mathcal{V}}
+\def\mce{\mathcal{E}}
+\def\mct{\mathcal{T}}
+\DeclareMathOperator*{\argsup}{\arg\!\sup}
+\DeclareMathOperator*{\arginf}{\arg\!\inf}
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title[$\mathcal{RAA}$core@2020]{Risk and Asset Allocation}
+\subtitle{{\textit{Part II: Classical asset allocation,Estimating the distribution of the market
+invariants}}}
+\author{\text{Shuming Wang} }
+\institute[UCAS]{School of Economics \& Management\\
+University of Chinese Academy of Sciences\\
+Email: wangshuming@ucas.ac.cn}
+
+
+%\titlegraphic{\includegraphics[width = 6cm]{NUS.jpg}}
+\date{ }
+
+%\setbeamercovered{invisible}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\begin{CJK*}{GBK}{song}
+\pdfgraphics
+\frame{\titlepage}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\begin{frame}{Some Choice Problems}
+%Q1: On study: which one between A and B can reflect your circumstance:
+%\begin{itemize}
+%  \item A: \textcolor{blue}{Try my best to be No.1, or to be as close to No.1 as possible. }
+%  \item B: \textcolor{red}{Or you will be satisfied once you can reach some good level, say top 1/4.}
+%  \item A: 4/19, B: 15/19
+%\end{itemize}
+%\begin{figure}[h!]
+%%\centering\includegraphics[height=3.5 in]{MAT-SAT-illustration.pdf}
+%\centering\includegraphics[height=1.4 in]{study}
+%%\caption{}
+%\end{figure}
+%\end{frame}
+%
+%\begin{frame}{Some Choice Problems}
+%Q2: On making money: which one between A and B can reflect your circumstance?
+%\begin{itemize}
+%  \item A: \textcolor{blue}{Making as much money as possible.}
+%  \item B: \textcolor{red}{Or you actually has a target, say $10$ M, and you won't pursue more once it has been achieved.}
+%  \item A: 1/19, B: 18/19
+%\end{itemize}
+%\begin{figure}[h!]
+%%\centering\includegraphics[height=3.5 in]{MAT-SAT-illustration.pdf}
+%\centering\includegraphics[height=1.0 in]{money}
+%%\caption{}
+%\end{figure}
+%\end{frame}
+%
+%\begin{frame}{Some Choice Problems}
+%Q3: On marriage: which one between A and B can reflect your circumstance:
+%\begin{itemize}
+%  \item A: \textcolor{blue}{My husband should be as rich (handsome, successful) as possible/My wife should be as pretty as possible. }
+%  \item B: \textcolor{red}{Or you will be satisfied (then married) when you meet some one who meets your requirement.}
+%   \item A: 0/19, B: 19/19
+%\end{itemize}
+%\begin{figure}[h!]
+%%\centering\includegraphics[height=3.5 in]{MAT-SAT-illustration.pdf}
+%\centering\includegraphics[height=1.4 in]{dating}
+%%\caption{}
+%\end{figure}
+%\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{}
+\begin{frame}\frametitle{Outline}
+\tableofcontents%[hideallsubsections]
+\end{frame}
+%\AtBeginSection[]
+%{
+%\begin{frame}\frametitle{Outline}
+%\tableofcontents[currentsection,
+%    hideallsubsections,
+%    sectionstyle=show/hide]
+%\end{frame}
+%}
+\begin{frame}{Estimating the distribution of the market
+invariants}
+\begin{figure}[htbp]\small
+\centering
+\includegraphics[width=4 cm]{4_1.png}
+\caption{ Performance of different types of estimators}
+\end{figure}
+
+
+In this chapter we discuss how to estimate the distribution of the market
+invariants from empirical observations.
+
+In Section 4.1 we define the concept of estimator, which is simply a function
+of current information that yields a number, the estimate. Such a general
+definition includes estimators that perform poorly, i.e. functions that yield an
+estimate which has little in common with the real distribution of the market
+invariants. Therefore we discuss optimality criteria to evaluate an estimator.
+After defining estimators and how to evaluate them, we need to actually
+construct estimators for the market invariants. Nevertheless, constructing estimators by maximizing the above optimality criteria is not possible. First of
+all, the search of the best estimator among all possible functions of current
+information is not feasible.
+
+
+
+\end{frame}
+
+\begin{frame}
+ Secondly the optimality criteria rarely yield a univocal answer. In other words, an estimator might perform better than another
+one in given circumstances, and worse in different circumstances. Therefore,
+we construct estimators from general intuitive principles, making sure later
+that their performance is acceptable, and possibly improving them with marginal corrections. In this spirit, we proceed as follows.
+
+In Section 4.2 we introduce nonparametric estimators. These estimators
+are based on the law of large numbers. Therefore, they perform well when the
+number of empirical observations in the time series of the market invariants
+is large, see Figure 4.1. When this is the case, nonparametric estimators are
+very flexible, in that they yield sensible estimates no matter the underlying
+true distribution of the market invariants. In particular we discuss the sample quantile, the sample mean, the sample covariance and the ordinary least
+square estimate of the regression factor loadings in an explicit factor model,
+stressing the geometrical properties of these estimators. We conclude with an
+overview of kernel estimators.
+
+When the number of observations is not very large, nonparametric estimators are no longer suitable. Therefore we take a parametric approach, by
+assuming that the true distribution of the market invariants belongs to a restricted class of potential distributions. In Section 4.3 we discuss maximum likelihood estimators, which are built in such a way that the past observations
+of the market invariants become the most likely outcomes of the estimated
+parametric distribution. We compute the maximum likelihood estimators of
+location, dispersion, and factor loadings under the assumption that the market
+invariants are elliptically distributed: this shows the intrinsic outlier-rejection
+mechanism of maximum likelihood estimators. Then we study thoroughly the
+normal case: as it turns out, the main driver of the performance of the maximum likelihood estimators is the overall level of correlation among the market
+invariants, as summarized by the condition number.
+
+
+\end{frame}
+
+
+\begin{frame}
+
+
+
+
+In some applications the number of observations is so scanty, and the result
+of the estimate so unreliable, that it is advisable to average the final estimates
+with fixed, yet potentially wrong, values: this way we obtain shrinkage estimators, see Figure 4.1. In Section 4.4 we discuss the shrinkage estimators for
+the location parameters, the dispersion parameters and the factor loadings of
+a linear model.
+
+
+
+In Section 4.5 we discuss robust estimation. Indeed, the parametric approach dramatically restricts the set of potential distributions for the market
+invariants. Robust estimation provides a set of techniques to evaluate and
+possibly fix the consequences of not having included the true, unknown distribution among the set of potential distributions. We discuss classical measures
+of robustness, such as the sensitivity curve and the jackknife, and develop
+the more general concept of influence function. Then we evaluate the robustness of the estimators previously introduced in this chapter and show how
+to build robust M -estimators. In particular, we discuss M-estimators of the
+location parameters, the dispersion parameters and the factor loadings of a
+linear model.
+
+In Section 4.6 we conclude with a series of practical tips to improve the
+estimation of the distribution of the market invariants in specific situations.
+Among other issues, we discuss outliers detection, which we tackle by means
+of high breakdown estimators such as the minimum volume ellipsoid and the
+minimum covariance determinant; missing data, which we tackle by means of
+the EM algorithm; and weighted estimation techniques such as the exponential
+smoothing, which accounts for the higher reliability of more recent data with
+respect to data farther back in the past.
+
+\end{frame}
+
+
+
+\section[Estimators]{Estimators}
+\begin{frame}{Estimators}\small
+
+Before introducing the concept of estimator, we review our working assumptions, which we set forth in Section 3.1.
+The randomness in the market is driven by the market invariants. The
+invariants are random variables that refer to a specific estimation-horizon $\widetilde \tau$and are $independent and identically distributed (i.i.d.) $across time. The generic
+invariant ${\bf X}_{t,\widetilde \tau} $  becomes known at the respective time w, which is part of the set of equally spaced estimation dates:
+
+\begin{eqnarray} \label{4.1}
+\begin{aligned}
+t \in \mathcal{D}_{\tilde t,\tilde \tau} \equiv &
+\{\tilde t,\tilde t+ \tilde{\tau},\tilde t+ 2 \tilde{\tau},...     \}\\
+\end{aligned}
+\end{eqnarray}
+
+\begin{example}
+For example, we have seen in Section 3.1.1 that the invariants in the equity
+market are the compounded returns. In other words, for a stock that at the
+generic time $t$ trades at the price $P_t$, the following set of random variables are
+independent and identically distributed across time, as $t$ varies in (4.1):
+\begin{eqnarray} \label{4.2}
+\begin{aligned}
+{X}_{\tilde t,\tilde \tau} \equiv &
+{ln}(\frac {P_t}{P_{t-\tilde\tau}}  ),&t\in \mathcal{D}_{\tilde t,\tilde \tau} \\
+\end{aligned}
+\end{eqnarray}
+Furthermore, these variables become known at time $t$
+\end{example}
+
+Notice that once the time origin $\widetilde t$ and the time interval $\widetilde \tau$  have been fixed,
+we can measure time in units of $\widetilde \tau$  and set the origin in $\widetilde t-\widetilde \tau$ . This way,
+without loss of generality, we can always reduce the estimation dates to the
+set of positive integers:
+
+\begin{eqnarray}\label{4.3}
+\begin{aligned}
+t \in \mathcal{D}_{\tilde t,\tilde \tau} \equiv &
+\{1,2,3,...     \}\\
+\end{aligned}
+\end{eqnarray}
+We will use this more convenient notation throughout this chapter.
+\end{frame}
+
+\begin{frame}{Estimators}
+\begin{example}
+In this notation the market invariants of our example, namely the compounded returns (4.2), read:
+\begin{eqnarray}\label{4.4}
+\begin{aligned}
+{X}_{\tilde t} \equiv &
+{\ln}(\frac {P_t}{P_{t-\tilde\tau}}  ),&t=1,2,.... \\
+\end{aligned}
+\end{eqnarray}
+\end{example}
+Since the invariants are independent and identically distributed across
+time, from (2.44) we obtain that their across-time joint distribution, as represented by their probability density function, factors as follows:
+
+\begin{eqnarray}\label{4.5}
+\begin{aligned}
+f_{X_{1},X_{2},...}(X_{1},X_{2},...)= &
+f_X(X_1)f_X(X_2)..., \\
+\end{aligned}
+\end{eqnarray}
+
+where we stress that the single-period joint distribution of the invariants$ f_{\bf X}$
+does not depend on the time index. Therefore all the information about the
+invariants is contained in one single-period multivariate distribution.
+In (4.5) we chose to represent the distribution of the invariants in terms
+of their probability density function $ f_{\bf X}$. Equivalently, we might find it more
+convenient to represent the distribution of the invariants in terms of either
+the cumulative distribution function $ F_{\bf X}$ or the characteristic function $ \phi_{\bf X}$, see Figure 2.2. The factorization (4.5) holds for any representation, as we see from
+(2.46) and (2.48).
+\end{frame}
+
+
+\begin{frame}{Estimators}{Definition}\small
+Our aim is to infer the single-period distribution of the invariants. More precisely, we aim at inferring the "truth", as represented by a generic number $S$
+of features of the distribution of the market invariants. These features can be
+expressed as an $S$-dimensional vector of functionals of the probability density
+function (or of the cumulative distribution function, or of the characteristic
+function):
+\begin{eqnarray}\label{4.6}
+\begin{aligned}
+\mathbf{G}[f_X]\equiv  &
+"unknown~truth" \\
+\end{aligned}
+\end{eqnarray}
+
+\begin{example}
+For example, if we are interested in the expected value of the compounded
+return on a stock (4.4), the "unknown truth" is the following one-dimensional
+functional:
+\begin{eqnarray}\label{4.7}
+\begin{aligned}
+{G}[f_X]\equiv   &
+\displaystyle \int_{-\infty}^{\infty} xf_x(x)dx,\\
+\end{aligned}
+\end{eqnarray}
+where $f_X$ is the unknown probability density function of any compounded
+return $X_t$, and does not depend on the specific time $t$.
+\end{example}
+
+The current time is $T$. We base inference on the information $i_T$ about the
+invariants available at the time $T$ when the investment decision is made. This
+information is represented by the time series of all the past realizations of the
+invariants:
+\begin{eqnarray}\label{4.8}
+\begin{aligned}
+i_T \equiv  &
+{X_1,...,X_T},\\
+\end{aligned}
+\end{eqnarray}
+
+where the lower-case notation stresses the fact that the once random variables $X_t$ have become observable numbers. An $estimator$ is a vector-valued function that associates a vector in $\mathbb{R}^{S}$, $i.e.$ a set of $S$ numbers, with available
+information:
+
+\begin{eqnarray}\label{4.9}
+\begin{aligned}
+\mathbf{estimator}: \mathbf{information}~ i_T \mapsto  &
+\mathbf{number} ~\mathbf{ \widehat  G}\\
+\end{aligned}
+\end{eqnarray}
+
+
+\end{frame}
+
+
+\begin{frame}{Estimators}{Definition}\small
+
+\begin{example}
+For example the following is an estimator:
+\begin{eqnarray}\label{4.10}
+\begin{aligned}
+\widehat G [i_T ]\equiv    &
+\frac{1}{T}\sum_{t=1}^{T}x_t.
+\end{aligned}
+\end{eqnarray}
+\end{example}
+
+Notice that the definition of estimator (4.9) is not related to the goal of
+estimation (4.6). Again, an estimator is simply a function of currently available
+information
+
+\begin{example}
+For example, the following is a function of information and thus it is an
+estimator:
+\begin{eqnarray}\label{4.11}
+\begin{aligned}
+\widehat G[i_T] \equiv &
+x_1x_T.
+\end{aligned}
+\end{eqnarray}
+Similarly, for strange that it might sound, the following is also an estimator:
+\begin{eqnarray}\label{4.12}
+\begin{aligned}
+\widehat G[i_T] \equiv &
+3.
+\end{aligned}
+\end{eqnarray}
+\end{example}
+
+\end{frame}
+
+
+\begin{frame}{Estimators}{Evaluation}\small
+
+Although the definition of estimator is very general, an estimator serves its
+purpose only if its value is close to the true, unknown value (4=6) that we are
+interested in:
+\begin{eqnarray}\label{4.13}
+\begin{aligned}
+\mathbf{\widehat G}[i_T] \approx &
+\mathbf{G}[f_X]
+\end{aligned}
+\end{eqnarray}
+To make this statement precise, we need a criterion to evaluate estimators.
+In order to evaluate an estimator, the main requirement is its $replicability$: an
+estimator is good not only if the result of the estimation is close to the true
+unknown value, but also if this does not happen by chance.
+
+To tackle replicability, notice that the available information (4.8), namely
+the time series of the market invariants, is the realization of a set of random
+variables:
+
+\begin{eqnarray}\label{4.14}
+\begin{aligned}
+I_T \equiv &
+\{X_1,...,X_T \}
+\end{aligned}
+\end{eqnarray}
+
+In a different scenario, the realization of this set of variables would have assumed a different value $i^{\prime}_T$ and therefore the outcome of the estimate would have been a different number $\mathbf{\widehat G}[i_T] $, see Figure 4.2. Therefore the estimator
+(4.9), as a function of the random variable $I_T$ instead of the specific occurrence
+$i_T$ , becomes a (multivariate) $random variable$:
+
+\begin{eqnarray}\label{4.15}
+\begin{aligned}
+\mathbf{\widehat G}[i_T] \mapsto  &
+\mathbf{\widehat G}[I_T].
+\end{aligned}
+\end{eqnarray}
+
+The distribution of the information (4.14) is fully determined by the true, unknown distribution $f_{\bf X}$ of the market invariants through (4.5). Therefore, the
+distribution of the estimator (4.15) is also determined by the true, unknown
+distribution $f_{\bf X}$ of the market invariants, see Figure 4.2.
+
+\end{frame}
+
+
+\begin{frame}{Estimators}{Evaluation}\small
+
+\begin{example}
+For example, if the invariants (4.4) are normally distributed with the following unknown parameters:
+\begin{eqnarray}\label{4.16}
+\begin{aligned}
+X_t \sim       &
+N(\mu, \sigma^2)
+\end{aligned}
+\end{eqnarray}
+
+then the estimator (4.10) is normally distributed with the following parameters:
+
+\begin{eqnarray}\label{4.17}
+\begin{aligned}
+\widehat G[I_T]\equiv   &
+\frac{1}{T}\sum^{T}_{t=1}X_t \sim (N,\frac{\sigma^2}{T}),
+\end{aligned}
+\end{eqnarray}
+
+where $\mu$ and $\sigma^2$ are unknown.
+\end{example}
+
+The distribution associated with an estimator is at least as important as
+the specific outcome $\mathbf{\widehat G}[i_T] $ of the estimation process: an estimator is suitable,
+$i.e.$ (4.13) holds, if the distribution of the multivariate random variable $\mathbf{\widehat G}[I_T] $is highly concentrated around the true unknown value ${\widehat G}[f_{\bf X}] $. For instance, this is not the case in Figure 4.2.
+\end{frame}
+
+\begin{frame}{Estimators}{Evaluation}\small
+\begin{example}
+Suppose we use the estimator (4.10) to estimate (4.7), i.e. the expected
+value of the invariants. From (4.16) this reads:
+\begin{eqnarray}\label{4.18}
+\begin{aligned}
+G[f_X]=\mu
+\end{aligned}
+\end{eqnarray}
+Therefore the distribution of the estimator (4.17) is centered around the true
+unknown value ${\mu}$ and the concentration of this distribution is of the order of
+$\sigma/ \sqrt{T}$
+\end{example}
+
+
+Nevertheless, evaluating a multivariate distribution can be complex. To
+summarize the goodness of an estimator into a univariate distribution we
+introduce the loss:
+\begin{eqnarray}\label{4.19}
+\begin{aligned}
+\mathrm{Loss}(\mathbf{\widehat G}, \mathbf{ G}  )\equiv &
+\| \mathbf{\widehat G}[I_T]-G[f_X] \|^2,
+\end{aligned}
+\end{eqnarray}
+
+where $\|.\|$ denotes a norm, see ($A.7$). For reasons to become clear in a moment,
+it is common to induce the norm from a quadratic form, i.e. a symmetric and
+positive $ S\times S $ matrix ${\bf Q}$ such that the following relation holds true
+
+\begin{eqnarray}\label{4.20}
+\begin{aligned}
+\|\mathbf{v}\| \equiv &
+\mathbf{v \prime }\mathbf{Qv}
+\end{aligned}
+\end{eqnarray}
+
+Since the loss is the square of a norm, from ($A.7$) the loss is zero only for
+those outcomes where the estimator $\widehat{\bf G}$ yields an estimate that is equal to the true value to be estimated, and is strictly positive otherwise. Therefore, the
+estimator is good if the distribution of the loss is tightly squeezed above the
+value of zero.
+
+\end{frame}
+
+\begin{frame}{Estimators}{Evaluation}\small
+
+\begin{example}
+In our example, from (4.17) and (4.18) we obtain:
+\begin{eqnarray}\label{4.21}
+\begin{aligned}
+\widehat G[I_T]-G[f_X] \sim N(0,\frac{\sigma^2}{T}).
+\end{aligned}
+\end{eqnarray}
+
+We can summarize the goodness of this estimator with the quadratic loss
+induced by ${\bf Q}\equiv 1$ in (4.20). Then from (1.106) we obtain the distribution of
+the loss, which is the following central gamma with one degree of freedom:
+
+\begin{eqnarray}\label{4.22}
+\begin{aligned}
+\mathrm{Loss}(\widehat {G}, G)\equiv(\widehat {G} -G)^2 \sim G_a(1,\frac{\sigma^2}{T}).
+\end{aligned}
+\end{eqnarray}
+In the presence of a large number of observations, or when the underlying
+market is not too volatile, this loss is a random variable tightly squeezed
+above the value of zero.
+\end{example}
+\end{frame}
+
+\begin{frame}{Estimators}{Evaluation}\small
+Even evaluating the shape of a univariate distribution can be complex, see
+Chapter 5. To further summarize the analysis of the goodness of an estimator
+we consider the expected value of the loss: the higher the expected value, the
+worse the performance of the estimator. Since the loss is a square distance,
+we consider the square root of the expectation of the loss. The $error^1$(The error is called risk in the statistical literature. We prefer to reserve this term
+for financial risk) is the
+average distance between the outcome of the estimation process and the true
+value to be estimated over all the possible scenarios:
+\begin{eqnarray}\label{4.23}
+\begin{aligned}
+\mathrm{Err}(\mathbf{\widehat {G}},\mathbf{G})\equiv \sqrt{\mathrm{E}\{ \|\mathbf{\widehat G}(I_T)-\mathbf{G}[f_X]   \|^2  \}}
+\end{aligned}
+\end{eqnarray}
+
+
+\begin{example}
+In our example, from (4.22) and (1.113) the error reads:
+\begin{eqnarray}\label{4.24}
+\begin{aligned}
+\mathrm{Err}(\widehat{G},G)=\frac{\sigma}{\sqrt T}.
+\end{aligned}
+\end{eqnarray}
+As expected, the larger the number of observations in the time series and the
+lower the volatility of the market, the lower the estimation error.
+\end{example}
+\end{frame}
+
+
+
+\begin{frame}{Estimators}{Evaluation}\small
+
+The definition (4.19)-(4.20) of the loss in terms of a square norm and the
+definition (4.23) of the error as the square root of its expected value are not
+the only viable choices. Nevertheless, the above definitions are particularly
+intuitive because they allow to decompose the error into bias and ine!ciency.
+The bias measures the distance between the "center" of the distribution
+of the estimator and the true unknown parameter to estimate:
+\begin{eqnarray}\label{4.25}
+\begin{aligned}
+\mathrm{Bias}^2[\mathbf{\widehat G},{\mathbf {G}}] \equiv
+\| \mathrm{E}\{\mathbf{\widehat{G}[I_T]}\}-\mathbf{G}[f_X] \|^2,
+\end{aligned}
+\end{eqnarray}
+
+see Figure 4.2.
+The $inefficiency$ is a measure of the dispersion of the estimator, and as
+such it does not depend on the true unknown value:
+
+\begin{eqnarray}\label{4.26}
+\begin{aligned}
+\mathrm{Inef}^2[\mathbf{\widehat G}] \equiv
+\mathrm{E}\{ \| \mathbf{\widehat G}[I_T]-\mathrm{E}\{\mathbf{\widehat{G}[I_T]} \}\|^2\},
+\end{aligned}
+\end{eqnarray}
+
+see Figure 4.2. It is easy to check that in terms of bias and ine!ciency the error (4.23)
+factors as follows:
+
+\begin{eqnarray}\label{4.27}
+\begin{aligned}
+\mathrm{Err}^2[\mathbf{\widehat G},\mathbf{ G}] =
+\mathrm{Bias}^2[\mathbf{\widehat G},\mathbf{ G}]+\mathrm{Inef}^2[\mathbf{\widehat G},\mathbf{ G}].
+\end{aligned}
+\end{eqnarray}
+
+In these terms, the statement that the replicability distribution of a good
+estimator is highly peaked around the true value can be rephrased as follows:
+a good estimator is very e!cient and displays little bias.
+
+\end{frame}
+
+\begin{frame}{Estimators}{Evaluation}\small
+
+\begin{example}
+In our example, from (4.17) and (4.18) we obtain the bias:
+\begin{eqnarray}\label{4.28}
+\begin{aligned}
+\mathrm{Bias}[\widehat G,G]=|\mathrm{E}\{\widehat{G}[I_T]-G[f_X]\}|=|\mu-\mu|=0
+\end{aligned}
+\end{eqnarray}
+
+In other words, the estimator is centered around the true, unknown value${\mu}$.
+From (4.17) we obtain the $inefficiency$:
+
+
+\begin{eqnarray}\label{4.29}
+\begin{aligned}
+\mathrm{Inef}[\widehat G]=|\mathrm{E}\{\widehat{G}[I_T]-G[f_X]\}|=|\mu-\mu|=0
+\end{aligned}
+\end{eqnarray}
+
+In other words, the estimator has a dispersion of the order of $\sigma/ \sqrt T$.
+Comparing with (4.24) we see that the factorization (4.27) holds.
+\end{example}
+
+Notice that the definitions of loss and error are scale dependent: for example if the true value ${\bf G}$ has the dimension of money and we measure it in $US$
+dollars, the error is about one hundred times smaller than if we measure it
+in Japanese yen. To make the evaluation scale independent we can normalize
+the loss and the error by the length of the true value, if this length is not
+zero. Therefore at times we consider the percentage loss, which is a random
+variable:
+
+\begin{eqnarray}\label{4.30}
+\begin{aligned}
+\mathrm{PLoss}[\mathbf{\widehat G},\mathbf{G}]= \frac{ \| \widehat{G}[I_T]-G[f_X] \|^2 }{\| \widehat {G}[f_X]\|^2}
+\end{aligned}
+\end{eqnarray}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}{Estimators}{Evaluation}\small
+
+and the percentage error, which is a scale-independent number:
+\begin{eqnarray}\label{4.31}
+\begin{aligned}
+\mathrm{PErr}[\mathbf{\widehat G},\mathbf{G}]= \frac{\sqrt{\mathrm{E}\{\| \widehat{G}[I_T]-G[f_X] \|^2  \}}}{\| \widehat {G}[f_X]\|}
+\end{aligned}
+\end{eqnarray}
+An estimator is suitable if its percentage error is much smaller than one.
+
+At this point we face a major problem: the distribution of the loss, and
+thus the error of an estimator, depends on the underlying true distribution of
+the market invariants $f_{\bf X}$. If this distribution were known, we would not need
+an estimator in the first place.
+
+In our example, from (4.24) the error of the estimator (4.10) depends on
+the standard deviation $\sigma$ of the unknown distribution of the invariants (4.16):
+this estimator is good if the invariants are not too volatile.
+Similarly, the estimator (4.12) gives rise to a deterministic loss, which is
+equal to the error and reads:
+\begin{example}
+\begin{eqnarray}\label{4.32}
+\begin{aligned}
+\mathrm{Err}[\mathbf{\widehat G},\mathbf{G}]= |\mu-3|
+\end{aligned}
+\end{eqnarray}
+This estimator is suitable if the expected value of the invariants happens to
+lie in the neighborhood of the value $\mu \equiv 3$.
+
+Nevertheless, neither $\mu$ nor $\sigma$ are known parameters.
+\end{example}
+\end{frame}
+
+\begin{frame}{Estimators}{Evaluation}\small
+
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=4cm]{4_3.png}\\
+  \caption{ Evaluation of estimators: choice of stress-test distributions}
+\end{figure}
+
+First we consider, among all the possible distributions of the market invariants, a subset of stress test distributions that is large enough to contain
+the true, unknown distribution, see Figure 4.3.
+
+Then we make sure that the estimator is suitable, i.e. its distribution is
+peaked around the true unknown value to be estimated for all the distributions
+in the stress test set, see Figure 4.4
+
+In general an estimator performs well with some stress test distributions
+and performs poorly with other stress test distributions, see Figure 4.4. Consequently, in choosing the set of stress test distributions we face the following
+dichotomy: on the one hand, the stress test set should be as broad as possible, in such a way to encompass the true, unknown distribution; on the
+other hand, the stress test set should be as narrow as possible, in such a way
+that estimators can be built which display small errors for all the stress test
+distributions.
+\end{frame}
+
+\section[Nonparametric estimators]{Nonparametric estimators}
+
+\begin{frame}{Nonparametric estimators}\small
+
+Assume that the number of observations $T$ in the time series $i_T$ is very large.
+The nonparametric approach is based on the following intuitive result, well
+known to practitioners: under fairly general conditions, sample averages computed over the whole time series approximate the expectation computed with
+the true distribution, and the approximation improves with the number of
+observations in the time series.
+
+This result is known as the $law of large numbers$ ($LLN$), which we represent
+as follows:
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=4cm]{4_4.png}\\
+  \caption{Evaluation of estimators: loss and error}
+\end{figure}
+
+
+\begin{eqnarray}\label{4.33}
+\begin{aligned}
+\frac{1}{T}\sum^{T}_{t=1}\{\mathrm{past}\} \underset  {T \rightarrow \infty }\approx \mathrm{E}\{\mathrm{future}\}.
+\end{aligned}
+\end{eqnarray}
+
+
+\end{frame}
+
+\begin{frame}{Nonparametric estimators}
+
+The Law of Large Numbers implies the $Glivenko-Cantelli theorem$. This
+theorem states that the empirical distribution (2.239) of a set of independent
+and identically distributed variables, as represented for example by its cumulative distribution function, $tends^2$( One should specify the topology for the limits in the law of large numbers and
+in the $Glivenko-Cantelli theorem$, see e.g. Shirayaev (1989) for details. Here we
+choose a heurisitc approach.) to the true distribution as the number of
+observations goes to infinity, see Figure 4.5:
+
+\begin{eqnarray}\label{4.34}
+\begin{aligned}
+\underset {T \rightarrow \infty}\lim F_{i_T}(x)=F_x(x).
+\end{aligned}
+\end{eqnarray}
+
+Expression (4.34) suggests how to define the estimator of a generic functional ${\bf G} [f_{\bf X}]$ of the true, yet unknown, distribution of the market invariants.
+Indeed, we only need to replace in the functional  ${\bf G} [f_{\bf X}]$  the true, unknown
+probability density function $f_{\bf X}$ with the empirical probability density function
+(2.240), which we report here:
+
+\begin{eqnarray}\label{4.35}
+\begin{aligned}
+f_(i_T)(x) \equiv \frac{1}{T}\sum^{T}_{t=1}\delta^(x_t)(x)
+\end{aligned}
+\end{eqnarray}
+
+where $\delta$ is the Dirac delta (E=17). In other words we define the estimator of
+${\bf G} [f_{\bf X}]$ as follows:
+
+\end{frame}
+
+\begin{frame}{Nonparametric estimators}
+Fig. 4.5. Glivenko-Cantelli theorem
+
+\begin{eqnarray}\label{4.36}
+\begin{aligned}
+\mathbf {\widehat G}[i_T] \equiv \mathbf {G}[f_{i_T}].
+\end{aligned}
+\end{eqnarray}
+
+To test the goodness of this estimator we should compute its replicability,
+i.e. the distribution of ${\widehat G}[I_T]$ as in (4.15), for all possible distributions. This
+is an impossible task. Nevertheless, under fairly general conditions, when the
+number of observations $T$ is very large the $central limit theorem CLT$ states
+that the estimator is approximately normally distributed:
+
+\begin{eqnarray}\label{4.37}
+\begin{aligned}
+\mathbf{ \widehat G}[I_T]\sim N \left(\mathbf{G}[f_X],\frac{\mathbf A}{T}\right)
+\end{aligned}
+\end{eqnarray}
+
+where$ \bf A$ is a suitable symmetric and positive $matrix^3$(The matrix A is defined in terms of the influence function (4.185) as follows:$A_{jk}\equiv \int_{\mathbb R}^N \mathrm{IF}({\bf  x},f_{\bf x},G_j) \mathrm{IF}({\bf  x},f_{\bf x},G_k)f_{\bf x}({\bf x})d{\bf x}$,see Huber (1981).). The above approximation becomes exact only in the limit of an infinite number of observations $T$
+in the time series: although this limit is never attained in practice, for a large
+enough number of observations the nonparametric approach yields benchmark
+estimators that can subsequently be refined.
+
+We now use the nonparametric approach to estimate the features of the
+distribution of the market invariants that are most interesting in view of
+financial applications.
+
+\end{frame}
+
+\begin{frame}{Nonparametric estimators}{Location, dispersion and hidden factors}\small
+
+If the invariants ${\bf X}_t$ are univariate random variables, we can use as location
+parameter the generic quantile $q_p$, which is defined implicitly in terms of the
+probability density function $f_{\bf X}$ of the invariant as follows:
+\begin{eqnarray}\label{4.38}
+\begin{aligned}
+\int^{q_p[f_X]}_{-\infty}f_X(x)dx \equiv p,
+\end{aligned}
+\end{eqnarray}
+
+see (1.18). By applying (4.36) to the definition of quantile, we obtain the
+respective estimator $\widehat {q_p} [i_T]\equiv x_{[p_T]:T}$. This is the $sample quantile$ (1.124):
+
+\begin{eqnarray}\label{4.39}
+\begin{aligned}
+\widehat {q_p}[i_T]\equiv x_{[p_T]:T},
+\end{aligned}
+\end{eqnarray}
+where $[·]$ denotes the integer part. In particular, for $p \equiv 1/2$ this expression
+becomes the sample median.
+
+To evaluate this estimator, we consider it as a random variable as in (4.15).
+From (2.248) the probability density function of the estimator $\widehat{q_p}$ reads:
+\begin{eqnarray}\label{4.40}
+\begin{aligned}
+f_{\hat {q}_p}(x)=  \frac{T![F_X(x)]^{[pT]-1} [1-F_X(x)^{T-[PT]}f_X(x)] }{([pT]-1)!(T-[pT])!}
+\end{aligned}
+\end{eqnarray}
+
+
+
+\end{frame}
+
+\begin{frame}{Nonparametric estimators}{Location, dispersion and hidden factors}\small
+
+From (2.253) this density is concentrated around the quantile $q_p$ and from
+(2.252) the quality of the estimator improves as the sample size $T$ increases,
+see Figure 4.6.
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=4cm]{4_6.png}\\
+  \caption{ Sample quantile: evaluation}
+\end{figure}
+
+Similarly, to estimate the dispersion of the univariate invariants ${\bf X}_t$ we can
+use the $sample interquantile$ range, derived by applying (4.36) to (1.37).
+
+In the multivariate case, we can rely on the expected value of the invariant
+${\bf X}$ as parameter of location. We derive the nonparametric estimator of the
+expected value by applying (4.36) to the definition (2.54) of expected value.
+This is the expected value of the empirical distribution (2.244), i.e. the $sample
+mean$:
+\begin{eqnarray}\label{4.41}
+\begin{aligned}
+\widehat{E}\equiv \int_{\mathbb{R}^N} \mathbf{x}f_{i_T}(\mathbf{x})d\mathbf{x}=\frac{1}{T}\sum^{T}_{t=1}\mathbf{x}_t.
+\end{aligned}
+\end{eqnarray}
+
+
+Similarly, as a multivariate parameter of dispersion we choose the covariance matrix. By applying (4.36) to the definition (2.67) of covariance we derive
+the respective nonparametric estimator:
+\begin{eqnarray}\label{4.42}
+\begin{aligned}
+\mathrm {\widehat {Cov}}[i_T]=\frac{1}{T}\sum^{T}_{t=1}(\mathbf{x}_t-\widehat{E}[i_T])(\mathbf{x}_t-\widehat{E}[i_T])^{\prime}.
+\end{aligned}
+\end{eqnarray}
+
+\end{frame}
+
+\begin{frame}{Nonparametric estimators}{Location, dispersion and hidden factors}\small
+This is the covariance matrix of the empirical distribution (2.245), i.e. the
+sample covariance.
+
+From (4.42) we derive an expression for the estimator of the principal component decomposition of the covariance matrix. Indeed, it suffices to compute
+the PCA decomposition of the $sample covariance$:
+\begin{eqnarray}\label{4.43}
+\begin{aligned}
+\mathrm {\widehat {Cov}}\equiv \mathbf{\hat {E}} \mathbf{\hat {\Lambda}} \mathbf{\hat {E}}^{\prime}
+\end{aligned}
+\end{eqnarray}
+In this expression $\mathbf{\hat {\Lambda}}$ is the diagonal matrix of the sample eigenvalues sorted
+in decreasing order:
+
+\begin{eqnarray}\label{4.44}
+\begin{aligned}
+\mathbf{\hat {\Lambda}} \equiv \mathrm{diag}\left( \hat{\lambda_1}, ...,\hat{\lambda_N}  \right);
+\end{aligned}
+\end{eqnarray}
+
+and $\mathbf{\hat {E}} $ is the orthogonal matrix of the respective sample eigenvectors. The
+matrix $\mathbf{\hat {E}} $ is the estimator of the PCA factor loadings, and the entries of $\mathbf{\hat {\Lambda}}$
+are the estimators of the variances of the PCA factors
+
+We do not evaluate here the performance of the estimators (4.41), (4.42),
+(4.43) and (4.44) on a set of stress test distributions, because the same estimators reappear in a diffierent context in Section 4.3.
+The sample mean and the sample covariance display an interesting geometrical interpretation. To introduce this property, consider a generic $N$-dimensional vector µ and a generic $N \times N$ scatter matrix $\Sigma$, i.e. a symmetric
+and positive matrix. Consider the ellipsoid (A.73) defined by these two parameters, see Figure 4.7:
+
+\begin{eqnarray}\label{4.45}
+\begin{aligned}
+\mathbf{\xi}_{\mathbf{\mu},\mathbf{\Sigma}}  \equiv  \{\mathbf{x}\in \mathbb{R}^N \mathrm{such~that~}(\mathbf{x}-\mathbf{\mu})^\prime\mathbf{\Sigma}^{-1}(\mathbf{x}-\mathbf{\mu})\leq 1      \}
+\end{aligned}
+\end{eqnarray}
+Consider now the set of the Mahalanobis distances from $\bf \mu$ through the metric
+of each observation $\bf \Sigma$ in the time series of the invariants:
+\end{frame}
+
+
+\begin{frame}{Nonparametric estimators}{Location, dispersion and hidden factors}\small
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=4cm]{4_7.png}\\
+  \caption{Sample mean and sample covariance: geometric properties}
+\end{figure}
+
+
+
+
+\begin{eqnarray}\label{4.46}
+\begin{aligned}
+\mathrm(Ma)_t^{\bf\mu,\bf\Sigma}\equiv \mathrm{Ma}(\bf{x}_t,\bf\mu,\bf\Sigma) \equiv\sqrt{(\bf{x}_t-\bf\mu)^\prime\Sigma^{-1}(\bf{x}_t-\bf\mu)}
+\end{aligned}
+\end{eqnarray}
+
+The Mahalanobis distance is the "radius" of the ellipsoid concentric to $\mathcal{E}_{{\bf \mu},{\bf \Sigma}}$
+that crosses the observation ${\bf x}_t$. In particular, if $\mathrm{Ma}_t^{\bf\mu,\bf\Sigma}$  is one, then the observation ${\bf x}_t$ lies on the ellipsoid (4.45). Consider the average of the square
+distances:
+
+\begin{eqnarray}\label{4.47}
+\begin{aligned}
+\overline{r^2}(\bf\mu,\bf\Sigma)\equiv\frac{1}{T}\sum^{T}_{t=1}\left( \mathrm{Ma}_t^{\bf\mu,\bf\Sigma}    \right)^2
+\end{aligned}
+\end{eqnarray}
+
+
+
+If this number is close to one, the ellipsoid passes through the cloud of observations.
+
+\end{frame}
+
+\begin{frame}{Nonparametric estimators}{Explicit factors}\small
+
+The sample mean and sample covariance represent the choices of location and scatter parameter respectively that give rise to the smallest ellipsoid
+among all those that pass through the cloud of observations, see Figure 4.7.
+More formally, we prove in Appendix $www.4.1$ the following result:
+
+
+
+\begin{eqnarray}\label{4.48}
+\begin{aligned}
+\left( \hat{E},N\mathrm{\widehat{Cov}}   \right)=\underset{(\bf\mu,\bf\Sigma)\in \mathcal{C}}{\mathrm{argmin}}[\mathrm{Vol}\{\xi_{\bf\mu,\bf\Sigma}\}]
+\end{aligned}
+\end{eqnarray}
+
+where the set of constraints $\mathcal{C}$ imposes that ${\bf \Sigma}$be symmetric and positive and
+that the average Mahalanobis distance be one:
+
+\begin{eqnarray}\label{4.49}
+\begin{aligned}
+\overline{r^2}(\bf\mu,\bf\Sigma)\equiv1.
+\end{aligned}
+\end{eqnarray}
+n other words, the set of constraints C imposes that the respective ellipsoid
+(4.45) passes trough the cloud of observations, see Figure 4.7.
+
+The result (4.48) is intuitive: the ellipsoid generated by the sample mean
+and covariance is the one that best fits the observations, since all the observations are packed in its neighborhood.
+
+Nevertheless, in some circumstances the ellipsoid $\mathcal{E}_{\hat{E},N\mathrm{\widehat{Cov}}}$ d "tries too hard"
+to embrace all the observations: if an observation is an outlier, the sample
+mean and the sample covariance tend to perform rather poorly in an effort
+to account for this single observation. We discuss this phenomenon further in
+Section 4.5.
+
+\end{frame}
+
+\begin{frame}{Nonparametric estimators}{Explicit factors}\small
+Consider the explicit factor a!ne model (3.119), which we report here:
+\begin{eqnarray}\label{4.50}
+\begin{aligned}
+\mathbf{X}=\mathbf{BF}+\mathbf{U}
+\end{aligned}
+\end{eqnarray}
+Since we observe both the $N$-dimensional market invariants $\bf X$ and the $\bf K$-dimensional explicit factors F, the available information (4.8) consists of the
+time series of both the invariants and the factors:
+\begin{eqnarray}\label{4.51}
+\begin{aligned}
+i_T\equiv  \{\bf{x}_1,\bf{f}_1,...\bf{x}_T,\bf{f}_T \}
+\end{aligned}
+\end{eqnarray}
+By applying (4.36) to the definition of the regression factor loadings (3.121)
+we obtain the nonparametric estimator of the regression factor loadings of the
+explicit factor affine model:
+
+\begin{eqnarray}\label{4.52}
+\begin{aligned}
+\widehat{B}[i_T]\equiv \left( \sum\limits_t \bf{x}_t \bf{f}_t^\prime     \right)
+\left( \sum\limits_t \bf{f}_t \bf{f}_t^\prime     \right)^{-1}
+\end{aligned}
+\end{eqnarray}
+
+\end{frame}
+
+\begin{frame}{Nonparametric estimators}{Explicit factors}\small
+This matrix represents the $ordinary least square$ (OLS) estimator of the regression factor loadings.
+
+The name is due to a geometric property of the OLS coefficients, which
+we sketch in Figure 4.8. Indeed, as we show in Appendix www.4.1, the OLS
+estimator $\widehat{B}$ provides the best fit to the observations, in the sense that it
+minimizes the sum of the square distances between the original observations
+$({\bf x}_t)$ and the recovered values $\widehat{\bf B}{\bf f}_t$:
+
+
+\begin{eqnarray}\label{4.53}
+\begin{aligned}
+\widehat{B}=\underset{\mathbf{B}}{\mathrm{argmin}}\sum_t\| \bf{x}_t-\bf{Bf}_t \|^2,
+\end{aligned}
+\end{eqnarray}
+
+where $\| . \|$ is the standard norm (A.6).
+By applying (4.36) to the covariance of the residuals (3.129) we obtain the
+respective nonparametric estimator:
+\begin{eqnarray}\label{4.54}
+\begin{aligned}
+\widehat{Cov}[i_T]\equiv \frac{1}{T}\sum_t
+\left(  \bf{x}_t-\bf{\widehat{B}f}_t     \right)
+\left(  \bf{x}_t-\bf{\widehat{B}f}_t     \right)^\prime
+\end{aligned}
+\end{eqnarray}
+
+This is the ordinary least square (OLS) estimator of the covariance of the
+residuals.
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=4cm]{4_8.png}\\
+  \caption{OLS estimates of factor loadings: geometric properties}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Nonparametric estimators}{Kernel estimators}\small
+
+
+Here we briefly put into perspective a nonparametric approach to estimation
+that is becoming very popular in financial applications, see Campbell, Lo, and
+MacKinlay (1997).
+The nonparametric estimators defined by the recipe (4.36) are very sensitive to the input data and thus are not robust, in a sense to be discussed
+precisely in Section 4.5. Intuitively, this happens because the empirical probability density function (4.35), is a sum of Dirac deltas, which are not regular,
+smooth functions.
+One way to solve this problem consists in replacing the empirical distribution with a regularized, smoother distribution by means of the convolution, see
+(B.54). In other words, we replace the empirical probability density function
+as follows:
+
+\begin{eqnarray}\label{4.55}
+\begin{aligned}
+f_{i_T} \mapsto  f_{i_T;\epsilon}\equiv\frac{1}{T}\sum^{T}_{t=1}\frac{1}{(2\pi)^{\frac{N}{2}} \epsilon^N}  e^{-\frac{1}{2\epsilon^2} (\bf{x}-\bf{x}_t)^\prime(\bf{x}-\bf{x}_t) }.
+\end{aligned}
+\end{eqnarray}
+The outcome of this operation is a smoother empirical probability density
+function such as the one sketched in Figure 2.18. In this context, the Gaussian
+exponential, or any other smoothing function, takes the name of kernel, and
+the width $epsilon$ of the regularizing function takes on the name of $bandwidth$.
+Once the probability density function has been smoothened, we can define
+new nonparametric estimators that replace (4.36) as follows:
+
+\begin{eqnarray}\label{4.56}
+\begin{aligned}
+ \widehat{\mathbf G}[i_T]\equiv \mathbf{G}[f_{i_T;\epsilon}]
+\end{aligned}
+\end{eqnarray}
+The bandwidth of the kernel must be chosen according to the following
+trade-off. A narrow bandwidth gives rise to non-robust estimators: indeed,
+a null bandwidth gives rise to the benchmark estimators (4.36) stemming
+from the non-regularized empirical distribution. On the other hand, a wide
+bandwidth blends the data too much and gives rise to loss of information.
+\end{frame}
+
+\section[Maximum likelihood estimators]{Maximum likelihood estimators}
+\begin{frame}{Maximum likelihood estimators}
+
+In this section we abandon the nonparametric approach. In the parametric
+approach the stress test set of potential distributions, which include the true,
+unknown distribution of the market invariants, is dramatically restricted. Only
+a few models of distributions are considered: once the model is chosen, it is
+subsequently fitted to the empirical data.
+
+We represent a parametric the family of potential distributions, the stress
+test distributions, in terms of their probability density function $f_{\bm \theta}$, where${\bm \theta}$is
+an $S$-dimensional parameter that fully determines the distribution and that
+ranges in a given set ${\bm \Theta}$, see Figure 4.9 and compare with Figure 4.3.
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=4cm]{4_9.png}\\
+  \caption{Parametric approach to estimation}
+\end{figure}
+
+
+\begin{example}
+For example, from empirical observations it might seem reasonable to
+model a given market invariant by means of the lognormal distribution as
+follows:
+\begin{eqnarray}\label{4.57}
+\begin{aligned}
+X_t \sim \mathrm{LogN}(\theta,1).
+\end{aligned}
+\end{eqnarray}
+In this case the distribution's parameters are one-dimensional; the distribution's probability density function reads:
+\end{example}
+\end{frame}
+
+\begin{frame}{Maximum likelihood estimators}
+\begin{example}
+\begin{eqnarray}\label{4.58}
+\begin{aligned}
+f_{\theta}(x)\equiv\frac{1}{\sqrt{2\pi}x}  e^\frac{1}{2} (\ln x- \theta )^2;
+\end{aligned}
+\end{eqnarray}
+and the parameter space ${\bf \Theta}$ is the real line $\mathbb{R}$.
+\end{example}
+
+Since the distribution of the invariants is completely determined by the
+parameters ${\bf \theta}$, estimating the distribution corresponds to determining these
+parameters. In other words, the estimation process (4.9) consists of determining some function of the available information $\widehat{\bf \Theta}[i_T]$ that is close to the true,
+unknown parameters.
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=4cm]{4_10.png}\\
+  \caption{Maximum likelihood estimator as mode}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Maximum likelihood estimators}
+
+The maximum likelihood principle provides a method to determine an estimator which is related to the intuitive concept of mode. We recall that the
+mode $\widetilde{\bf x}$ of a distribution $f_{\bf x}$  is the value that corresponds to the peak of the
+distribution, i.e. the largest value of the probability density function:
+
+\begin{eqnarray}\label{4.59}
+\begin{aligned}
+ \tilde{ \bf {x}} \equiv \underset{x \in \mathbb{R}^N}{\mathrm{argmax}} f_{\bf x}(\bf x)
+\end{aligned}
+\end{eqnarray}
+Suppose that only one observation x1 is available. Most likely, this observation
+lies in a region where the probability density function is comparatively large,
+i.e. near the the mode. Therefore, once we assume that the distribution that
+generated that observation belongs to a specific parametric family $f_{\bf X} \equiv f_{\bm \theta}$,
+the most intuitive value for the parameter ${\bm \theta}$ is the value $\widehat{\bm \theta}$ that makes the pdf
+in that point the largest, see the top plot in Figure 4.10.
+\end{frame}
+
+
+\begin{frame}{Maximum likelihood estimators}
+In other words, according to the maximum likelihood principle we define
+the estimator $\widehat{\bm \theta}$ as follows:
+\begin{eqnarray}\label{4.60}
+\begin{aligned}
+\widehat{\bm \theta} \equiv \underset{\theta \in \Theta}{\mathrm{argmax}} f_{\theta}(\mathbf{x}_1)
+\end{aligned}
+\end{eqnarray}
+Notice that, although the maximum likelihood estimator draws on the concept
+of mode, the observation x1 does not necessarily turn out to be the mode of
+the distribution $f_{\widehat{\bm \theta}}$
+\begin{eqnarray}\label{4.61}
+\begin{aligned}
+\bf{x}_1 \neq  \underset{x \in \mathbb{R}^N}{\mathrm{argmax}}  f_{\widehat \theta}(\mathbf{x}),
+\end{aligned}
+\end{eqnarray}
+see the bottom plot in Figure 4.10.
+
+
+\begin{example}
+For example, from (4.58) we solve:
+\begin{eqnarray}\label{4.62}
+\begin{aligned}
+\widehat {\theta} \equiv  \underset{\theta \in \mathbb{R}}{\mathrm{argmax}}
+\{ \frac{1}{\sqrt{2\pi}x_1}  e -\frac{1}{2} (\ln x_1 -\theta )^2  \}
+\end{aligned}
+\end{eqnarray}
+From the first-order condition with respect to $\theta  $ we obtain the value:
+\begin{eqnarray}\label{4.63}
+\begin{aligned}
+\widehat {\theta} = \ln x_1
+\end{aligned}
+\end{eqnarray}
+\end{example}
+\end{frame}
+
+\begin{frame}{Maximum likelihood estimators}
+\begin{example}
+On the other hand, from the first-order condition with respect to $x$ we obtain
+that the mode $\widehat {x}$ satisfies:
+\begin{eqnarray}\label{4.64}
+\begin{aligned}
+\ln \widehat{x} =\widehat\theta -1
+\end{aligned}
+\end{eqnarray}
+Therefore, in the case of the lognormal distribution, (4.61) takes place, i.e. the
+mode of the distribution estimated with the maximum likelihood principle is
+not the observation, see the bottom plot in Figure 4.10.
+\end{example}
+
+In the general case of a time series of several observations, from (4=5) we
+obtain the joint probability density function of the time series, which is the
+product of the single-period probability density functions:
+\begin{eqnarray}\label{4.65}
+\begin{aligned}
+f_\theta(i_T) \equiv f_{\theta}(\bf{x}_1)...f_{\theta}(\bf{x}_T)
+\end{aligned}
+\end{eqnarray}
+Expression (4.65) is also called the likelihood function of the time series. Now
+we can apply the maximum likelihood principle (4. 60) to the whole time series.
+Therefore the $maximum likelihood estimator $(MLE) of the parameters ${\bf \theta}$ is
+defined as follows:
+\begin{eqnarray}\label{4.66}
+\begin{aligned}
+\widehat{\bf {\theta}}[i_T] & \equiv \underset{\bf{\theta} \in \bf{\Theta}}{\mathrm{argmax}}  f_{\theta}(i_T)\\
+                            & = \underset{\bf{\theta} \in \bf{\Theta}}{\mathrm{argmax}}
+                           \sum_{t=1}^{T} \ln f_{\theta}(\bf {x}_t)\\
+\end{aligned}
+\end{eqnarray}
+
+\end{frame}
+
+
+\begin{frame}{Maximum likelihood estimators}
+\begin{example}
+For example, in the case of lognormal invariants, from (4.58) we solve:
+\begin{eqnarray}\label{4.67}
+\begin{aligned}
+\hat \theta \equiv  \underset{\theta \in \Theta}{\mathrm{argmax}}
+\{ -\sum^{T}_{t=1}\frac{1}{2}(\ln {x_t} - \theta)^2                     \}
+\end{aligned}
+\end{eqnarray}
+The first-order condition reads:
+\begin{eqnarray}\label{4.68}
+\begin{aligned}
+0=\frac{1}{T}\sum^{T}_{t=1}(\ln x_t - \widehat {\theta}),
+\end{aligned}
+\end{eqnarray}
+which implies the following expression for the maximum likelihood estimate
+of the parameter:
+
+\begin{eqnarray}\label{4.69}
+\begin{aligned}
+\widehat{\theta}  \frac{1}{T}  \sum^{T}_{t=1}  \ln {x_t}.
+\end{aligned}
+\end{eqnarray}
+\end{example}
+The maximum likelihood estimator displays a few appealing properties.
+
+\end{frame}
+
+\begin{frame}{Maximum likelihood estimators}
+
+For instance, the $invariance property$, which states that the MLE of a function of the parameters is that function applied to the MLE of the parameters:
+\begin{eqnarray}\label{4.70}
+\begin{aligned}
+\widehat{g(\theta)} = g(\widehat \theta)
+\end{aligned}
+\end{eqnarray}
+This property follows from the definition (4.66).
+
+Furthermore, similarly to the nonparametric approach (4.37), the maximum likelihood principle provides good estimators in the limit case of a very
+large number of observations $T$ in the time series $i_T$ , as sketched in Figure 4.1.
+Indeed, the following relation holds in approximation, and the approximation
+becomes exact as $T$ tends to infinity:
+
+In this expression $\Gamma$ is a symmetric and positive matrix called the $Fisher
+information matrix$:
+\begin{eqnarray}\label{4.71}
+\begin{aligned}
+\widehat {\theta}[i_T] \sim N(\bf{\theta},\frac{\bf {\Gamma}}{T})
+\end{aligned}
+\end{eqnarray}
+see e.g. Haerdle and Simar (2003)
+
+
+\begin{eqnarray}\label{4.72}
+\begin{aligned}
+\bf{\Gamma} \equiv \mathrm{Cov}
+\{  \frac{\partial {\ln(f_{\theta}(\bf{X}))}}{\partial {\bf{\theta}} }          \}
+\end{aligned}
+\end{eqnarray}
+The Cramer-Rao lower bound theorem states that the ine!ciency of the
+maximum likelihood estimator, as represented by (4.72), is the smallest possible achievable with an unbiased estimator, and from (4.71) we see that the
+MLE becomes unbiased in the limit of many observations.
+
+Nevertheless, we introduced the parametric approach to estimation in order to build estimators that perform well in the realistic case of a finite number
+of observations of market invariants. Therefore below we evaluate the maximum likelihood estimators of parametric models that are apt to describe the
+market invariants
+\end{frame}
+
+
+
+\begin{frame}{Maximum likelihood estimators}{Location,dispersion and hidden factors}\small
+In Chapter 3 we saw that the market invariants are quite symmetrical. Therefore, in this section we construct and evaluate maximum-likelihood estimators
+under the assumption that the $N$-dimensional invariants $\bf X$ are elliptically distributed:
+\begin{eqnarray}\label{4.73}
+\begin{aligned}
+\mathbf{X} \sim \mathrm{EI}(\mathbf{\mu},\mathbf{\Sigma},g),
+\end{aligned}
+\end{eqnarray}
+where $\bf \mu $ is the $N$-dimensional location parameter, $\bf \Sigma$is the $N \times N $ dispersion
+matrix and $g$ is the probability density generator, see (2.268). In other words,
+the probability density function of the invariants invariants $\bf X$ is of the form:
+\begin{eqnarray}\label{4.74}
+\begin{aligned}
+f_{\theta}(\bf x) \equiv  \frac{1}{\sqrt{|\Sigma|}} g (\mathrm{Ma}^{2}(\bf{x},\bm{\mu},\bf{\Sigma}))
+\end{aligned}
+\end{eqnarray}
+
+where $\mathrm{Ma}^{2}(\bf{x},\bm{\mu},\bf{\Sigma}) $is the Mahalanobis distance of the point ${\bf x} $from the point
+${\bm\mu} $through the metric $ {\bf \Sigma}$:
+
+\begin{eqnarray}\label{4.75}
+\begin{aligned}
+\mathrm{Ma}(\bf{x},\bf{\mu},\bf{\Sigma})\equiv \sqrt{(\bf{x}-\bf{\mu})^{\prime}\Sigma^{-1}(\bf{x}-\bf{\mu})} ,
+\end{aligned}
+\end{eqnarray}
+see (2.61).
+Under the assumption (4.73) the parameters $\mathbf{\theta}\equiv (\bf{\mu},\bf{\Sigma})$ completely determine the distribution of the market invariants. These parameters span the
+set:
+\begin{eqnarray}\label{4.76}
+\begin{aligned}
+\mathbf{\Theta}\equiv \{\bm {\mu} \in \mathbb{R}^N, \bf{\Sigma}\in \mathbb{R}^{N\times N},\Sigma \succeq \bf{0}            \},
+\end{aligned}
+\end{eqnarray}
+where $ \succeq \bf{0} $ denotes symmetric and positive.
+
+\end{frame}
+
+
+
+
+
+
+
+
+\begin{frame}{Maximum likelihood estimators}{Location,dispersion and hidden factors}\small
+
+In this context, estimating the distribution of the market invariants means
+estimating from currently available information $i_T$ the parameters $(\bm {\mu},\bf{\Sigma})$. In
+Appendix www.4.2 we prove that the MLE estimators $\bf {\mu}[i_T ]$ and $\bf {\Sigma}[i_T ]$ are
+the solutions to the following joint set of implicit equations:
+\begin{eqnarray}\label{4.77}
+\begin{aligned}
+\widehat \mu =\sum^{T}_{t=1}
+\frac
+    {               w(\mathrm{Ma}^2(\bf{x}_t,\widehat{\bf{\mu}},\widehat{\bf{\Sigma}}))}
+    {\sum^{T}_{s=1} w(\mathrm{Ma}^2(\bf{x}_t,\widehat{\bf{\mu}},\widehat{\bf{\Sigma}}))}
+ \bf{x}_t
+\end{aligned}
+\end{eqnarray}
+
+\begin{eqnarray}\label{4.78}
+\begin{aligned}
+\widehat{\bf {\Sigma}} = \frac{1}{T}=\sum^{T}_{t=1} (\bf{x}_t-\widehat{\bf {\mu}})(\bf{x}_t-\widehat{\bf {\mu}})^{\prime}
+w(\mathrm{Ma}^2(\bf{x}_t,\widehat{\bf{\mu}},\widehat{\bf{\Sigma}})),
+\end{aligned}
+\end{eqnarray}
+where the function $w$ is defined as follows in terms of the probability density
+generator:
+\begin{eqnarray}\label{4.79}
+\begin{aligned}
+w(z)\equiv -2 \frac {g^{\prime}(z)}{g(z)}
+\end{aligned}
+\end{eqnarray}
+Notice that defining the following weights:
+
+
+\begin{eqnarray}\label{4.80}
+\begin{aligned}
+w_t\equiv w(\bf{\mathrm{Ma}}^2(\bf{x}_t,\widehat{\bf{\mu}},\widehat{\bf{\Sigma}})),
+\end{aligned}
+\end{eqnarray}
+we can interpret the maximum likelihood estimators of location and dispersion
+\end{frame}
+
+
+
+
+
+
+
+
+\begin{frame}{Maximum likelihood estimators}{Location,dispersion and hidden factors}\small
+
+(4.77) and (4.78) as weighted sums:
+
+\begin{eqnarray}\label{4.81}
+\begin{aligned}
+\widehat{\bf\mu}=\sum^{T}_{t=1} \frac{w_t}{\sum{T}{s=1}w_s}  \bf{x}_t
+\end{aligned}
+\end{eqnarray}
+
+
+\begin{eqnarray}\label{4.82}
+\begin{aligned}
+\widehat{\bf\Sigma}=
+\frac{1}{T}\sum^{T}_{t=1}w_t(\bf{x}_t-\widehat{\bm{\mu}})(\bf{x}_t-\widehat{\bm{\mu}})^{\prime}
+\end{aligned}
+\end{eqnarray}
+Each observation is weighted according to its Mahalanobis distance from the
+ML estimator of location through the metric defined by the ML estimator of
+dispersion.
+
+\begin{example}
+For example, assume that the market invariants are Cauchy distributed,
+see (2.208). In this case the density generator reads:
+\begin{eqnarray}\label{4.83}
+\begin{aligned}
+g^{\mathrm{Ca}}(z)= \frac { \Gamma(\frac{1+N}{2})} {\Gamma(\frac{1}{2})(\pi)^{\frac{N}{2}} } (1+z)  ^{-\frac{1+N}{2}}
+\end{aligned}
+\end{eqnarray}
+where $\Gamma$ is the gamma function (B.80). Therefore the weights (4.80) become:
+\begin{eqnarray}\label{4.84}
+\begin{aligned}
+w_t=\frac{N+1}{1+\mathrm{Ma}^2(\bf{x}_t,\widehat{\bf{\mu}},\widehat{\bf{\Sigma}})}
+\end{aligned}
+\end{eqnarray}
+This is a decreasing function of the Mahalanobis distance: the maximum likelihood estimators of location and dispersion of a set of Cauchy-distributed
+invariants tend to neglect outliers.
+
+This result is intuitive: we recall that the Cauchy distribution is fat-tailed,
+see Figure 1.9. Therefore extreme observations, i.e. observations with large
+Mahalanobis distance, are quite frequent. These extreme observations might
+distort the estimation, which is why the maximum likelihood estimator tends
+to taper their influence in the estimation process.
+\end{example}
+
+\end{frame}
+
+
+
+
+
+
+
+
+\begin{frame}{Maximum likelihood estimators}{Location,dispersion and hidden factors}\small
+
+After solving (4.77)-(4.79) for $\widehat {\bf{\Sigma}}$ we can derive the expression for the maximum likelihood estimator of the principal component factor model. Indeed,
+it su!ces to compute the PCA decomposition of the estimator:
+
+\begin{eqnarray}\label{4.85}
+\begin{aligned}
+\widehat {\bf{\Sigma}}[i_T] \equiv \widehat{\bf{E}}\widehat{\bf{\Lambda}} \widehat{\bf{E}}^{\prime}
+\end{aligned}
+\end{eqnarray}
+where $ \widehat{\bf{\Lambda}}$ is the diagonal matrix of the eigenvalues in decreasing order and
+$\widehat{\bf{E}}$ is the orthogonal matrix of the respective eigenvectors. Then $\widehat{\bf{E}}$ becomes
+the MLE estimator of the hidden factor loadings and $\widehat{\bf{\Lambda}}$ becomes the estimator
+of the dispersion of the hidden factors.
+
+$\widehat{\bm{\mu}}$ and $\widehat{\bf{\Sigma}}$ we should determine the distribution of $\widehat{\bm{\mu}}$
+and $\widehat{\bf{\Sigma}}$ when in (4.77)-(4.79) the market invariants are considered as random
+variables as in (4.15).
+Unfortunately, in the generic elliptical case it is not possible to convert
+the implicit equations (4.77)-(4.79) into explicit functional expressions of current information. Therefore we must solve for the estimators numerically and
+resort to simulations to evaluate their performance, unless the invariants are
+normally distributed. We discuss the normal case in detail in Section 4.3.3.
+\end{frame}
+
+
+
+\begin{frame}{Maximum likelihood estimators}{Explicit factors}\small
+Consider the explicit factor affine model (3.119), which we report here:
+\begin{eqnarray}\label{4.86}
+\begin{aligned}
+\mathbf{X}=\mathbf{BF}+\mathbf{U}
+\end{aligned}
+\end{eqnarray}
+Since we observe both the $N$-dimensional invariants $\bf X$ and the $K$-dimensional
+factors $\bf F$, the available information (4=8) is the time series of both the invariants and the factors:
+\begin{eqnarray}\label{4.87}
+\begin{aligned}
+i_T\equiv  \{\bf{x}_1,\bf{f}_1,...\bf{x}_T,\bf{f}_T \}
+\end{aligned}
+\end{eqnarray}
+
+To implement the maximum likelihood approach we could model the
+($N+K$)-dimensional joint distribution of invariants and factors by means
+of some parametric distribution $f_{\bm \theta}$ and then maximize the likelihood over the
+parameters ${\bm \theta}$ and the factor loadings  {\bf B}.
+Nevertheless, most explicit factor models serve the purpose of stress testing
+the behavior of the invariants under assumptions on the future realization
+of the factors. For example, practitioners ask themselves such questions as
+what happens to a given stock if the market goes up, say, $2\%$. Therefore, it is
+more convenient to model the $N$-dimensional distribution of the perturbations
+$f_{{\bm \theta}|{\bf f}}\equiv  f_{{\bf U}|{\bf f}}$ $conditional$ on knowledge of the factors and model the conditional
+distribution of the invariants accordingly:
+
+\begin{eqnarray}\label{4.88}
+\begin{aligned}
+\mathbf{X|f}=\mathbf{BF}+\mathbf{U|f}
+\end{aligned}
+\end{eqnarray}
+Under the above assumptions the conditional distribution $f_{\mathbf{X|f}}$ of the invariants becomes a parametric function $f_{{\bm \theta},{\bf B}}$ of the parameters $\bm \theta$,of the perturbations and the factor loadings $\bf B$. Therefore we can apply the maximum
+likelihood principle (4=66) to the conditional distribution of the invariants,
+determining the maximum likelihood estimator $\widehat{\bm \theta}$ of the distribution of the
+perturbations and the maximum likelihood estimator of the factor loadings
+$\widehat{\bf \theta}$:
+
+\begin{eqnarray}\label{4.89}
+\begin{aligned}
+\left( \widehat{\bm{\theta}}, \widehat{\bf{B}}    \right)
+\equiv \underset{\bm{\theta} \in \bm{\Theta}, \bf{B}}{\mathrm{argmax}}
+f_{\bf{\theta},\bf{B}} (i_T)
+\end{aligned}
+\end{eqnarray}
+In Chapter 3 we saw that the market invariants are quite symmetrical.
+Therefore, we construct the maximum-likelihood estimators under the assumption that the conditional distribution of the perturbations be an $N$-dimensional elliptical random variable:
+\end{frame}
+
+\begin{frame}{Maximum likelihood estimators}{Explicit factors}\small
+\begin{eqnarray}\label{4.90}
+\begin{aligned}
+\bf{U}_t|\bf{f}_t \sim \mathrm{EI}(\bf{0},\bf{\Sigma},g)
+\end{aligned}
+\end{eqnarray}
+
+In other words we assume that the perturbations are centered in zero; that$\Sigma$
+is their $N \times N$ dispersion matrix and that $g$ is their probability density
+generator.
+
+From (2.270) the invariants are elliptically distributed with the same generator:
+\begin{eqnarray}\label{4.91}
+\begin{aligned}
+\bf{X}_t|\bf{f}_t \sim \mathrm{EI}(\bf{Bf}_t,\bf{\Sigma},g)
+\end{aligned}
+\end{eqnarray}
+In this context the parameters to be estimated are ${\bf B}$ and ${\bf Sigma}$ .
+In Appendix www.4.2 we show that the MLE estimators of these parameters solve the following set of joint implicit equations:
+\begin{eqnarray}\label{4.92}
+\begin{aligned}
+\widehat{\bf{B}} = &  [\sum^{T}_{t=1}w(\mathrm{Ma}^2(\bf{x}_t,\widehat{\bf{B}}\bf{f}_t,\widehat{\bf \Sigma}))\bf{x}_t \bf{f}^{\prime}_{t}   ]\\
+                    &
+[\sum^{T}_{t=1}w(\mathrm{Ma}^2(\bf{x}_t,\widehat{\bf{B}}\bf{f}_t,\widehat{\bf \Sigma}))\bf{f}_t \bf{f}^{\prime}_{t}   ]^{-1}\\
+\end{aligned}
+\end{eqnarray}
+
+\begin{eqnarray}\label{4.93}
+\begin{aligned}
+\widehat\Sigma=\frac{1}{T}\sum^{T}_{t=1}w(\mathrm(Ma)^2(\bf{x}_t,\widehat{\bf{B}}\bf{f}_t,\widehat{\bf \Sigma}))(\bf{x}_t-\widehat{\bf{B}}\bf{f}_t)(\bf{x}_t-\widehat{\bf{B}}\bf{f}_t)^{\prime}
+\end{aligned}
+\end{eqnarray}
+where the function $w$ is defined in terms of the probability density generator:
+\begin{eqnarray}\label{4.94}
+\begin{aligned}
+w(z)\equiv -2\frac{g^{\prime}(z)}{g(z)}
+\end{aligned}
+\end{eqnarray}
+In the generic elliptical case, the implicit equations (4.92)-(4.94) must be
+solved numerically and the evaluation of the estimators must be performed
+by means of simulations. On the other hand, in the specific normal case the
+above implicit equations can be solved analytically. We discuss the normal
+explicit factor model at the end of Section 4.3.3.
+\end{frame}
+
+\begin{frame}{Maximum likelihood estimators}{The normal case:Location, dispersion and hidden factors}\small
+In the special case where the market invariants are normally distributed the
+analysis of the maximum likelihood estimators of location, dispersion and
+explicit factors can be performed analytically. This analysis provides insight
+into the more general case.
+
+Assume that the market invariants are normally distributed:
+\begin{eqnarray}\label{4.95}
+\begin{aligned}
+\bf{X} \sim N(\bm{\mu},\bf{\Sigma})
+\end{aligned}
+\end{eqnarray}
+In the normal case the location parameter $\bm \mu$ is the expected value of the
+distribution and the dispersion parameter $\bf \Sigma$ is its covariance matrix.
+The normal distribution is a special case of elliptical distribution, which
+corresponds to the following choice of the density generator:
+\begin{eqnarray}\label{4.96}
+\begin{aligned}
+g^{N}(z) \equiv \frac{e^{-\frac{z}{2}}}{(2\pi)^{\frac{N}{2}}}
+\end{aligned}
+\end{eqnarray}
+see (2.264). It is immediate to check that in the normal case the weights (4.79)
+are constant:
+\begin{eqnarray}\label{4.97}
+\begin{aligned}
+w(z)\equiv 1
+\end{aligned}
+\end{eqnarray}
+To interpret this result, we compare it with the respective result for the Cauchy
+distribution. The normal distribution is very thin-tailed and therefore extreme
+observations are rare. If an observation is far from the location parameter, the
+reason must be due to a large dispersion matrix: therefore, unlike (4.84), the
+maximum likelihood estimator gives full weight to that observation, in such a
+way to effectively modify the estimation and lead to a larger estimate of the
+dispersion matrix.
+\end{frame}
+
+
+\begin{frame}{Maximum likelihood estimators}{The normal case:Location, dispersion and hidden factors}\small
+
+From (4.77) we obtain the explicit expression of the estimator of location
+in terms of current information:
+\begin{eqnarray}\label{4.98}
+\begin{aligned}
+\widehat{\bm\mu}[i_T]=\frac{1}{T}\sum^{T}_{t=1}{\bf{x}_t}
+\end{aligned}
+\end{eqnarray}
+Similarly, from (4.78) we obtain the explicit expression of the estimator of
+dispersion in terms of current information:
+\begin{eqnarray}\label{4.99}
+\begin{aligned}
+\widehat{\bf{\Sigma}}[i_T]=
+\frac{1}{T}\sum^{T}_{t=1}(\bf{x}_t-\widehat{\bf{\mu}})(\bf{x}_t-\widehat{\bf{\mu}})^{\prime}
+\end{aligned}
+\end{eqnarray}
+These estimators are the sample mean (4.41) and the sample covariance
+(4.42) respectively. It is reassuring that two completely different methods yield
+the same estimators for both location and dispersion. This supports our statement that the sample mean and the sample covariance are the benchmark
+estimators of location and dispersion respectively.
+
+To evaluate the goodness of the sample mean and of the sample covariance
+under the normal hypothesis we proceed as in (4.15), computing the joint
+distribution of the following random variables:
+\begin{eqnarray}\label{4.100}
+\begin{aligned}
+\widehat{\mu}[I_T]\equiv \frac{1}{T}\sum^{T}_{t=1}\bf{X}_t
+\end{aligned}
+\end{eqnarray}
+
+\begin{eqnarray}\label{4.101}
+\begin{aligned}
+\widehat{\Sigma}[I_T]\equiv \frac{1}{T}\sum^{T}_{t=1}(\bf{X}_t-\widehat{\bm{\mu}})(\bf{X}_t-\widehat{\bm{\mu}})^{\prime}
+\end{aligned}
+\end{eqnarray}
+
+
+
+In Appendix www.4.3 we prove the following results. The sample mean is
+normally distributed:
+\begin{eqnarray}\label{4.102}
+\begin{aligned}
+\widehat{\bm\mu}[I_t]  \sim  N \left( \bm{\mu},\frac{\bf\Sigma}{T}        \right)
+\end{aligned}
+\end{eqnarray}
+The distribution of the sample covariance is related to the Wishart-distribution
+(2.223) by the following expression:
+
+\begin{eqnarray}\label{4.103}
+\begin{aligned}
+T\widehat{\bf{\Sigma} }[I_T] \sim W(T-1,\Sigma).
+\end{aligned}
+\end{eqnarray}
+Furthermore, (4.102) and (4.103) are independent of each other.
+
+\end{frame}
+
+\begin{frame}{Maximum likelihood estimators}{The normal case:Location, dispersion and hidden factors}\small
+{\bf Component-wise evaluation}
+
+From the above expressions we can evaluate component-wise the error
+(4.23) of the sample estimators, using the standard quadratic form $Q\equiv 1$ in
+(4.20) and decomposing the error into bias and ine!ciency as in (4=27).
+For the sample mean, from (4.102) we obtain:
+\begin{eqnarray}\label{4.104}
+\begin{aligned}
+Bias(\widehat{\mu}_i,{\mu}_i)=0
+\end{aligned}
+\end{eqnarray}
+
+\begin{eqnarray}\label{4.105}
+\begin{aligned}
+\mathrm{Inef}(\widehat{\mu}_i)=\sqrt{\Sigma_{ii}}
+\end{aligned}
+\end{eqnarray}
+This shows that the sample mean is unbiased and that its ine!ciency shrinks
+to zero as the number of observations grows to infinity.
+
+As for the estimator of the sample covariance, from (4.103) and (2.227)-
+(2.228) we obtain:
+\begin{eqnarray}\label{4.106}
+\begin{aligned}
+\mathrm{Bias}(\widehat{\Sigma}_{mn},\Sigma_{mn})=\frac{1}{T}\|\Sigma_{mn}\|
+\end{aligned}
+\end{eqnarray}
+
+\begin{eqnarray}\label{4.107}
+\begin{aligned}
+\mathrm{Inef}(\widehat{\Sigma}_{mn})=\sqrt{\frac{T-1}{T^2}}  \sqrt{\Sigma_{mm}\Sigma_{mn}+\Sigma_{mm}^2}.
+\end{aligned}
+\end{eqnarray}
+As expected, bias and ine!ciency shrink to zero as the number of observations
+grows to infinity.
+Formulas (4.104)-(4.107) provide the measure of performance for each of
+the entries of the estimators separately. It is nonetheless interesting to obtain
+a global measure of performance. Since the sample mean $\widehat{\bm{\mu}}$ and the sample
+covariance $\widehat{\bm{\Sigma}}$ are independent, we evaluate them separately.
+
+{\bf Evaluation of sample mean}
+
+To evaluate the sample mean (4.100), we consider the loss (4.19) induced
+by the quadratic form ${\bf Q} \equiv {\bf I}_{N}$. In other words, the loss is the following random
+variable:
+\begin{eqnarray}\label{4.108}
+\begin{aligned}
+\mathrm{Loss}(\widehat{\bm{\mu}},{\mu}) \equiv
+[(\widehat{\bm{\mu}}[I_T],\bm{\mu}]^{\prime}[(\widehat{\bm{\mu}}[I_T],\bm{\mu}].
+\end{aligned}
+\end{eqnarray}
+We then summarize the information contained in the loss by means of the
+error (4.23). We prove in Appendix www.4.3 that the error reads:
+\end{frame}
+
+
+
+
+
+\begin{frame}{Maximum likelihood estimators}{The normal case:Location, dispersion and hidden factors}\small
+The whole error is due to inefficiency, as the sample estimator is unbiased:
+\begin{eqnarray}\label{4.109}
+\begin{aligned}
+\mathrm{Err}^2(\widehat{\bm{\mu}},\bm{\mu})=
+\frac{1}{T}\mathrm{tr}(\Sigma)
+\end{aligned}
+\end{eqnarray}
+
+\begin{eqnarray}\label{4.110}
+\begin{aligned}
+\mathrm{Inef}^2(\widehat{\bm{\mu}})=
+\frac{1}{T}\mathrm{tr}(\Sigma)
+\end{aligned}
+\end{eqnarray}
+
+\begin{eqnarray}\label{4.111}
+\begin{aligned}
+\mathrm{Bias}^2(\widehat{\bm{\mu}})=0.
+\end{aligned}
+\end{eqnarray}
+As expected, the error decreases as the number of observations grows to infinity. Furthermore, it is an increasing function of the average variance: intuitively, more volatile invariants give rise to larger estimation errors.
+To gain further insight into the estimation error of the sample mean, we
+consider the PCA decomposition (A.70) of the scatter matrix:
+
+\begin{eqnarray}\label{4.112}
+\begin{aligned}
+\bf{\Sigma} \equiv \bf{E}\Lambda\bf{E}^{\prime}
+\end{aligned}
+\end{eqnarray}
+In this expression ${\bf \Lambda}$ is the diagonal matrix of the eigenvalues of $\bf \Sigma$ sorted in
+decreasing order:
+\begin{eqnarray}\label{4.113}
+\begin{aligned}
+\bf{\Lambda}\equiv \mathrm{diag}(\lambda_1,...,\lambda_N);
+\end{aligned}
+\end{eqnarray}
+and $\bf E$ is the juxtaposition of the respective orthogonal eigenvectors. From the
+PCA decomposition the following identity follows:
+\begin{eqnarray}\label{4.114}
+\begin{aligned}
+\mathrm{tr}[\Sigma]=\mathrm{tr}[\Lambda]
+\end{aligned}
+\end{eqnarray}
+
+Therefore, the estimation error of sample mean (4.109), along with its
+factorization in terms of bias and inefficiency, is completely determined by
+the eigenvalues of ${\bf \Sigma}$. To interpret this result geometrically, consider the ellipsoid $\mathcal{E}-{{\bm\mu},{\bf \Sigma}}$ determined by the market parameters as described in (A.73),
+which is also the location-dispersion ellipsoid of the invariants (2.75). Since
+the eigenvalues represent the (square of) the length of the principal axes of the
+ellipsoid, the estimation error of the sample mean is completely determined
+by the shape of the location-dispersion ellipsoid of the invariants, and not by
+its location or orientation.
+In particular, a key parameter is the condition number or the condition
+ratio defined as the ratio between the smallest and the largest eigenvalue:
+
+
+
+
+
+\end{frame}
+
+
+
+
+\begin{frame}{Maximum likelihood estimators}{The normal case:Location, dispersion and hidden factors}\small
+
+\begin{eqnarray}\label{4.115}
+\begin{aligned}
+\mathrm{CN}\{\bf{X} \}\equiv \frac{\lambda_N}{\lambda_1}
+\end{aligned}
+\end{eqnarray}
+The condition number ranges in the interval $[0, 1]$. When the condition number is close to one the invariants $\bf X$ are $well-conditioned$ and the location-dispersion ellipsoid that represents the invariants resembles a sphere. When
+the condition number is close to zero the invariants $\bf{ X}$ are $ill-conditioned$: the
+ellipsoid is elongated, shaped like a cigar, since the actual dimension of risk
+is less than the number of invariants. This is the case in highly correlated
+markets, such as the swap market, see Figure 3.20.
+
+To capture the effect of the shape of the location-dispersion ellipsoid on
+the estimation error, we keep the location $\bm \mu$ constant and we let the scatter
+matrix $\bf \Sigma$ vary as follows:
+\begin{eqnarray}\label{4.116}
+{\bf{\Sigma}}\equiv \left\{
+\begin{aligned}
+&1      &\theta  &~~\cdots   &\theta&\\
+&\theta &1       &~~\ddots   &\vdots&\\
+&\vdots &\ddots  &~~\ddots   &\theta&\\
+&\theta &\cdots  &~~~\theta   &1     &\\
+\end{aligned}
+\right\},\theta \in (0,1)
+\end{eqnarray}
+
+The parameter $\theta$ represents the overall level of correlation among the invariants: as the correlation varies between zero and one, the condition number
+varies between one and zero.
+\end{frame}
+
+
+\begin{frame}{Maximum likelihood estimators}{The normal case:Location, dispersion and hidden factors}\small
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=4cm]{4_11.png}\\
+  \caption{Sample mean: evaluation}
+\end{figure}
+In Figure 4.11 we display the distribution of the loss (4.108) and the respective error (4.109) as the market parameters vary according to (4.116).
+Notice how the distribution of the loss varies, although the ine!ciency and
+thus the error remain constant.
+
+Evaluation of sample covariance
+
+To evaluate the sample covariance (4.101) we introduce the Frobenius
+quadratic form for a generic symmetric matrix $\bf {S}$:
+
+\begin{eqnarray}\label{4.117}
+\begin{aligned}
+\|\bf {S}\|^2 \equiv  \mathrm{tr}[\bf{S}^2]
+\end{aligned}
+\end{eqnarray}
+\end{frame}
+
+
+
+
+\begin{frame}{Maximum likelihood estimators}{The normal case:Location, dispersion and hidden factors}\small
+
+This corresponds to the choice ${\bf Q} \equiv {\bf I}_{N^2}$. in (4.20) acting on vec ($\bf S$), the stacked
+columns of $\bf S$. Accordingly, the loss (4.19) becomes the following random variable:
+
+\begin{eqnarray}\label{4.118}
+\begin{aligned}
+\mathrm{Loss}(\widehat{\bf \Sigma},{\bf \Sigma})
+\equiv
+\mathrm{tr}
+\left[
+( \widehat{\bf \Sigma}[I_T]-    {\bf \Sigma}       )^2
+\right];
+\end{aligned}
+\end{eqnarray}
+In Appendix www.4.3 we show that the estimation error (4.23) relative to this
+loss reads:
+\begin{eqnarray}\label{4.119}
+\begin{aligned}
+\mathrm{Err}^2(\widehat{\bf \Sigma},{\bf \Sigma})
+\equiv
+\frac{1}{T}
+\left[
+\mathrm{tr}({\bf \Sigma}^2)+(1-\frac{1}{T})[\mathrm{tr}({\bf \Sigma})]^2
+\right];
+\end{aligned}
+\end{eqnarray}
+The error factors as follows into bias and inefficiency:
+
+As expected, the error decreases as the number of observations grows to infinity. Furthermore, it is an increasing function of the average variance: intuitively, more volatile invariants give rise to higher estimation errors. Notice
+also that the bulk of the error is due to the ine!ciency, as the sample estimator
+is almost unbiased.
+
+From the spectral decomposition (4.112) the following identity follows:
+\begin{eqnarray}\label{4.120}
+\begin{aligned}
+\mathrm{Inef}^2(\widehat{\bf \Sigma})
+=
+\frac{1}{T}(1-\frac{1}{T})
+\left[
+\mathrm{tr}({\bf \Sigma}^2)+[\mathrm{tr}({\bf \Sigma})]^2
+\right];
+\end{aligned}
+\end{eqnarray}
+\end{frame}
+
+\begin{frame}{Maximum likelihood estimators}{The normal case : Location, dispersion and hidden factors}\small
+
+
+\begin{eqnarray}{4.121}
+\begin{aligned}
+\mathrm{Bias}^2(\widehat{\bf \Sigma},{\bf \Sigma})
+=
+\frac{1}{T^2}
+\mathrm{tr}({\bf \Sigma}^2)
+\end{aligned}
+\end{eqnarray}
+
+\begin{eqnarray}{4.122}
+\begin{aligned}
+\mathrm{tr}[{\bf \Sigma}^2]=\mathrm{tr}[{\bf \Lambda}^2]
+\end{aligned}
+\end{eqnarray}
+Therefore from this expression and (4.114) also the estimation error of the
+sample covariance (4.119), along with its factorization in terms of bias and
+ine!ciency, is completely determined by the shape of the location-dispersion
+ellipsoid of the invariants, and not by its location or orientation.
+
+In Figure 4.12 we display the distribution of the loss (4.118) and the respective error (4.119) as the market parameters vary according to (4.116). Notice
+in the top plot that for high correlations the peak of the distribution of the
+loss is close to zero, although its dispersion increases dramatically. Indeed, we
+see in the middle plot how the ine!ciency increases with the correlation of
+the market invariants
+
+
+\end{frame}
+% 122.....................................................................
+
+
+
+
+
+
+
+\begin{frame}{Maximum likelihood estimators }{Explicit factors}\small
+
+Consider the particular case of the conditional linear factor model (4.90) where
+the perturbations are normally distributed:
+\begin{eqnarray}\label{4.123}
+\begin{aligned}
+{\bf U}|{\bf f}_t
+\sim
+N({\bf 0},{\bf \Sigma}).
+\end{aligned}
+\end{eqnarray}
+From the expression (2.264) of the density generator:
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=4cm]{4_12.png}\\
+  \caption{Sample covariance: evaluation}
+\end{figure}
+
+\begin{eqnarray}\label{4.124}
+\begin{aligned}
+g^{N}(z)\equiv (2\pi)^{-\frac{N}{2}} e^{-\frac{z}{2}}
+\end{aligned}
+\end{eqnarray}
+we obtain that the weights (4.94) are constant:
+\begin{eqnarray}\label{4.125}
+\begin{aligned}
+w(z)\equiv 1
+\end{aligned}
+\end{eqnarray}
+Therefore (4.92) yields the explicit expression of the estimator of the factor
+loadings in terms of current information:
+\begin{eqnarray}\label{4.126}
+\begin{aligned}
+\widehat{\bf B}[i_T]=\widehat{\bf \Sigma}_{XF}[i_T]\widehat{\bf \Sigma}^{-1}_{F}[i_T]
+\end{aligned}
+\end{eqnarray}
+
+
+
+\end{frame}
+
+\begin{frame}{Maximum likelihood estimators }{Explicit factors}\small
+
+\begin{eqnarray}\label{4.127}
+\begin{aligned}
+\widehat{\bf \Sigma}_{XF}[i_T]=\frac{1}{T}\sum^{T}_{t=1}{\bf x}_t {\bf f}_t^{\prime},~~
+\widehat{\bf \Sigma}_{F}[i_T]=\frac{1}{T}\sum^{T}_{t=1}{\bf f}_t {\bf f}_t^{\prime}
+\end{aligned}
+\end{eqnarray}
+This is the ordinary least squares estimator (4.52) of the regression factor
+loadings. It is reassuring that two completely different methods yield the same
+estimator for the factor loadings. This supports our statement that the OLS
+estimator is the benchmark estimator for the factor loadings.
+
+On the other hand (4.93) yields the explicit expression of the estimator of
+the dispersion of the perturbations in terms of current information:
+
+\begin{eqnarray}\label{4.128}
+\begin{aligned}
+\widehat{\bf \Sigma}[i_T]=\frac{1}{T}\sum^{T}_{t=1}({\bf x}_t-\widehat{\bf B}[i_T]{\bf f}_t)({\bf x}_t-\widehat{\bf B}[i_T]{\bf f}_t)^{\prime}
+\end{aligned}
+\end{eqnarray}
+This is the sample covariance (4.42) of the residuals that stems from the OLS
+estimation.
+To evaluate the goodness of the MLE estimators under the normal hypothesis, we proceed as in (4.15). We prove in Appendix www.4.4 the following
+results.
+The estimator of the factor loadings has a matrix-variate normal distribution:
+
+\begin{eqnarray}\label{4.129}
+\begin{aligned}
+\widehat{\bf B}[I_T|{\bf f}_1,....,{\bf f}_T]
+\sim \mathrm{N}
+ \left(   {\bf B}, \frac{\bf \Sigma}{T},  \widehat{\bf \Sigma}^{-1}_{F}                \right)
+\end{aligned}
+\end{eqnarray}
+see (2.181) for the definition of this distribution.
+The estimator of the dispersion of the perturbations is a Wishart distributed random matrix (modulo a scale factor):
+\begin{eqnarray}\label{4.130}
+\begin{aligned}
+T\widehat{\bf \Sigma}[I_T|{\bf f}_1,....,{\bf f}_T]
+\sim \mathrm{W}
+(  T-K,{\bf \Sigma}).
+\end{aligned}
+\end{eqnarray}
+Furthermore, (4.129) and (4.130) are independent of each other.
+Given the normal-Wishart joint structure of these estimators, the maximum likelihood estimators of the factor loadings and of the dispersion of the
+perturbations can be evaluated by exactly the same methodology used for
+(4.102) and (4.103) respectively
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+% 132.....................................................................
+\section[Shrinkage estimators]{Shrinkage estimators}
+
+\begin{frame}{Shrinkage estimators }
+
+We have discussed in Section 4.2 the benchmark estimators of location and
+dispersion of the generic market invariants $\bf X$, namely the sample mean and
+sample covariance respectively, and the benchmark estimators of the explicit
+factor models, namely the OLS regression coe!cients. These estimators perform well in the limit case of an infinite number of observations, see Figure
+4.1. We have also seen in Section 4.3 that when the underlying distribution
+of the invariants is normal these estimators satisfy the maximum likelihood
+principle.
+Nevertheless, when the sample is very short, the error associated with the
+benchmark estimators is quite large.
+An estimator is $admissible$ if it is not systematically outperformed, i.e. if
+there does not exist another estimator which displays less error for all the
+stress-test distributions considered in the evaluation of that estimator, see
+Figure 4.9. The benchmark estimators are not admissible. Indeed, although
+the maximum likelihood principle is an intuitive recipe with many palatable
+features, it does not guarantee that the ensuing estimators be optimal.
+In particular, the bulk of the error of the benchmark estimators is due to
+their ine!ciency, whereas their bias is quite limited, see Figures 4.11 and 4.12.
+A key feature of the underlying distribution of the invariants $\bf X$ that deeply
+affects the e!ciency of the benchmark estimators is the condition number(4.115), namely the ratio between the smallest and the largest eigenvalues of
+the unknown underlying scatter matrix:
+\begin{eqnarray}\label{4.131}
+\begin{aligned}
+\mathrm{CN}\{\bf X\}\equiv
+\frac{\lambda_N}{\lambda_1}.
+\end{aligned}
+\end{eqnarray}
+We see below that the benchmark estimators are very inefficient when the
+condition number is close to one, i.e. when the invariants are well-diversified
+and display little correlation with each other.
+In order to fix the ine!ciency of the benchmark estimators we consider
+estimators that are very e!cient, although they display a large bias, namely
+constant estimators. Then we blend the benchmark estimators with the constant estimators by means of weighted averages. Such estimators are called
+$shrinkage estimators$, because the benchmark estimators are shrunk towards
+the target constant estimators.
+
+\end{frame}
+
+\begin{frame}{Shrinkage estimators }{Location}\small
+
+As we see below, the gain in efficiency of the shrinkage estimators with
+respect to the original benchmark estimators more than compensates for the
+increase in bias, and thus the overall error of the shrinkage estimators is
+reduced.
+
+Assume that the market invariants are normally distributed with the following
+parameters:
+\begin{eqnarray}\label{4.132}
+\begin{aligned}
+{\bf X}\sim N({\bm \mu},{\bf \Sigma})
+\end{aligned}
+\end{eqnarray}
+Consider the standard definition (4.108) of loss of a generic estimator of location $\widehat{\bm \mu}$ with respect to the true unknown location parameter ${\bm \mu}$ of the invariants:
+\begin{eqnarray}\label{4.133}
+\begin{aligned}
+\mathrm{Loss}(\widehat{\bm \mu},{\bm \mu})\equiv
+(\widehat{\bm \mu}[I_T]-{\bm \mu})^{\prime}
+(\widehat{\bm \mu}[I_T]-{\bm \mu});
+\end{aligned}
+\end{eqnarray}
+and the respective definition of error:
+\begin{eqnarray}\label{4.134}
+\begin{aligned}
+\mathrm{Err}^2(\widehat{\bm \mu},{\bm \mu})\equiv
+\mathrm{E}
+\{
+(\widehat{\bm \mu}[I_T]-{\bm \mu})^{\prime}
+(\widehat{\bm \mu}[I_T]-{\bm \mu})
+\}.
+\end{aligned}
+\end{eqnarray}
+Consider the benchmark estimator of location (4.98) of the market invariants,
+namely the sample mean:
+\begin{eqnarray}\label{4.135}
+\begin{aligned}
+\widehat{\bm \mu}[i_T]\equiv
+\frac{1}{T}\sum^{T}_{t=1}{\bf x}_t.
+\end{aligned}
+\end{eqnarray}
+From (4=109) the error (4.134) of the sample mean reads:
+\begin{eqnarray}\label{4.136}
+\begin{aligned}
+\mathrm{Err}^2(\widehat{\bm \mu},{\bm \mu})\equiv
+\frac{1}{T}\sum^{T}_{t=1}
+\mathrm{tr}(\bf \Sigma)
+\end{aligned}
+\end{eqnarray}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}{Shrinkage estimators }{Location}\small
+In a pathbreaking publication, Stein (1955) proved that the sample mean
+is not an admissible estimator. In other words, when the dimensions $N$ of the
+vector of invariants {\bf X} is larger than one, there exists an estimator of location
+$\widehat{\bm \mu}^{S}$ such that:
+\begin{eqnarray}\label{4.137}
+\begin{aligned}
+\mathrm{Err}^2\left(\widehat{\bm \mu}^{S},{\bm \mu}\right)
+<
+\frac{1}{T}tr(\bf \Sigma)
+\end{aligned}
+\end{eqnarray}
+no matter the values of the underlying parameters in (4.132). The hypotheses
+in the original work were somewhat more restrictive than (4.132). Here we
+discuss the more general case, see also Lehmann and Casella (1998).
+First of all, from (4.111) we see that we cannot improve on the sample
+mean’s bias, as the whole error is due to the estimator’s ine!ciency (4.110). In
+other words, the sample mean is properly centered around the true, unknown
+value, but it is too dispersed, see Figure 4.2.
+To reduce the error of the estimator we must reduce its ine!ciency, although this might cost something in terms of bias. The most e!cient estimator is a constant estimator, i.e., an estimator such as (4=12), which with
+any information associates the same fixed value. Indeed, constant estimators
+display zero ine!ciency, although their bias is very large.
+Therefore we consider weighted averages of the sample estimator with a
+constant estimator of location $\bf b$, i.e. any fixed $N$-dimensional vector. This
+way we obtain the $James-Stein shrinkage estimators$ of location:
+
+\begin{eqnarray}\label{4.138}
+\begin{aligned}
+\widehat{\bm \mu}^{S}
+\equiv
+(1-\alpha)\widehat{\bm \mu}+\alpha{\bm b}
+\end{aligned}
+\end{eqnarray}
+We show in Appendix www.4.5 that an optimal choice for the weight $\alpha$ in this
+expression is the following:
+\begin{eqnarray}\label{4.139}
+\begin{aligned}
+\alpha
+\equiv
+\frac{1}{T}
+\frac{N\bar{\lambda} -2\lambda_1}{(\widehat{\bm \mu}-{\bf b})^{\prime}(\widehat{\bm \mu}-{\bf b})}
+\end{aligned}
+\end{eqnarray}
+
+where $\lambda_1$ is the largest among the Q eigenvalues of $\bf \Sigma$ and $\bar \lambda$ is the average of
+the eigenvalues.
+
+By means of Stein's lemma we prove in Appendix www.4.5 that the shrinkage estimator (4.138)-(4.139) performs better than the sample mean, i.e. it
+satisfies (4.137). In real applications the true underlying covariance matrix ${\bar \Sigma}$
+is not known, and thus we cannot compute its eigenvalues. Therefore we
+replace it with an estimate ${\bar \Sigma}\mapsto \widehat{\bar \Sigma}$. Furthermore, to obtain more sensible
+results and to interpret $\alpha$ as a weight, we impose the additional constraint
+that $\alpha$ be comprised in the interval (0, 1).
+
+As intuition suggests, the optimal amount of shrinkage (4.139) vanishes as
+the amount of observations $T$ increases.
+
+Furthermore, the optimal shrinkage weight (4.139) is largest in well conditioned market, i.e. when the condition number (4.131) is one. Indeed, in the
+limit case of full correlation among the invariants, the multivariate setting
+becomes a one-dimensional setting, in which case the sample estimate is no
+longer inadmissible.
+On the other hand, in the case of extremely well conditioned markets all
+the eigenvalues are equal to the common value$\bar \lambda$ and the optimal shrinkage
+weight reads:
+
+\end{frame}
+
+
+
+
+
+\begin{frame}{Shrinkage estimators }{Location}\small
+
+\begin{eqnarray}\label{4.140}
+\begin{aligned}
+\alpha \equiv
+\frac{N-2}{T}
+\frac{\bar{\lambda}}{(\widehat{\bm \mu}- {\bf b})(\widehat{\bm \mu}- {\bf b})^{\prime}}
+\end{aligned}
+\end{eqnarray}
+Notice in particular that, as intuition suggests, shrinking toward the target
+$\bf b$ becomes particularly effective when the number of observations $T$ is low
+with respect to the dimension of the invariants $N$ and, since $\bar \lambda$ is the average
+variance of the invariants, when the markets are very volatile.
+Fig. 4.13. Shrinkage estimator of mean: evaluation
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=4cm]{4_13.png}\\
+  \caption{ Shrinkage estimator of mean: evaluation}
+\end{figure}
+
+
+
+
+
+
+\end{frame}
+
+\begin{frame}{Shrinkage estimators }{Dispersion and hidden factors}\small
+
+In Figure 4.13 we display the distribution of the loss (4.133) of the shrinkage estimator (4.138)-(4.139) and the respective error (4.134) as the market
+parameters vary according to (4.116), along with the ensuing condition number. As expected, in well-conditioned markets the amount of shrinkage is maximal. Indeed, the bias is large, whereas the sample mean, which corresponds
+to a null shrinkage, is unbiased. Nevertheless, the overall error is reduced with
+respect to the sample mean, compare Figure 4.13 with Figure 4.11.
+
+Shrinking the sample mean towards a constant vector $\bf b$ is not the only
+option to improve the estimation. Another possibility consists in shrinking
+the sample mean towards a scenario-dependent target vector, such as the
+grand mean. This corresponds to replacing the constant vector $\bf b$ in (4.138)
+as follows:
+\begin{eqnarray}\label{4.141}
+\begin{aligned}
+{\bf b} \mapsto
+\frac{{\bf 1}^{\prime}\widehat{\bm \mu}}
+{N}
+{\bf 1}.
+\end{aligned}
+\end{eqnarray}
+where $\bf 1$ is an $N$-dimensional vector of ones.
+
+Another choice of scenario-dependent target is the volatility-weighted
+grand mean, see Jorion (1986). This corresponds to replacing the constant
+vector $\bf b$ in (4.138) as follows:
+
+\begin{eqnarray}\label{4.142}
+\begin{aligned}
+{\bf b} \mapsto
+\frac{{\bf 1}^{\prime}\widehat{\bf \Sigma}^{-1}\widehat{\bm \mu}}
+{{\bf 1}^{\prime}\widehat{\bf \Sigma}^{-1} \widehat{\bm 1}}
+{\bf 1}.
+\end{aligned}
+\end{eqnarray}
+
+where $\widehat {\bf \Sigma}$ is an estimator of the scatter matrix of the invariants.
+
+Several authors have proved the non-admissibility of the sample mean for
+underlying distributions of the invariants other than (4.32), see Evans and
+Stark (1996). It is immediate to check that the sample mean is unbiased
+no matter the underlying distribution, therefore also in the general case an
+improved estimator must outperform the sample mean in terms of e!ciency.
+
+In Chapter 7 we revisit the shrinkage estimators of location in the more
+general context of Bayesian estimation.
+\end{frame}
+
+
+\begin{frame}{Shrinkage estimators }{Dispersion and hidden factors}\small
+Assume that the market invariants are normally distributed with the following
+parameters:
+\begin{eqnarray}\label{4.143}
+\begin{aligned}
+{\bf X}_t
+\sim
+N({\bm \mu},{\bf \Sigma}).
+\end{aligned}
+\end{eqnarray}
+Consider the standard definition of the loss (4.118) of a generic estimator of
+dispersion $\widehat {\bf \Sigma}$ with respect to the true unknown underlying scatter parameter $\bf \Sigma$
+, namely the Frobenius loss:
+\begin{eqnarray}\label{4.144}
+\begin{aligned}
+\mathrm{Loss}(\widehat{\bf \Sigma},{\bf \Sigma})
+\equiv
+\mathrm{tr}
+\left[
+(\widehat{\bf \Sigma}[I_T]-{\bf \Sigma})^2
+\right];
+\end{aligned}
+\end{eqnarray}
+and the respective definition of error:
+\begin{eqnarray}\label{4.145}
+\begin{aligned}
+\mathrm{Err}^2(\widehat{\bf \Sigma},{\bf \Sigma})
+\equiv
+{\mathrm {E}}
+\left\{
+\mathrm{tr}
+(\widehat{\bf \Sigma}[I_T]-{\bf \Sigma})^2
+\right\}.
+\end{aligned}
+\end{eqnarray}
+Consider the benchmark estimator of dispersion (4.99), namely the sample
+covariance:
+\begin{eqnarray}\label{4.146}
+\begin{aligned}
+\widehat{\bf \Sigma}[i_T]
+\equiv
+\frac{1}{T}
+\sum{T}{t=1}[{\bf x}_t-\widehat{\bm \mu[i_T]}][{\bf x}_t-\widehat{\bm \mu[i_T]}]^{\prime},
+\end{aligned}
+\end{eqnarray}
+where $\widehat \mu$ is the sample mean (4.98).
+From (4.119) the error (4.145) of the sample covariance reads:
+\begin{eqnarray}\label{4.147}
+\begin{aligned}
+\mathrm{Err}^2(\widehat{\bf \Sigma},{\bf \Sigma})
+=
+\frac{1}{T}
+\left[
+\mathrm{tr}({\bf \Sigma}^2)+1+\left( 1-\frac{1}{T} \right)[\mathrm{tr}({\bf \Sigma}^2)]^2
+\right]
+\end{aligned}
+\end{eqnarray}
+This is not the minimum error achievable and thus it is possible to define an
+estimator of dispersion that performs better than the sample covariance.
+\end{frame}
+
+\begin{frame}{Shrinkage estimators }{Dispersion and hidden factors}\small
+In order to determine this better estimator we analyze further the error
+(4.147). Consider as in (4.112) the principal component decomposition of the
+true unknown scatter matrix:
+\begin{eqnarray}\label{4.148}
+\begin{aligned}
+{\bf \Sigma}\equiv
+{\bf E}{\bf \lambda}{\bf E}^{\prime}.
+\end{aligned}
+\end{eqnarray}
+In this expression $\bf \Lambda$ is the diagonal matrix of the eigenvalues of $\bf \Sigma$sorted in
+decreasing order:
+\begin{eqnarray}\label{4.149}
+\begin{aligned}
+{\bf \lambda}\equiv
+\mathrm{diag}(\lambda_1,...,\lambda_N);
+\end{aligned}
+\end{eqnarray}
+and the matrix $\bf E$ is the juxtaposition of the respective orthogonal eigenvectors. Using the identities (4.114) and (4.122), the percentage error (4.31) reads
+in this context:
+\begin{eqnarray}\label{4.150}
+\begin{aligned}
+\mathrm{PErr}^2(\widehat{\bf \Sigma},{\bf \Sigma})
+=\frac{1}{T}\left( 1+\left( 1-\frac{1}{T} \right)\frac{\sum^{N}_{n=1}\lambda_n}{\sum^{N}_{n=1}\lambda_n^2}   \right)
+\end{aligned}
+\end{eqnarray}
+In this expression we can assume without loss of generality that the eigenvalues
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=4cm]{4_14.png}\\
+  \caption{Bounds on the error of the sample covariance matrix}
+\end{figure}
+lie on the unit sphere, see Figure 4.14. The sum in the numerator is the trace
+of $\bf \Sigma$. The different values $\gamma$ that the trace can assume are represented by the
+family of hyperplanes (a line in the figure) with equation $\sum^{N}_{n=1}\lambda_n =\gamma$. Since
+the eigenvalues are constrained on the unit sphere and must be positive, the
+trace can only span the patterned volume of the hypersphere in Figure 4.14.
+The minimum trace corresponds to the following corner solution5:
+
+
+\end{frame}
+
+\begin{frame}{Shrinkage estimators }{Dispersion and hidden factors}\small
+
+Fig. 4.15. Scattering of sample eigenvalues
+
+\begin{eqnarray}\label{4.151}
+\begin{aligned}
+\lambda_1=1,\lambda_1=\cdots=\lambda_N=0 \Leftrightarrow \mathrm{tr}({\bf \Sigma})=1,
+\end{aligned}
+\end{eqnarray}
+which gives rise to a condition number (4.131) equal to zero. In this situation the ellipsoid $\mathcal{E}_{{\bm \mu},{\bf \Sigma}}$  determined by the market parameters as described in
+(A.73), which is also the location-dispersion ellipsoid of the invariants (2.75),
+is squeezed into a line. In other words, there exists only one actual dimension
+of risk, as all the invariants can be expressed as functions of one specific invariant. This is approximately the case in the swap market, as we see in Figure
+3.20. In this environment of high correlations the percentage estimation error
+is minimal, and reads:
+
+\begin{eqnarray}\label{4.152}
+\begin{aligned}
+\mathrm{PErr}^2(\widehat{\bf \Sigma},{\bf \Sigma})
+=\frac{1}{T}\left( 2-\frac{1}{T}  \right)
+\end{aligned}
+\end{eqnarray}
+
+On the other hand, the maximum trace corresponds to the following combination:
+
+\begin{eqnarray}\label{4.153}
+\begin{aligned}
+\lambda_1=\cdots=\lambda_N=\frac{1}{\sqrt{N}}\Leftrightarrow \mathrm{tr}({\bf \Sigma})={\sqrt{N}},
+\end{aligned}
+\end{eqnarray}
+which gives rise to a condition number (4.131) equal to one. In this case the
+location-dispersion ellipsoid of the market invariants becomes a sphere, which
+means that cross-correlations among the invariants are zero. Therefore, in a
+zero-correlation environment, the percentage error is maximal and reads:
+\begin{eqnarray}\label{4.154}
+\begin{aligned}
+\mathrm{PErr}^2(\widehat{\bf \Sigma},{\bf \Sigma})
+=\frac{1}{T}\left( 1+\left( 1-\frac{1}{T} \right)N \right)
+\end{aligned}
+\end{eqnarray}
+\end{frame}
+
+
+\begin{frame}{Shrinkage estimators }{Dispersion and hidden factors}\small
+Notice that the estimation degenerates as the dimension $N$ of the invariants
+becomes large as compared with the number $T$ of observations.
+To summarize, we need an estimator that improves on the sample covariance especially when the market invariants are well conditioned and when the
+number of observations in the sample is small with respect to the number of
+invariants.
+To introduce this estimator, we notice from (4.120)-(4.121) that the sample
+covariance’s bias is minimal, as almost the whole error is due to the estimator’s
+ine!ciency. In other words, the sample covariance is properly centered around
+the true, unknown value, but it is too dispersed, see Figure 4.2.
+The sample covariance is ine!cient because the estimation process tends
+to scatter the sample eigenvalues $\widehat \Lambda$ away from the mean value $\bar \Lambda$ of the true
+unknown eigenvalues. Indeed, Ledoit and Wolf (2004) prove the following
+general result:
+\begin{eqnarray}\label{4.155}
+\begin{aligned}
+\mathrm{E}
+ \left\{
+ \sum^{N}_{n=1}(\widehat{\lambda}_n-\bar{\lambda})^2
+ \right\}
+ =\sum^{N}_{n=1}(\widehat{\lambda}_n-\bar{\lambda})^2+
+ \mathrm{Err}^2(\widehat{\bf \Sigma},{\bf \Sigma})
+\end{aligned}
+\end{eqnarray}
+Geometrically, the estimation process squeezes and stretches the location-dispersion ellipsoid $\mathcal{E}_{{\bm \mu},{\bf \Sigma}}$ of the market invariants.
+\end{frame}
+
+
+
+
+
+
+
+
+
+\begin{frame}{Shrinkage estimators }{Dispersion and hidden factors}\small
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=4cm]{4_15.png}\\
+  \caption{Scattering of sample eigenvalues}
+\end{figure}
+
+Since the estimation error is large when the number of observations $T$ is
+small, the scattering effect is larger when $T$ is small with respect to the number
+of invariants. We plot this phenomenon in Figure 4.15 for the case of $N\equiv 50$
+market invariants. As we show in Appendix www.4.6, in the extreme case
+where the number of observations $T$ is lower than the number of invariants
+$N$, the last sample eigenvalues become null and thus the sample covariance
+becomes singular.
+Furthermore, the scattering of the eigenvalues of the sample covariance
+is more pronounced for those invariants whose location-dispersion ellipsoid
+is close to a sphere. This result is intuitive: comparatively speaking, a sphere
+gets squeezed and stretched more than an elongated ellipsoid, which is already
+elongated to begin with. This result is also consistent with (4.152) and (4.154).
+We can summarize the cause of the ine!ciency of the sample covariance in
+terms of the condition number (4.131). Indeed, the estimation process worsens
+the condition number of the market invariants:
+
+\begin{eqnarray}\label{4.156}
+\begin{aligned}
+\widehat {\mathrm{CN}} \{{\bf X}\}
+\frac{\widehat{\lambda}_{N}}{\widehat{\lambda}_{1}}
+<
+\frac{{\lambda}_{N}}{{\lambda}_{1}}
+\equiv \mathrm{CN}\{{\bf X}\}
+\end{aligned}
+\end{eqnarray}
+To reduce the error of the sample covariance we must reduce its ine!ciency
+by averaging it with an e!cient and well conditioned estimator of dispersion.
+On the one hand, the most e!cient estimator is a constant estimator, i.e. an
+estimator such as (4.12), which with any information associates a given fixed
+value: indeed, constant estimators display zero ine!ciency, although their bias
+is very large. On the other hand, the best-conditioned matrices are multiples
+of the identity, in which case the condition number is one.
+\end{frame}
+
+
+
+
+
+
+
+
+
+\begin{frame}{Shrinkage estimators }{Dispersion and hidden factors}\small
+Therefore, the ideal candidate to reduce the inefficiency of the sample
+covariance is the following constant, well conditioned matrix:
+\begin{eqnarray}\label{4.157}
+\begin{aligned}
+{\bf C} \equiv
+\bar{\lambda}
+{\bf I}_{N},
+\end{aligned}
+\end{eqnarray}
+where the mean value $\bar\lambda$ of the true unknown eigenvalues represents the average
+variance of the invariants:
+\begin{eqnarray}\label{4.158}
+\begin{aligned}
+\bar{\lambda} \equiv
+\frac{{\mathrm {tr}}\{\Lambda\}}{N}
+=
+\frac{{\mathrm {tr}}\{\Lambda\}}{\Sigma}
+=
+\frac{1}{N}
+\sum^{N}_{n=1}
+{\mathrm {Var}}
+\{X_n\}
+\end{aligned}
+\end{eqnarray}
+Nevertheless, the true eigenvalues are unknown, therefore we replace (4.157)
+with its sample counterpart:
+\begin{eqnarray}\label{4.159}
+\begin{aligned}
+\widehat {\bf C}
+\equiv
+\frac{\sum^{N}_{n=1}\widehat{\lambda}}{N}
+{\bf I}
+\end{aligned}
+\end{eqnarray}
+At this point, following Ledoit and Wolf (2004) we define the shrinkage estimator of dispersion as the weighted average of the sample covariance and the
+target matrix:
+\begin{eqnarray}\label{4.160}
+\begin{aligned}
+\widehat {\bf \Sigma}^{S}
+\equiv
+(1-\alpha)\widehat {\bf \Sigma}+ \alpha\widehat {\bf C}.
+\end{aligned}
+\end{eqnarray}
+The optimal shrinkage weight in this expression is defined as follows:
+\begin{eqnarray}\label{4.161}
+\begin{aligned}
+\alpha
+\equiv  \frac{1}{T}
+\frac{\frac{1}{T}\sum^{T}_{t=1} \mathrm {tr}\left\{ ({\bf x}_t,{\bf x}_t^{\prime}-\widehat{\Sigma})^2 \right\}  }
+{ \mathrm {tr}\left\{(\widehat{\Sigma}-\widehat{\bf C})^2 \right\}}
+\end{aligned}
+\end{eqnarray}
+if $\alpha < 1$, and 1 otherwise.
+
+The shrinkage estimator (4.160) is indeed better conditioned than the sample covariance:
+\begin{eqnarray}\label{4.162}
+\begin{aligned}
+\frac{\widehat{\lambda}^{S}_{N}}{\widehat{\lambda}^{S}_{1}}
+>
+\frac{\widehat{\lambda}_{N}}{\widehat{\lambda}_{1}},
+\end{aligned}
+\end{eqnarray}
+\end{frame}
+see Appendix www.4.6. Thus the ensuing error (4.145) is less than for the
+sample covariance.
+As intuition suggests, the optimal amount of shrinkage (4.161) vanishes as
+the amount of observations $T$ increases.
+Furthermore, the optimal shrinkage weight is largest when the condition
+number of the market invariants is close to one. Indeed, in this case the denominator in (4.161) becomes very small. This is consistent with the fact that
+the percentage error is maximal in well-condition markets, see (4.154).
+In Figure 4.16 we display the distribution of the loss (4.144) of the shrinkage estimator (4.160) and the respective error (4.145) as the market parameters vary according to (4.116), along with the ensuing condition number.
+Notice that shrinking towards a multiple of the identity matrix introduces a bias that was not present in the case of the sample covariance, see Figure 4.12.
+Nevertheless, the overall error is reduced by the shrinkage process.
+In Chapter 7 we revisit the shrinkage estimators of dispersion in the more
+general context of Bayesian estimation.
+
+\begin{frame}{Shrinkage estimators }{Dispersion and hidden factors}\small
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=4cm]{4_16.png}\\
+  \caption{Shrinkage estimator of covariance: evaluation}
+\end{figure}
+
+
+
+bias that was not present in the case of the sample covariance, see Figure 4.12.
+Nevertheless, the overall error is reduced by the shrinkage process.
+In Chapter 7 we revisit the shrinkage estimators of dispersion in the more
+general context of Bayesian estimation
+
+{\bf Explicit factors}
+The benchmark estimator of the factor loadings in an explicit factor model
+is the ordinary least square estimator of the regression coe!cients (4.126)
+and the estimator of the dispersion of the residuals is the respective sample
+covariance matrix (4.128). Like in the case of the estimators of location and
+dispersion, it is possible to improve on these estimators by shrinking them
+towards suitable targets, see Ledoit and Wolf (2003) for an application of a
+one-factor model to the stock market.
+
+We discuss in Chapter 7 the shrinkage estimators of explicit-factor models
+in the more general context of Bayesian estimation.
+
+
+\end{frame}
+
+
+
+
+
+
+
+
+% 163.....................................................................
+
+\section[Robustness]{Robustness}
+
+\begin{frame}{Robustness}
+
+In our journey throughout the possible approaches to building estimators we
+have always assumed that the true, unknown distribution of the market invariants lies somewhere in the subset of stress test distributions, refer to Figure 4.3 for the general case and to Figure 4.9 for the parametric approach. In this
+section we discuss $robust estimation$, which deals with the potential consequences and possible remedies of choosing a space of stress test distributions
+that does not include the true, unknown distribution of the market invariants,
+see Figure 4.17.
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=4cm]{4_17.png}\\
+  \caption{Robust approach to estimation}
+\end{figure}
+
+
+
+
+
+\end{frame}
+
+\begin{frame}{Robustness}
+
+To provide the intuition behind robust estimation, consider as in Figure
+4.7 the location-dispersion ellipsoid (2.75) defined by the sample-mean (4.41)
+and sample-covariance (4.42) of a set of observations of market invariants:
+
+\begin{eqnarray}\label{4.163}
+\begin{aligned}
+\mathcal{E}_{\widehat{ E},\widehat{\mathrm {Cov}}}
+\left\{
+{\bf x} \in {\mathbb{R}}^{N} {\mathrm such~that}({\bf x}-\widehat{E})^{\prime}
+\widehat{(\mathrm {Cov})}^{-1}({\bf x}-\widehat{E})
+\right\}
+\end{aligned}
+\end{eqnarray}
+
+Then add a fake observation, an outlier, and repeat the estimation based
+on the enlarged sample. The new ellipsoid, which represents the new sample
+mean and sample covariance, is completely different, see Figure 4.18: one single
+observation completely disrupted the estimation.
+
+In the above experiment we know that the extra-observation is spurious.
+Therefore, such an extreme sensitivity does not represent a problem. If we
+knew for a fact that some observations were spurious, a sensitive estimator
+would help us detect the unwelcome outliers. This is the subject of outlier
+detection, which we tackle in Section 4.6.1.
+
+On the other hand, in many applications we do not know the true underlying distribution and, most importantly, we have no reason to believe that
+some observations could be spurious. Therefore we cannot trust sensitive estimators such as the sample estimators. Instead, we need to develop estimators
+that properly balance the trade-off between the precision and the robustness
+of the final results.
+\end{frame}
+
+\begin{frame}{Robustness}
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=4cm]{4_18.png}\\
+  \caption{Sample estimators: lack of robustness}
+\end{figure}
+
+In this section, first we discuss a few measures of robustness for an estimator, namely the jackknife, the sensitivity curve and, most notably, the
+influence function: when this is bounded, the respective estimator is robust.
+
+Then we compute the influence function of the estimators introduced so
+far, namely nonparametric sample estimators and parametric maximum likelihood estimators of location, dispersion and explicit factor loadings. As it
+turns out, the sample estimators display an unbounded influence function
+and therefore they are not robust. On the other hand, the maximum likelihood estimators display a range of behaviors: for instance, MLE of normally
+distributed invariants are the sample estimators and therefore they are not robust. On the other hand, MLE of Cauchy-distributed invariants have bounded
+influence function and therefore they are robust.
+
+Finally, we show how to build robust estimators of the main parameters
+of interest for asset allocation problem.
+
+{\bf Measures of robustness}
+
+To tackle robustness issues, we need first of all to be able to measure the
+robustness of a generic estimator. First we introduce two qualitative measures,
+namely the jackknife and the sensitivity curve. Relying on the intuition behind
+these measures we introduce a tool that precisely quantifies the robustness of
+an estimator, namely the influence function.
+
+
+
+\end{frame}
+
+
+\begin{frame}{Robustness}{Measures of robustness}\small
+
+Consider a generic estimator $\widehat{\bf G}$ of $ {\bf S}$ features of an unknown distribution.
+As in (4.9), an estimator is a vector-valued function of currently available
+information, which is represented as in (4.8) by the time series of the past
+occurrences of the market invariants:
+
+\begin{eqnarray}\label{4.164}
+\begin{aligned}
+i_T
+\equiv
+\widehat{\bf G}
+\{{\bf x}_1,...,{\bf x}_T\}
+\mapsto \widehat{\bf G}.
+\end{aligned}
+\end{eqnarray}
+
+A first measure of robustness of an estimator is the $jackknife$, introduced
+by Quenouille (1956) and Tukey (1958). The jackknife is built as follows. First
+we remove the generic $t$-th observation from the time series; then we estimate
+the quantity of interest from the reduced time series:
+
+\begin{eqnarray}\label{4.165}
+\begin{aligned}
+\widehat{\bf G}_{(-t)}
+\equiv
+\widehat{\bf G}
+({\bf x}_1,...,{\bf x}_{t-1},{\bf x}_{t+1},...,{\bf x}_T);
+\end{aligned}
+\end{eqnarray}
+
+finally we put back in place the $t$-th observation. We repeat this process for
+all the observations, computing a total of $T$ estimates. If all the estimates are
+comparable, we assess that the estimator is robust. In Figure 4.18 we see that
+this is not the case for the sample mean and the sample covariance.
+To build another measure of robustness, instead of removing in turn all
+the observations, we can add an arbitrary observation to the time series and
+evaluate its effect on the estimate. This way we obtain the $sensitivity curve$,
+introduced by Tukey (1977) and defined as follows:
+
+\begin{eqnarray}\label{4.166}
+\begin{aligned}
+\mathrm{SC}({\bf x},\widehat{\bf G})
+\equiv
+T\widehat{\bf G}
+({\bf x}_1,...,{\bf x}_T,{\bf x})-
+T\widehat{\bf G}({\bf x}_1,...,{\bf x}_T),
+\end{aligned}
+\end{eqnarray}
+
+where the normalization $T$ is meant to make the evaluation less sensitive to
+the sample size. If the sensitivity curve is small for any value of the extraobservation $\bf x$, we assess that the estimator $\widehat{\bf G}$ is robust. We see in Figure 4.18
+that this is not the case for the sample mean and the sample covariance.
+
+Both jackknife and sensitivity curve are qualitative tools that can detect
+lack of robustness: if either measure shows that the given estimator is not
+robust, we should reject that estimator and search for a better one.
+
+Nevertheless, if an estimator is not rejected, we cannot draw any conclusion
+on the degree of robustness of that estimator. Indeed, as far as the sensitivity
+curve is concerned, whatever result we obtain depends on the specific sample.
+On the other hand, as far as the jackknife is concerned, the sample might
+contain two or more outliers instead of one: in this case we might consider
+tests that remove more than one observation at a time, but we would not be
+sure where to stop.
+
+
+\end{frame}
+
+
+
+\begin{frame}{Robustness}{Measures of robustness}\small
+
+To obtain a tool that quantifies robustness independently of the specific
+sample, we should move in the opposite direction, considering the marginal
+effect of an outlier when the sample size tends to infinity. The influence function can be defined heuristically as the infinite-sample limit of the sensitivity
+curve, see Hampel, Ronchetti, Rousseeuw, and Stahel (1986). Intuitively, the
+influence function quantifies the marginal effect on an estimator of an extraobservation in the limit of infinite observations.
+
+In order to introduce this limit, we need to express the generic $S$-dimensional estimator as an $S$-dimensional functional of the empirical probability density function:
+
+\begin{eqnarray}\label{4.167}
+\begin{aligned}
+\widehat{\bf G}
+\equiv
+\widetilde{\bf G}[f_{i_T}]
+\end{aligned}
+\end{eqnarray}
+
+where the empirical probability density function (2.240) is defined in terms of
+the Dirac delta (B.16) as follows:
+
+\begin{eqnarray}\label{4.168}
+\begin{aligned}
+f_{i_T}
+\equiv
+\frac{1}{T} \sum^{T}_{t=1}\delta^{({\bf x}_t)} .
+\end{aligned}
+\end{eqnarray}
+
+The sample estimators are explicit functionals of the empirical probability
+density function. Indeed the sample estimators aim at estimating some functional ${\bf G}[f_{\bf X}]$ of the unknown probability density function $f_{\bf X}$ of the market
+invariants. Therefore by their very definition (4.36) the functional that defines the estimator is the functional that defines the quantity of interest of the
+unknown distribution of the market invariants:
+
+\begin{eqnarray}\label{4.169}
+\begin{aligned}
+\widehat{\bf G}
+\equiv
+{\bf G}[f_{i_T}].
+\end{aligned}
+\end{eqnarray}
+
+This expression is clearly in the form (4.167).
+\end{frame}
+
+
+\begin{frame}{Robustness}{Measures of robustness}\small
+\begin{example}
+
+For example, consider the following functional:
+
+\begin{eqnarray}\label{4.170}
+\begin{aligned}
+{\bf G}[h]\equiv
+\int_{{\mathbb R}^N}{\bf x}h({\bf x})d{\bf x},
+\end{aligned}
+\end{eqnarray}
+
+where $h$ is any function such that the integral (4.170) makes sense. This functional, when applied to the probability density function of a distribution,
+yields its expected value:
+
+\begin{eqnarray}\label{4.171}
+\begin{aligned}
+{\bf G}[f_{\bf X}]=
+{\bf E}\{{\bf X}\}
+\end{aligned}
+\end{eqnarray}
+
+Consider now the sample mean:
+
+\begin{eqnarray}\label{4.172}
+\begin{aligned}
+\widehat{\bf G}\equiv
+\frac{1}{T} \sum^{T}_{t=1}
+{\bf x}_t
+\end{aligned}
+\end{eqnarray}
+
+The sample mean is the functional (4.170) applied to the empirical pdf:
+
+\begin{eqnarray}\label{4.173}
+\begin{aligned}
+\widehat{\bf G}=
+\int_{{\mathbb R}^N}{\bf x}f_{i_T}({\bf x})d{\bf x}
+\equiv
+{\bf G}[f_{i_T}]
+\end{aligned}
+\end{eqnarray}
+\end{example}
+
+\end{frame}
+
+
+% 175.....................................................................
+\begin{frame}{Robustness}{Measures of robustness}\small
+
+
+
+On the other hand, the maximum likelihood estimators are implicit functionals of the empirical probability density function. Consider the ML estimator ${\widehat {\bm \theta}}$ of the $S$-dimensional parameter $\bm \theta$ of a distribution $f_{\bm \theta}$. The ML
+estimator as a functional is defined implicitly by the first-order conditions on
+the log-likelihood. Indeed, from their definition (4=66) the ML estimators solve
+in quite general cases the following implicit equation:
+
+\begin{eqnarray}\label{4.174}
+\begin{aligned}
+{\bf 0}=
+\frac{1}{T} \sum^{T}_{t=1}
+{\bm \psi}\left({{\bf x}_t},\widehat{\bf \theta}\right)
+\end{aligned}
+\end{eqnarray}
+
+where $\phi$ is the $S$-dimensional vector of first-order partial derivatives of the
+log-likelihood:
+
+\begin{eqnarray}\label{4.175}
+\begin{aligned}
+{\bf \psi}({\bf x},{\bm \theta})
+\equiv
+\frac{\partial}{\partial{\bm \theta}} \ln(f_{\bm \theta}(\bf x)).
+\end{aligned}
+\end{eqnarray}
+
+Consider now the V-dimensional functional $\widetilde{\theta}[h]$ defined implicitly for a
+generic function $h$ in a suitable domain as follows:
+
+\begin{eqnarray}\label{4.176}
+\begin{aligned}
+\widetilde{\bm \theta}[h]:
+\int_{{\mathbb R}^N}{\bf \psi}({\bf x},{\widetilde{\bm \theta}})
+h({\bf x})\equiv {\bf 0}
+\end{aligned}
+\end{eqnarray}
+
+In this notation, the ML estimator (4.174) can be written as follows:
+
+\begin{eqnarray}\label{4.177}
+\begin{aligned}
+\widehat{\bm \theta}
+\equiv
+\widetilde{\bm \theta}[f_{i_T}]
+\end{aligned}
+\end{eqnarray}
+
+which is in the form (4.167)
+
+\end{frame}
+
+
+\begin{frame}{Robustness}{Measures of robustness}\small
+\begin{example}
+
+For example, consider the functional $\widetilde{\theta}[h]$ defined implicitly by the following equation:
+
+\begin{eqnarray}\label{4.178}
+\begin{aligned}
+\widetilde{\theta}[h]:
+0
+\equiv
+\int_{\mathbb {R}}(\ln x - \widetilde{\theta})hdx.
+\end{aligned}
+\end{eqnarray}
+
+Now assume as in (4.57) that there exists a lognormally distributed invariant
+with the following parameters:
+
+\begin{eqnarray}\label{4.179}
+\begin{aligned}
+X
+\sim
+\mathrm{LogN}(\theta,1).
+\end{aligned}
+\end{eqnarray}
+
+The ML estimator of $\bm \theta$ reads:
+
+\begin{eqnarray}\label{4.180}
+\begin{aligned}
+\widehat{\theta}=
+\frac{1}{T}
+\sum^{T}_{t=1} \ln x_t
+\end{aligned}
+\end{eqnarray}
+
+\end{example}
+
+\end{frame}
+
+
+
+\begin{frame}{Robustness}{Measures of robustness}\small
+
+\begin{example}
+see (4.69). Clearly, the ML estimator of $\bm \theta$ solves:
+
+\begin{eqnarray}\label{4.181}
+\begin{aligned}
+0  &=\frac{1}{T} \sum^{T}_{t=1} \ln (x_t,\widehat {\theta})\\
+   &=\int_{\mathbb R}(\ln x - \widetilde{\theta})\frac{1}{T} \sum^{T}_{t=1}
+   \delta^{(x_t)}(x)dx\\
+   &=\int_{\mathbb R}f_{i_T}(x)dx.\\
+\end{aligned}
+\end{eqnarray}
+
+Therefore:
+
+\begin{eqnarray}\label{4.182}
+\begin{aligned}
+\widehat{ \theta}= \widetilde{ \theta}[f_{i_T}].
+\end{aligned}
+\end{eqnarray}
+\end{example}
+
+Notice that the term in brackets in the integral (4.178) is the first-order derivative of the logarithm of the probability density function (4.58), as prescribed
+by (4.175).
+
+\end{frame}
+
+
+
+\begin{frame}{Robustness}{Measures of robustness}\small
+
+Consider the sensitivity curve (4.166). Adding one observation in an arbitrary position $\bf x$ corresponds to modifying the empirical probability density
+function (4.168) as follows:
+
+\begin{eqnarray}\label{4.183}
+\begin{aligned}
+f_{i_T} \mapsto (1-\epsilon)f_{i_T}\epsilon ~+~\delta^{(\bf x)},
+\end{aligned}
+\end{eqnarray}
+
+where $\epsilon \equiv 1/{(T+1)}$ is the relative weight of the extra observation and $\delta$
+is the Dirac delta (B.16). Therefore in the functional notation (4.167) the
+sensitivity curve (4.166) reads:
+
+
+\begin{eqnarray}\label{4.184}
+\begin{aligned}
+\mathrm{SC}({\bf x},\widehat{\bf G})
+\equiv
+ \frac{1-\epsilon}{\epsilon}
+{\widetilde{\bf G}\left[(1-\epsilon)f_{\bf x}+\epsilon \delta^{(\bf x)}\right]-
+\widetilde{\bf G}[f_{i_T}]
+}.
+\end{aligned}
+\end{eqnarray}
+
+In the limit of an infinite number of observations $T$ the relative weight
+$\epsilon$ tends to zero. Furthermore, from the Glivenko Cantelli theorem (4.34) the
+empirical pdf $f_{i_T}$ tends to the true, unknown pdf $f_{\bf X}$. Therefore the influence
+function of a generic $S$-dimensional estimator $\widehat{\bf G}$ , which is the infinite-sample
+limit of the sensitivity curve, is defined as the following $S$-dimensional vector:
+
+\begin{eqnarray}\label{4.185}
+\begin{aligned}
+\mathrm{IF}({\bf x},f_{\bf X},\widehat{\bf G})
+\equiv
+\underset{\epsilon\rightarrow 0}{\lim} \frac{1}{\epsilon}
+\left(\widetilde{\bf G}\left[(1-\epsilon)f_{\bf x}+\epsilon \delta^{(\bf x)}\right]-
+\widetilde{\bf G}[f_{\bf x}]
+  \right).
+\end{aligned}
+\end{eqnarray}
+
+where $\widetilde{\bf G}$ is the $S$-dimensional functional (4.167) that links the estimator to
+the empirical probability density function.
+
+In order to use the influence function in applications, we need to define
+it more formally as a Gateaux derivative, which is the equivalent of a partial
+derivative in the world of functional analysis.
+
+\end{frame}
+
+
+
+
+
+\begin{frame}{Robustness}{Measures of robustness}\small
+
+We recall that the partial derivatives of a function $g$ defined in $\mathcal{R}^{N}$ at the
+point $\bf v$ are $N$ numbers $D$, commonly denoted as follows:
+
+\begin{eqnarray}\label{4.186}
+\begin{aligned}
+D({n},{\bf v},g)\equiv \frac{\partial g({\bf v})}{\partial v_n},~~n=1,...,N
+\end{aligned}
+\end{eqnarray}
+
+These $N$ numbers are such that such that whenever ${\bf u} \approx \bf v$ the following
+approximation holds:
+
+\begin{eqnarray}\label{4.187}
+\begin{aligned}
+g({\bf u})-g({\bf v}) \approx \sum^{N}_{n=1} D({n},{\bf v},g)(u_n-v_n)
+\end{aligned}
+\end{eqnarray}
+
+According to Table B.4, in the world of functional analysis the vector’s
+index q is replaced by the function’s argument $\bf x$, vectors such as $\bf v$ are replaced
+by functions $v(.)$ and sums are replaced by integrals. Furthermore, functions
+j are replaced with functionals $G$.
+The Gateaux derivative is the partial derivative (4.187) in this new notation. In other words it is the number $D$ such that whenever two functions are
+close $u\approx v$ the following approximation holds:
+
+\begin{eqnarray}\label{4.188}
+\begin{aligned}
+G[u]-G[v] \approx \int_{{\mathbb R}^N} D({\bf x},v,G)u({\bf x})d{\bf x}
+\end{aligned}
+\end{eqnarray}
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}{Robustness}{Measures of robustness}\small
+
+where we used the normalization:
+
+\begin{eqnarray}\label{4.189}
+\begin{aligned}
+\int_{{\mathbb R}^N} D({\bf x},v,G)vd{\bf x}\equiv {0}.
+\end{aligned}
+\end{eqnarray}
+
+Consider an estimator $\widehat{\bf G}$ that is represented by the functional $\widetilde{\bf G}$ as in
+(4.167). The influence function of each entry of the estimator $\widetilde{\bf G}$ for a given
+distribution $f_{\bf X}$ is the Gateaux derivative of the respective entry of $\widetilde{\bf G}$ in $f_{\bf X}$:
+
+\begin{eqnarray}\label{4.190}
+\begin{aligned}
+\mathrm{IF}({\bf x},f_{\bf X},\widehat{\bf G})
+\equiv
+\bf {D}({\bf x},f_{\bf X},\widetilde{\bf G})
+\end{aligned}
+\end{eqnarray}
+
+Indeed, setting $u\equiv (1-\epsilon )f_{\bf X}+\epsilon \delta^{({\bf x})} $ in (4.188) yields the heuristic definition
+(4.185).
+
+An estimator is robust if its influence function is small, or at least bounded,
+as the extra observation $\bf x$ varies in a wide range in the space of observations
+and as the distribution of the invariants $f_X$ varies in a wide range in the space
+of distributions.
+
+\end{frame}
+
+
+
+
+
+\begin{frame}{Robustness}{Measures of robustness}\small
+
+More precisely, suppose that we are interested in some parameters ${\bf G} [f_{\bf X}]$
+of the unknown distribution $f_X$ of the market invariants. As usual, we make
+assumptions on the set of possible distributions for $f_X$ and we build an estimator $\widehat{\bf G} $. Suppose that we choose inappropriately a family of stress test
+distributions that does not include the true, unknown distribution $f_X$, i.e.
+
+we miss the target by some extent as in Figure 4.17. Under these "wrong"
+assumptions we develop the "wrong" estimator $\widehat{\bf G}$ , which can be expressed as
+a functional of the empirical pdf as in (4.167). The influence function provides
+a measure of the damage:
+
+\begin{eqnarray}\label{4.191}
+\begin{aligned}
+\widehat{\bf G}-{\bf G}[f_{\bf X}] \approx
+\frac{1}{T}\sum^{T}_{t=1}\mathrm{IF}({\bf x},f_{\bf X},\widehat{\bf G})
+\end{aligned}
+\end{eqnarray}
+
+where the approximation improves with the number of observations. This
+follows immediately by setting $u\equiv f_{i_T}$ in (4.188) and using the fact that
+estimators are typically $Fisher consistent$, i.e. such that:
+
+\begin{eqnarray}\label{4.192}
+\begin{aligned}
+\widetilde{\bf G}[f_{\bf X}]
+={\bf G}[f_{\bf X}]
+\end{aligned}
+\end{eqnarray}
+
+Of course, we do not know the true underlying distribution $f_{\bf X}$ of the market
+invariants, but as long as the influence function is bounded for a wide range
+of underlying distributions $f_{\bf X}$, the damage is contained.
+
+\end{frame}
+
+\begin{frame}{Robustness}{Robustness of previously introduced estimators}\small
+
+In Section 4.2 we introduced the nonparametric sample estimators $\widehat{\bf G}$ of the
+unknown features ${\bf G}[f_{\bf X}$ of the distribution of the market invariants. The
+functional representation $\widetilde {\bf G}[f_{\bf x}$ of sample estimators in terms of the empirical probability density function is explicit and defined by (4=169). Therefore,the expression of the influence function of generic nonparametric estimators
+follows directly from the heuristic definition (4=185) of the influence function
+and reads:
+
+\begin{eqnarray}\label{4.193}
+\begin{aligned}
+\mathrm{IF}({\bf x},f_{\bf x},\widehat{\bf G})=
+\underset{\epsilon\rightarrow 0}{\lim} \frac{1}{\epsilon}
+\left({\bf}[(1-\epsilon)f_{\bf x}+\epsilon \delta^{(\bf x)}]-{\bf G}[f_{\bf x}]                                            \right).
+\end{aligned}
+\end{eqnarray}
+
+In Section 4.3 we introduced the maximum likelihood estimators of the
+parameters $\bm \theta$ of the distribution $f_{\bm \theta}$ of the market invariants. The functional
+representation $\widetilde {\bm \theta}[f_{\bf x}$ of the maximum likelihood estimators in terms of the
+empirical probability density function is implicit and defined by (4.176). We
+prove in Appendix www.4.7 that in this case the influence function reads:
+
+\begin{eqnarray}\label{4.194}
+\begin{aligned}
+\mathrm{IF}({\bf x},f_{\bf x},\widehat{\bm \theta})=
+{\bf A}\frac{\partial \ln f_{\theta}(\bf x)}{\partial {\bm \theta}}
+\bigg|_{{\bm \theta} \equiv \widehat{\bm \theta}[f_{\bf x}]},
+\end{aligned}
+\end{eqnarray}
+
+where the constant $S\times S$ matrix $\bf A$ is defined as follows:
+
+\begin{eqnarray}\label{4.195}
+\begin{aligned}
+{\bf A}\equiv
+-\left[
+\int_{{\mathbb R}^{N}}
+\frac{\partial \ln f_{\theta}(\bf x)}
+{{\partial {\bm \theta}}{\partial {\bm \theta}}^{\prime}}
+\bigg|_{{\bm \theta}\equiv \widehat{\bm \theta}[f_{\bf x}]}
+f_{\bf x}(\bf x)d{\bf x}
+ \right]^{-1}.
+\end{aligned}
+\end{eqnarray}
+
+We proceed below to apply these formulas to the sample and maximum
+likelihood estimators of interest for asset allocation problems.
+
+\end{frame}
+
+
+\begin{frame}{Robustness}{Location and dispersion}\small
+
+Consider the sample estimators of location and dispersion of the market invariants ${{\bf X}_t}$, i.e. the sample mean (4.41) and the sample covariance (4.42)
+respectively:
+
+\begin{eqnarray}\label{4.196}
+\begin{aligned}
+\widehat{E} \equiv \frac{1}{T}\sum^{T}_{t=1}{\bf x}_t
+\end{aligned}
+\end{eqnarray}
+
+\begin{eqnarray}\label{4.197}
+\begin{aligned}
+\widehat{\mathrm{Cov}} \equiv \frac{1}{T}\sum^{T}_{t=1}
+({\bf x}_t-\widehat{E})({\bf x}_t-\widehat{E})^{\prime}
+\end{aligned}
+\end{eqnarray}
+
+We prove in Appendix www.4.7 that the influence function (4.193) for the
+sample mean reads:
+
+\begin{eqnarray}\label{4.198}
+\begin{aligned}
+\mathrm{IF}({\bf x},f{\bf X},\widehat{\bf E})={\bf x}-\mathrm{E}\{\bf X\};
+\end{aligned}
+\end{eqnarray}
+
+and the influence function (4.193)
+
+\begin{eqnarray}\label{4.199}
+\begin{aligned}
+\mathrm{IF}\left({\bf x},f{\bf X},c\right)
+=
+({\bf x}-\mathrm{E}\{\bf X\})({\bf x}-\mathrm{E}\{\bf X\})^{\prime}-\mathrm{Cov}\{\bf X\}
+\end{aligned}
+\end{eqnarray}
+
+Notice that the influence function of the sample estimators is not bounded.
+Therefore, the sample estimators are not robust: a strategically placed outlier,also known as $leverage point$, can completely distort the estimation. This is
+the situation depicted in Figure 4.18.
+
+Assume now that the invariants ${\bf X}_t$ are elliptically distributed:
+
+\end{frame}
+
+
+
+
+
+
+
+
+\begin{frame}{Robustness}{Location and dispersion}\small
+
+where $\bm \mu$ is the $N$-dimensional location parameter, is the $N \times N$ dispersion matrix and j is the probability density generator. In other words, the
+probability density of the invariants $\bf X$ reads:
+
+\begin{eqnarray}\label{4.200}
+\begin{aligned}
+{\bf X}_t \sim \mathrm{El}({\bm \mu},{\bf \Sigma},g),
+\end{aligned}
+\end{eqnarray}
+
+where $\mathrm{Ma} (  {\bf x}_t,{\bm \mu},{\bf \Sigma})$ is the Mahalanobis distance of the point x from the point
+${\bm \mu} $ through the metric ${\bf \Sigma}$ :
+
+\begin{eqnarray}\label{4.201}
+\begin{aligned}
+f_{\bm \theta}({\bf x})\equiv \frac{1}{\sqrt {|{\bf \Sigma}|}}g
+(\mathrm{Ma}^2 (  {\bf x}_t,{\bm \mu},{\bf \Sigma}  )),
+\end{aligned}
+\end{eqnarray}
+
+\begin{eqnarray}\label{4.202}
+\begin{aligned}
+\mathrm{Ma}^2 (  {\bf x}_t,{\bm \mu},{\bf \Sigma})
+\equiv
+({\bf x}-{\bm \mu})^{\prime}{\bf \Sigma}^{-1}({\bf x}-{\bm \mu})
+\end{aligned}
+\end{eqnarray}
+
+In this case the parametric distribution of the market invariants is fully determined by the set of parameters is $\bf \theta \equiv ({\bm \mu},{\bf \Sigma})$.
+
+Consider the maximum likelihood estimators of the parameters $\bf \theta$, which
+are defined by the implicit equations (4.77)-(4.79) as follows:
+
+\begin{eqnarray}\label{4.203}
+\begin{aligned}
+\widehat{\bm \mu}=
+\sum^{T}_{t=1}
+\frac{w\left(\mathrm{Ma}^2 \left(  {\bf x}_t,\widehat{\bm \mu},\widehat{\bf \Sigma}  \right)\right)}{\sum^{T}_{s=1}w\left(\mathrm{Ma}^2 \left(  {\bf x}_s,\widehat{\bm \mu},\widehat{\bf \Sigma}  \right)\right)}
+{\bf x}_t\\
+\end{aligned}
+\end{eqnarray}
+
+\end{frame}
+
+
+
+
+
+
+
+
+\begin{frame}{Robustness}{Location and dispersion}\small
+
+
+\begin{eqnarray}\label{4.204}
+\begin{aligned}
+\widehat{\bf \Sigma}=
+\frac{1}{T}
+\sum^{T}_{t=1}
+({\bf x}_t-\widehat{\bm \mu})({\bf x}_t-\widehat{\bm \mu})^{\prime}
+w\left(\mathrm{Ma}^2 \left(  {\bf x}_t,\widehat{\bm \mu},\widehat{\bf \Sigma} \right)  \right) \\
+\end{aligned}
+\end{eqnarray}
+
+\begin{eqnarray}\label{4.205}
+\begin{aligned}
+w(z)\equiv -2\frac{g^{\prime}(z)}{g(z)}
+\end{aligned}
+\end{eqnarray}
+
+These parameters can be expressed as functionals ${\widetilde{\bm \mu}[f_{i_T}]}$ and ${\widetilde{\bf \Sigma}[f_{i_T}]}$ of the
+empirical pdf. The functionals are defined implicitly as in (4=176) as follows:
+
+\begin{eqnarray}\label{4.206}
+\begin{aligned}
+\int_{{\mathbb R}^{N}}
+ {\bf \psi}
+ ({\bf x},{\widetilde{\bm \mu}[h]},{\widetilde{\bf \Sigma}[h]})h({\bf x})
+ d{\bf x}
+ \equiv {\bf 0}
+\end{aligned}
+\end{eqnarray}
+
+The vector-valued function $\psi$ in this expression follows from (4.203)-(4.204)
+and reads:
+
+\begin{eqnarray}\label{4.207}
+\begin{aligned}
+ {\bf \psi}
+ ({\bf x},{\bf f},{{\bf B}},{{\bf \Sigma}})
+ \equiv
+ \begin{pmatrix}
+ w(\mathrm{Ma}^2 (  {\bf x}_t,\widehat{\bm \mu},\widehat{\bf \Sigma} )
+  )({\bf x}-{\bm \mu}) \\
+ w(\mathrm{Ma}^2 (  {\bf x}_t,\widehat{\bm \mu},\widehat{\bf \Sigma} )
+  )vec[({\bf x}-{\bm \mu})({\bf x}-{\bm \mu})^{\prime}-{\bf \Sigma}\\
+ \end{pmatrix},
+\end{aligned}
+\end{eqnarray}
+
+where vec is the operator ($A.$104) that stacks the columns of a matrix into a
+vector. From (4.194) and (4.175) the norm of the influence function is proportional to the norm of the above vector:
+
+\end{frame}
+
+\begin{frame}{Robustness}{Location and dispersion}\small
+In particular, if the invariants are normally distributed the term $w$ in
+(4.207) becomes $w \equiv 1$, see (4.97). Therefore the influence function is not
+bounded. This is not surprising, since we know from Section 4.3 that the ML
+estimators of location and dispersion of normally distributed invariants are the
+sample estimators and thus their influence function is (4.198)-(4.199). In other
+words, the ML estimators of location and dispersion of normally distributed
+invariants are not robust.
+On the other hand, if the invariants are elliptically but not normally distributed the influence function displays a different behavior. Consider for example Cauchy-distributed invariants. In this case from (4=84) the term $w$ in
+(4=207) becomes:
+
+\begin{eqnarray}\label{4.208}
+\begin{aligned}
+\|
+\mathrm{IF}\left({\bf x},f{\bf x},f_{\bf X},(\widehat {\bf \mu},\widehat{\bf \Sigma})               \right)
+\|
+\propto
+\|\bf \psi\|
+\end{aligned}
+\end{eqnarray}
+
+\begin{eqnarray}\label{4.209}
+\begin{aligned}
+w(z)=\frac{N+1}{1+z}
+\end{aligned}
+\end{eqnarray}
+
+Therefore, from (4.208) and (4.202) the influence function of the location and
+dispersion maximum likelihood estimators becomes bounded. In other words,
+the ML estimators of location and dispersion of Cauchy-distributed invariants
+are robust.
+
+\end{frame}
+
+
+
+
+
+\begin{frame}{Robustness}{Explicit factors}\small
+
+Consider an explicit factor linear model:
+
+\begin{eqnarray}\label{4.210}
+\begin{aligned}
+{\bf X}_t ={\bf BF}_t +{\bf U}_t
+\end{aligned}
+\end{eqnarray}
+
+The sample estimator of the regression factor loadings are the ordinary least
+squares coe!cients (4.52), which we report here:
+
+\begin{eqnarray}\label{4.211}
+\begin{aligned}
+\widehat{\bf B}  \equiv
+\left( \sum_{t}{\bf x}_t{f}_t^{\prime}  \right)\left( \sum_{t}{\bf x}_t{f}_t^{\prime}  \right)^{-1}
+\end{aligned}
+\end{eqnarray}
+
+We do not discuss the sample covariance of the perturbation, which is the
+same as (4.197), where $\widehat{\bf B}{\bf f}_t$  replaces ${\widehat E}$. We prove in Appendix www.4.7 that
+the influence function for the OLS coe!cients reads:
+
+\begin{eqnarray}\label{4.212}
+\begin{aligned}
+\mathrm{IF}
+\left(( {\bf x},{\bf f} ),f_{\bf X,F},\widehat{\bf B}  \right)
+=
+({\bf xf}^{\prime}-{\bf Bff}^{\prime}){\bf E}\{ {\bf FF}^{\prime} \}^{-1}
+\end{aligned}
+\end{eqnarray}
+
+
+Notice that the influence function of the sample OLS coefficients is not
+bounded. Therefore, the OLS estimate is not robust: a strategically placed
+outlier, also known as leverage point, can completely distort the estimation.
+This is the situation depicted in Figure 4.18.
+\end{frame}
+
+
+\begin{frame}{Robustness}{Explicit factors}\small
+Consider now a parametric explicit factor model conditioned on the factors. We assume as in (4.90) that the perturbations are elliptically distributed and centered in zero. Therefore the respective conditional explicit factor model
+reads:
+
+
+
+\begin{eqnarray}\label{4.213}
+\begin{aligned}
+\mathrm{\bf X}_t|{\bf f}_t \sim
+\mathrm{El}({\bf Bf}_t,{\bf \Sigma},g),
+\end{aligned}
+\end{eqnarray}
+
+where ${\bf \Sigma}$ is the $N \times N$ dispersion matrix of the perturbations and j is their
+probability density generator. In this case the parametric distribution of the
+market invariants is fully determined by the set of parameters is $\bf \theta\equiv ({\bf B},{\bf \Sigma})$.
+
+
+Consider the maximum likelihood estimators of the parameters $\bf \theta$, which
+are defined by the implicit equations (4.92)-(4.94) as follows:
+
+\begin{eqnarray}\label{4.214}
+\begin{aligned}
+\widehat{\bf B}= & \left[ \sum^{T}_{t=1}w
+\left(\mathrm{Ma}^2 \left(  {\bf x}_t,\widehat{\bf B}{\bf f}_t,\widehat{\bf \Sigma}  \right) \right) {\bf x}_t{\bf f}_t^{\prime}
+         \right]   \\
+                 &\left[ \sum^{T}_{t=1}w
+\left(\mathrm{Ma}^2 \left(  {\bf x}_t,\widehat{\bf B}{\bf f}_t,\widehat{\bf \Sigma} \right)  \right) {\bf f}_t{\bf f}_t^{\prime}
+         \right]   \\
+\end{aligned}
+\end{eqnarray}
+
+\begin{eqnarray}\label{4.215}
+\begin{aligned}
+\widehat{\bf \Sigma}=
+\frac{1}{T}
+\sum^{T}_{t=1}w
+\left(\mathrm{Ma}^2 \left(  {\bf x}_t,\widehat{\bf B}{\bf f}_t,\widehat{\bf \Sigma} \right)  \right) ({\bf x}_t-\widehat{\bf B}{\bf f}_t)({\bf x}_t-\widehat{\bf B}{\bf f}_t)^{\prime}\\
+\end{aligned}
+\end{eqnarray}
+
+\end{frame}
+
+
+
+\begin{frame}{Robustness}{Explicit factors}\small
+
+where
+
+\begin{eqnarray}\label{4.216}
+\begin{aligned}
+w(z)\equiv -2\frac{g^{\prime}(z)}{g(z)}
+\end{aligned}
+\end{eqnarray}
+
+These parameters can be expressed as functionals $\widetilde {\bf B}[f_{\bf x}$ and e $\widetilde {\bf \Sigma}[f_{\bf x}$ of the
+empirical pdf. The functionals are defined implicitly as in (4=176) as follows:
+
+\begin{eqnarray}\label{4.217}
+\begin{aligned}
+{\bf 0}=\int_{{\mathbb R}^{N+K}}
+ {\bf \psi}
+ ({\bf x},{\bf f},{\widetilde{\bf B}[h]},{\widetilde{\bf \Sigma}[h]})h({\bf x},{\bf f})
+ d{\bf x}d{\bf f}
+\end{aligned}
+\end{eqnarray}
+
+The vector-valued function $\psi$ in this expression follows from (4.214)-(4.215)
+and reads:
+
+\begin{eqnarray}\label{4.218}
+\begin{aligned}
+ {\bf \psi}
+ ({\bf x},{\bf f},{{\bf B}},{{\bf \Sigma}})
+ \equiv
+ \begin{pmatrix}
+ w\left(\mathrm{Ma}^2 \left(  {\bf x}_t,\widehat{\bf B}{\bf f},\widehat{\bf \Sigma} \right)
+  \right)vec[({\bf x}-{\bf Bf}){\bf f}^{\prime}] \\
+  w\left(\mathrm{Ma}^2 \left(  {\bf x}_t,\widehat{\bf B}{\bf f},\widehat{\bf \Sigma} \right)
+  \right)vec[({\bf x}-{\bf Bf})({\bf x}-{\bf Bf})^{\prime}-{\bf \Sigma}\\
+ \end{pmatrix},
+\end{aligned}
+\end{eqnarray}
+
+where vec is the operator ($A$.104) that stacks the columns of a matrix into a
+vector. From (4.194) and (4.175) the norm of the influence function is proportional to the norm of the above vector:
+
+\begin{eqnarray}\label{4.219}
+\begin{aligned}
+\|
+\mathrm{IF}\left(({\bf x},{\bf f}),f_{\bf X},({\widehat\bf \mu},\widehat{\bf \Sigma})               \right)
+\|
+\propto
+\|\bf \psi\|
+\end{aligned}
+\end{eqnarray}
+
+In particular, if the perturbations are normally distributed the term z in
+(4.218) becomes $w\equiv 1$, see (4.125). Therefore the influence function of the
+regression factor loadings estimator and the perturbation dispersion estimator
+is not bounded. This is not surprising, since we know from Section 4.3 that
+the ML estimators of the regression factor loadings of normally distributed
+factor models are the OLS coe!cients, whose influence function is (4.212). In other words, the ML estimator of the regression factor loadings in a factor
+model with normally distributed perturbations is not robust, and neither is
+the ML estimator of the perturbation dispersion.
+
+\end{frame}
+
+
+
+\begin{frame}{Robustness}{Explicit factors}\small
+On the other hand, if the perturbations are elliptically but not normally
+distributed the influence function display a different behavior. Consider for
+instance Cauchy-distributed perturbations. In this case as in (4.209) the term
+z in (4.218) becomes:
+
+\begin{eqnarray}\label{4.220}
+\begin{aligned}
+w(z)=\frac{N+1}{1+z}
+\end{aligned}
+\end{eqnarray}
+
+Therefore, from (4.219) and (4.202) the influence function becomes bounded.
+In other words, the ML estimators of the regression factor loadings and of the
+perturbation dispersion stemming from Cauchy-distributed perturbations are
+robust
+
+\end{frame}
+
+
+
+
+
+\begin{frame}{Robustness}{Robust estimators}\small
+
+From the above discussion we realize that robust estimators should satisfy
+two requirements. In the first place, since robustness questions the accuracy
+of the parametric assumptions on the unknown distribution of the invariants,
+the construction of robust estimators should be as independent as possible
+of these assumptions. Secondly, robust estimators should display a bounded
+influence function.
+
+By forcing maximum likelihood estimators to have a bounded influence
+function, Maronna (1976) and Huber (1981) developed the so-called Mestimators, or generalized maximum likelihood estimators.
+
+We recall that, under the assumption that the distribution of the market
+invariants is $f_{\bm \theta}$, the maximum likelihood estimators of the parameters $\bm \theta$ are
+defined as functional of the empirical distribution $\widetilde {\bm \theta}[f_{\bf x}$. From (4.176), this
+functional is defined as follows:
+
+\begin{eqnarray}\label{4.221}
+\begin{aligned}
+\widetilde {\bm \theta} [h]: \int_{\mathbb{R}^{N}} {\bm \psi}\left( {\bf x},\widetilde {\bf \theta} \right) h({\bf x}) d{\bf x} \equiv {\bf 0}
+\end{aligned}
+\end{eqnarray}
+
+where $\psi$ follows from the assumptions on the underlying distribution:
+
+\begin{eqnarray}\label{4.222}
+\begin{aligned}
+\psi({\bf x},{\bm \theta}) \equiv
+\frac{\partial \ln f_{\bm \theta}(\bf x)}{\partial {\bm \theta}}
+\end{aligned}
+\end{eqnarray}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}{Robustness}{Robust estimators}\small
+
+M-estimators are also defined by (4.221), but the function ${\bm \psi}( {\bf x},{\bm \theta})$ is chosen exogenously. Under these more general assumptions, the influence function
+(4.194) becomes:
+
+\begin{eqnarray}\label{4.223}
+\begin{aligned}
+\mathrm{IF}\left({\bf x},f_{\bf x},\widehat{\bm \theta}            \right)
+={\bf A}{\bm \psi}\left( {\bf x},\widetilde {\bm \theta}[f_{\bf x}]           \right),
+\end{aligned}
+\end{eqnarray}
+
+
+
+where the $S\times S$ matrix $\bf A$ is defined as follows:
+
+\begin{eqnarray}\label{4.224}
+\begin{aligned}
+{\bf A}\equiv
+-\left[ \int_{{\mathbb R}^N} \frac{\partial{\bm \psi}^{\prime}}{\partial {\bm \theta} }
+\bigg|_{{\bm \theta} \equiv {\widehat{\bm \theta}}[f_{\bf x}]} f_{\bf x}(\bf x)d{\bf x}
+\right]^{-1}
+\end{aligned}
+\end{eqnarray}
+
+
+see Appendix www.4.7.
+
+This way the ensuing estimator $\widetilde {\bm \theta}[f_{\bf x}$ is independent of any assumption on
+the distribution of the underlying market invariants. If the function $\psi$ is chosen
+appropriately, the influence function (4.223) becomes bounded. Therefore, the
+estimator $\widetilde {\bm \theta}[f_{\bf x}$ is robust.
+
+\end{frame}
+
+
+
+\begin{frame}{Robustness}{location and dispersion}\small
+
+Consider (4.207) and replace it with a vector-valued function $psi$ defined exogenously as follows:
+
+\begin{eqnarray}\label{4.225}
+{\bf \psi} \equiv
+\begin{pmatrix}
+\gamma(\mathrm{Ma}^2({\bf x},{\bm\mu},\bf \Sigma))&({\bf x}-{\bm \mu})\\
+\zeta(\mathrm{Ma}^2({\bf x},{\bm\mu},\bf \Sigma))&(\mathrm{vec}(({\bf x}-{\bm \mu})({\bf x}-{\bm \mu})^{\prime}-{\bf \Sigma}))\\
+\end{pmatrix},
+\end{eqnarray}
+
+where $\gamma$ and $\zeta$  are bounded functions that satisfy some regularity criteria. The
+ensuing estimators, which replace (4.203)-(4.205), solve the following implicit
+equations:
+
+\begin{eqnarray}\label{4.226}
+\begin{aligned}
+\widehat{\bm \mu}=
+\sum^{T}_{t=1}
+\frac
+{\gamma\left( \mathrm{Ma}^2 \left(  {\bf x}_t,{\bm\mu},\bf \Sigma   \right)   \right)}
+{\sum^{T}_{t=1} \gamma \left( \mathrm{Ma}^2 \left( {\bf x}_s,{\bm\mu},\bf \Sigma  \right)         \right)   }
+{\bf x}_t
+\end{aligned}
+\end{eqnarray}
+
+\begin{eqnarray}\label{4.227}
+\begin{aligned}
+\widehat{\bf \Sigma}=
+\frac{1}{T}\sum^{T}_{t=1}
+({\bf x}-{\bm \mu})({\bf x}-{\bm \mu})^{\prime}
+\zeta \left(\mathrm{Ma}^2 \left(  {\bf x}_t,{\bm\mu},\bf \Sigma   \right)   \right)
+\end{aligned}
+\end{eqnarray}
+
+Since $\gamma$ and $\zeta$ are bounded functions, so is the influence function and therefore
+these estimators are robust.
+
+For instance, the following is a suitable choice of weights:
+
+\begin{eqnarray}\label{4.228}
+\gamma(x)\equiv \zeta(x)\equiv
+\begin{pmatrix}
+1& if ~ x\leq x_0\\
+\frac{x_0}{x} e^{-\frac{(x-x_0)^2}{2b^2}} & if ~ x> x_0\\
+\end{pmatrix}
+\end{eqnarray}
+
+where $x_0 \equiv (\sqrt{N}+2)/\sqrt{2} $ If we set $b\equiv +\infty  $ we obtain the M-estimators
+suggested by Huber (1964). If we set e $b\equiv 25 $ we obtain the M-estimators
+suggested by Hampel (1973), see also Campbell (1980).
+As in the case of the maximum likelihood estimators, in general the solution to the above implicit equations cannot be computed analytically. Nevertheless, for suitable choices of the functions $\gamma$ and $\zeta$  such as (4.228) a recursive
+approach such as the following is guaranteed to converge. Further results for
+existence and uniqueness of the solution are provided in Huber (1981).
+Step 0. Initialize $\widehat \mu $ and $\widehat \Sigma $ as the sample mean and sample covariance
+respectively.
+
+Step 1. Compute the right hand side of (4.226) and (4.227).
+
+Step 2. Update the left hand side of (4.226) and (4.227).
+
+Step 3. If convergence has been reached stop, otherwise go to Step 1.
+
+
+
+
+{\bf Explicit factors}
+It is possible to define multivariate M-estimators of the factor loadings and of
+the dispersion of the perturbations of an explicit factor model. The discussion
+proceeds exactly as above. Nevertheless, due to the larger number of parameters, convergence problems arise for the numerical routines that should yield
+the estimators in practice.
+\end{frame}
+
+% 229.....................................................................
+\section[Practical tips]{Practical tips}
+
+In this section we provide a few tips that turn out useful in practical estimation
+problems.
+\begin{frame}{Practical tips}{Definition of outliers}\small
+
+In Section 4.5.1 we introduced the tools to measure the effect on an estimate
+of one outlier both in the finite sample case, namely the influence curve and
+the jackknife, and in the infinite sample limit, namely the influence function.
+Another interesting question is the maximum amount of outliers that a certain
+estimator can sustain before breaking down: if there is a total of $T = T_G +T_O$
+observations, where $T_G$ are good data and $T_O$ outliers, what is the highest
+ratio $T_O/T$that the estimator can sustain?
+The breakdown point is the limit of this ratio when the number of observations tends to infinity. Obviously, the breakdown point is a positive number
+that cannot exceed 0.5.
+
+\begin{example}
+For example, suppose that we are interested in estimating the location
+parameter of an invariant ${X_t}$.
+
+Consider first the sample mean (4=41), which we report here:
+
+
+\begin{eqnarray}\label{4.229}
+\begin{aligned}
+\widehat{E}
+\equiv
+\frac{1}{T}\sum^{T}_{t=1}{x_t}
+\end{aligned}
+\end{eqnarray}
+
+From (4.198) breakdown point of the sample mean is 0, as one single outlier
+can disrupt the estimation completely.
+\end{example}
+
+\end{frame}
+
+
+
+\begin{frame}{Practical tips}{Definition of outliers}\small
+
+\begin{example}
+Consider now the sample median (4.39), which we report here:
+
+\begin{eqnarray}\label{4.230}
+\begin{aligned}
+\widehat{q}_{1/2}
+\equiv
+x_{[T/2]:T},
+\end{aligned}
+\end{eqnarray}
+
+where [·] denotes the integer part. The breakdown point of the median is
+0=5. Indeed, changing the values of half the sample, i.e. all (minus one) the
+observations larger than $x_{[T/2]:T} $, or all (minus one) the observations smaller
+than $x_{[T/2]:T} $, does not affect the result of the estimation.
+\end{example}
+
+Estimators whose breakdown point is close to 0.5 are called $high breakdown
+estimators$. These estimators are useful in financial applications because they
+allow us to detect outliers. Indeed, time series are often fraught with suspicious
+data. In the case of one-dimensional variables it is relatively easy to spot these
+outliers by means of graphical inspection. In the multivariate case, this task
+becomes much more challenging
+\end{frame}
+
+
+\begin{frame}{Practical tips}{Definition of outliers}\small
+
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=4cm]{4_19.png}\\
+  \caption{Minimum Volume Ellipsoid}
+\end{figure}
+
+
+There exists a vast literature on estimators with high breakdown point,
+see Huber (1981) and Hampel, Ronchetti, Rousseeuw, and Stahel (1986). Here
+we propose two methods to build high breakdown estimators of location and
+dispersion: the $minimum volume ellipsoid$ (MVE) and the$ minimum covariance determinant $(MCD), see Rousseeuw and Leroy (1987), Rousseeuw and
+VanDriessen (1999). The rationale behind these estimators rests on the assumption that the core of the good data is tightly packed, whereas the joint
+set of good data and outliers is much more scattered, see Figure 4.19
+
+\end{frame}
+
+
+
+
+\begin{frame}{Practical tips}{Minimum volume ellipsoid}\small
+
+Suppose we know that $T_G$ out of the $T$ data are good and $T_O$ are outliers. Due
+to the above rationale, the smallest ellipsoid that contains the $T_G$ good data is
+the smallest among all the ellipsoids that contain any set of $T_G$ observations.
+
+Consider a generic location parameter $\bf \mu$, i.e. an Q-dimensional vector,
+and a generic scatter matrix $\bf \Sigma $ , i.e. a positive and symmetric $N \times N$ matrix.
+The parameters $(\bf \mu,\bf \Sigma )$ define an ellipsoid  $\mathcal{E}_{{\bf m},{\bf S}}$ as in (D.73). We can inflate
+this ellipsoid as follows:
+
+\begin{eqnarray}\label{4.231}
+\begin{aligned}
+\mathcal{E}^{q}_{{\bm\mu},\bf \Sigma}
+\equiv
+\{
+{\bf x} \in \mathbb{R}^{N}~ \mathrm{such~that}~
+({\bf x}-{\bm \mu})^{\prime}({\bf x}-{\bm \mu})  \leq q^2
+\}
+\end{aligned}
+\end{eqnarray}
+
+This locus represents a rescaled version of the original ellipsoid, where all the
+principal axis are multiplied by a factor $q$. From (A.77) the volume of the
+inflated ellipsoid reads:
+
+\begin{eqnarray}\label{4.232}
+\begin{aligned}
+\mathrm{Vol} \{ \mathcal{E}^{q}_{{\bm\mu},\bf \Sigma} \}
+=
+\gamma_{Nq^{N}} \sqrt{|{\bf \Sigma}|} ,
+\end{aligned}
+\end{eqnarray}
+
+where $\gamma$ is the volume of the unit sphere:
+
+\begin{eqnarray}\label{4.233}
+\begin{aligned}
+{\gamma}_{N}
+\equiv
+\frac{\pi^{\frac{N}{2}}}{\Gamma(\frac{N}{2}+1)}
+\end{aligned}
+\end{eqnarray}
+\end{frame}
+
+
+\begin{frame}{Practical tips}{Minimum volume ellipsoid}\small
+
+Consider the set of Mahalanobis distances (2.61) of each observation from the
+location parameter $\bf \mu$ through the metric $\bf \Sigma$ :
+
+\begin{eqnarray}\label{4.234}
+\begin{aligned}
+\mathrm{Ma}^{{\bm\mu},\bf \Sigma}
+\equiv
+\mathrm{Ma}({\bf x},{\bm\mu},\bf \Sigma)
+\equiv
+\sqrt   ({\bf x}-{\bm \mu})^{\prime}{\Sigma^{-1}}({\bf x}-{\bm \mu}).
+\end{aligned}
+\end{eqnarray}
+
+We can sort these distances in increasing order and consider the $T_G$-th distance:
+
+\begin{eqnarray}\label{4.235}
+\begin{aligned}
+qT_G
+\equiv
+\mathrm{Ma}^{{\bm\mu},\bf \Sigma}_{T_G:T}
+\end{aligned}
+\end{eqnarray}
+
+By construction, the ellipsoid $\mathrm{Vol}\{ \mathcal{E}^{qT_G}_{{\bm\mu},\bf \Sigma} \}$ contains only $T_G$  points and from (4=232)
+its volume reads:
+
+\begin{eqnarray}\label{4.236}
+\begin{aligned}
+\mathrm{Vol}\{ \mathcal{E}^{qT_G}_{{\bm\mu},\bf \Sigma} \}=
+\gamma_{N}(\mathrm{Ma}^{{\bm\mu},\bf \Sigma}_{T_G:T})^{N}
+\sqrt{|\Sigma|}
+\end{aligned}
+\end{eqnarray}
+
+Notice that the product on the right hand side of this expression does not
+depend on the determinant of ${\bf \Sigma}$. Therefore we can impose the constraint that
+the determinant of ${\bf \Sigma}$ be one.
+\end{frame}
+
+
+
+
+
+\begin{frame}{Practical tips}{Minimum volume ellipsoid}\small
+Consequently, the parameters that give rise to the smallest ellipsoid that
+contains $T_G$ observations solve the following equation:
+
+\begin{eqnarray}\label{4.237}
+\begin{aligned}
+({\widehat {\mu_{T_G}}},{\widehat \Sigma_{T_G}})
+=
+\underset{{\bm\mu},\bf \Sigma \succeq {\bf 0},|{\bf \Sigma }|=1}{\mathrm{argmin}}
+\{ \mathrm{Ma}^{{\bm\mu},\bf \Sigma}_{T_G:T} \}
+\end{aligned}
+\end{eqnarray}
+
+where the the notation $\bf \Sigma \succeq {\bf 0}$ means that $\bf \Sigma$ is symmetric and positive. Once
+we have computed the parameters (4.237), we tag as outliers all the observation that are not contained in the ellipsoid (4.231) determined by (4.237),
+with the radius (4.235) implied by (4.237).
+In reality we do not know a priori the true number $T_G$ of good data. Nevertheless, if $T_G$ is the largest set of good data, the minimum volume ellipsoid
+that contains $T_G + 1$ observations has a much larger volume than the minimum volume ellipsoid that contains $T_G$ observations. Therefore, we consider
+the volume of the minimum volume ellipsoid as a function of the number of
+observations contained in the ellipsoid:
+
+
+\begin{eqnarray}\label{4.238}
+\begin{aligned}
+T_G
+\rightarrow
+\gamma_{N}
+\left( \mathrm{Ma}^{{\widehat{\bm\mu}}_{T_G},{\widehat{\bf{\Sigma}}}_{T_{G}}}_{T_{G}:T} \right)^{N}
+\end{aligned}
+\end{eqnarray}
+\end{frame}
+
+\begin{frame}{Practical tips}{Minimum volume ellipsoid}\small
+The true number of good data is the value $T_G$ where this function displays an
+abrupt jump, see Figure 4.20
+
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=4cm]{4_20.png}\\
+  \caption{Detection of outliers}
+\end{figure}
+
+
+The optimization problem (4.237) cannot be solved analytically. Numerical algorithms both deterministic and non-deterministic are available in the
+literature. We present below an approach that we used to generate the figures
+in this section.
+
+\end{frame}
+
+
+\begin{frame}{Minimum covariance determinant}
+
+An alternative approach to detect outliers is provided by the minimum covariance determinant. This method also searches the "smallest ellipsoid". Instead
+of the smallest ellipsoid defined by the cloud of data we look for the smallest
+ellipsoid defined by the sample covariance of the data. Indeed, we recall from
+(4=48) that the sample covariance defines the smallest ellipsoid that fits the
+data in an average sense.
+Suppose that we know the number of good observations ${T_G}$. Consider a
+generic subset of ${T_G}$ observations ${\bf x}_{1}^{*},...,{\bf x}_{T_G}^{*} $ from the ${T}$ observations in
+the time series lW of the market invariants. We can compute the sample mean
+(4=41) and sample covariance (4=42) associated with this subset:
+
+
+\begin{eqnarray}\label{4.239}
+\begin{aligned}
+{\widehat{E}}^{*}_{T_G}
+\equiv
+\frac{1}{T_G}\sum^{T_G}_{t=1} {\bf x}^{*}_t
+\end{aligned}
+\end{eqnarray}
+
+\begin{eqnarray}\label{4.240}
+\begin{aligned}
+\widehat{\mathrm {Cov}}^{*}_{T_G}
+\equiv
+\frac{1}{T_G}\sum^{T_G}_{t=1} ({\bf x}^{*}_t-\widehat{E}^{*}_{T_G})({\bf x}^{*}_t-\widehat{E}^{*}_{T_G})^{\prime}
+\end{aligned}
+\end{eqnarray}
+
+Consider the ellipsoid determined by these parameters:
+
+
+
+
+\begin{eqnarray}\label{4.241}
+\begin{aligned}
+\mathcal{E}^{*}
+\equiv
+\left\{
+{\bf x}: ({\bf x}^{*}_t-\widehat{E}^{*}_{T_G})^{\prime}
+(\widehat{{\mathrm Cov}}^{*}_{T_G})^{-1}
+({\bf x}^{*}_t-\widehat{E}^{*}_{T_G})
+\right\}
+\end{aligned}
+\end{eqnarray}
+
+\end{frame}
+
+\begin{frame}{Practical tips}{Minimum volume ellipsoid}\small
+
+From (A.77), the volume of $\mathcal{E}^{*}$ is proportional to the square root of the determinant of (4.240).
+Therefore we have to determine the subset of observations that gives rise
+to the minimum covariance determinant:
+
+
+\begin{eqnarray}\label{4.242}
+\begin{aligned}
+\{{\bf x}_{1}^{\times},...,{\bf x}_{T_G}^{\times}\}
+=
+\mathrm \underset{{\bf x}_{1}^{*},...,{\bf x}_{T_G}^{*} \in i_T}{argmin}
+|\widehat{{\mathrm Cov}}^{*}_{T_G}  |
+\end{aligned}
+\end{eqnarray}
+
+In reality we do not know a priori the true number $T_G$ of good data. Nevertheless, if $T_G$  is the largest set of good data, the minimum covariance determinant
+relative to $T_G  + 1$ observations is much larger than the minimum covariance
+determinant relative to $T_G$ observations. Therefore, we consider the minimum
+covariance determinant as a function of the number of observations contained
+in the ellipsoid:
+
+\begin{eqnarray}\label{4.243}
+\begin{aligned}
+T_G  \rightarrow |\widehat{{\mathrm Cov}}^{\times}_{T_G}  |
+\end{aligned}
+\end{eqnarray}
+
+The true number of good data is the value $T_G$ where this function displays an
+abrupt jump, see Figure 4.20.
+
+The optimization problem (4.242) cannot be solved exactly. We present
+below an approach that we used to generate the figures in this section
+
+\end{frame}
+
+
+
+\begin{frame}{Practical tips}{Computational issues}\small
+
+Suppose we have a series of observations $\{x_1,...x_T \}$. Assume we know that
+$T_G \leq T$ among them are good data.
+
+In principle we should compute the minium volume ellipsoid and the sample covariance matrix for all the possible combinations of $T_G$ observations out
+of the total $T$ observations. This number reads:
+
+
+\begin{eqnarray}\label{4.244}
+\begin{pmatrix}
+T\\
+T_G\\
+\end{pmatrix}
+\equiv
+\frac{T_G!}{T_G!(T-TG)!},
+\end{eqnarray}
+which is intractably large if $T$ exceeds the order of the dozen. Instead, we
+delete the unwelcome observations one at a time from the initial set of $T$
+observations using a theoretically sub-optimal, yet for practical purposes very
+effective, approach.
+
+\end{frame}
+
+\begin{frame}{Practical tips}{Computational issues}\small
+
+First we build Routine $\bf A$, which computes the smallest ellipsoid $\mathcal{E}_{{\bf m},{\bf S}}$ that
+contains a given set of observations $\{x_1,...x_T \}$.
+
+Step 0. Initialize the relative weights:
+
+\begin{eqnarray}\label{4.245}
+\begin{aligned}
+w_t \equiv \frac{1}{T}, t=1,...,T.
+\end{aligned}
+\end{eqnarray}
+
+Step 1. Compute the location parameter $\bf m$ and the scatter matrix $\bf  S $as
+follows:
+
+\begin{eqnarray}\label{4.246}
+\begin{aligned}
+{\bf m} \equiv \frac{1}{\sum^{T}_{s=1} w_s} \sum^{T}_{t=1} w_t{\bf x }_t
+\end{aligned}
+\end{eqnarray}
+
+\begin{eqnarray}\label{4.247}
+\begin{aligned}
+{\bf S} \equiv \sum^{T}_{t=1} w_t ({\bf x}_t -{\bf m})({\bf x}_t -{\bf m})^{\prime}
+\end{aligned}
+\end{eqnarray}
+Notice that the weights in the scatter matrix are not normalized
+
+\end{frame}
+
+\begin{frame}{Practical tips}{Computational issues}\small
+
+Step 2. Compute the square Mahalanobis distances:
+
+\begin{eqnarray}\label{4.248}
+\begin{aligned}
+{\mathrm Ma}^{2}_{t} \equiv ({\bf x} -{\bf m}){\bf S}^{-1}({\bf x} -{\bf m})^{\prime}
+\end{aligned}
+\end{eqnarray}
+
+Step 3. Update the weights: if $\mathrm{Ma}^2 >1 $ change the respective weight as
+follows:
+
+\begin{eqnarray}\label{4.249}
+\begin{aligned}
+w_t \mapsto w_t {\mathrm Ma}^2_t ;
+\end{aligned}
+\end{eqnarray}
+
+otherwise, leave the weight unchanged.
+Step 4. If convergence has been reached, stop and define $\mathcal{E}_{{\bf m},{\bf S}}$ as in (A.73),
+otherwise, go to Step 1.
+Secondly, we build Routine B, which spots the farthest outlier in a series
+of observations $\{x_1,...x_T \}$. Define the following $T  \times N$ matrix:
+
+\begin{eqnarray}\label{4.250}
+{\bf U} \equiv
+\begin{pmatrix}
+{\bf x}_1-{\widehat E}^{\prime}\\
+\vdots\\
+{\bf x}_1-{\widehat E}^{\prime}\\
+\end{pmatrix}
+\end{eqnarray}
+
+where $\widehat E$ is the sample mean (4.41) of the data. The sample covariance matrix
+(4.42) can be written as follows:
+
+\begin{eqnarray}\label{4.251}
+\begin{aligned}
+\widehat {\mathrm{Cov}}
+\equiv
+\frac{1}{T}{\bf U}^{\prime}{\bf U}
+\end{aligned}
+\end{eqnarray}
+
+We aim at finding the observation ${\bf x}_t$ such that if we remove it from the set
+$\{x_1,...x_T \}$ the determinant of the resulting sample covariance is reduced
+the most. This would mean that by dropping that observation the locationdispersion ellipsoid defined by sample mean and covariance shrinks the most,
+and thus that observation is the farthest outlier in the sample. To do this, we
+use the following result, see Poston, Wegman, Priebe, and Solka (1997):
+
+\begin{eqnarray}\label{4.252}
+\begin{aligned}
+|{\bf U}^{\prime}_(-t){\bf U}_(-t)|=
+(1-\lambda_{t})|{\bf U}^{\prime}{\bf U})|
+\end{aligned}
+\end{eqnarray}
+
+In this expression ${\bf U}_{(-t)}$ denotes the matrix (4.250) after removing the $t$-th
+row and $\lambda_t$ denotes the $t$-th element of the diagonal of the $information matrix$:
+
+\begin{eqnarray}\label{4.253}
+\begin{aligned}
+\lambda_t
+\equiv
+({\bf U}({\bf U}^{\prime}{\bf U})^{-1}{\bf U}^{\prime})_{tt}
+\end{aligned}
+\end{eqnarray}
+
+\end{frame}
+
+\begin{frame}{Practical tips}{Computational issues}\small
+
+It can be proved that
+
+\begin{eqnarray}\label{4.254}
+\begin{aligned}
+0 \leq \lambda_t \leq 1
+\end{aligned}
+\end{eqnarray}
+
+Therefore, the farthest outlier corresponds to the highest value of $\lambda_t$, unless
+$\lambda_t=1$: in this last case, if we remove the w-th observation the sample covariance becomes singular, as is evident from (4=252).
+
+Now we can define Routine C, which detects the outliers among the given
+data by means of the minimum volume ellipsoid and the minimum covariance
+determinant.
+
+Step 0. Consider as data all the observations.
+
+Step 1. Compute the sample mean and covariance $ (\widehat{E},\widehat {\mathrm{Cov}}) $   of the given
+data and compute the determinant of the sample covariance
+$\widehat {\mathrm{Cov}}$.
+
+Step 2. Compute with Routine A the minimum volume ellipsoid of the
+given data $\mathcal{E}_{{\bf m},{\bf S}}$ and compute $|\bf S|$.
+
+Step 3. Find the farthest outlier among the data with Routine B and
+remove it from the data.
+
+Step 4. If the number of data left is less than half the original number
+stop, otherwise go to Step 1.
+
+The plot of
+Cov $|\widehat {\mathrm{Cov}}|$ and/or $|\bf S|$ as a function of the number of observations
+in the dataset shows an abrupt jump when the first outlier is added to the
+dataset, see Figure 4.20. The respective sample covariance $\widehat {\mathrm{Cov}}$ d is the minimum covariance determinant and the respective ellipsoid $\mathcal{E}_{{\bf m},{\bf S}}$ is the minimum
+volume ellipsoid.
+
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}{Practical tips}{Missing data}\small
+
+
+Sometimes some data is missing from the time series of observations. Our
+purpose is twofold. On the one hand, we are interested in interpolating the
+missing values. On the other hand we want to estimate parameters of interest
+regarding the market invariants, such as parameters of location or dispersion.
+We refer the reader to Stambaugh (1997) for a discussion of the case where
+some series are shorter than others. Here, we discuss the case where some
+observations are missing randomly from the time series.
+
+Consider a $T \times N $ panel of observations, where $T$ is the length of the
+sample and $N$ is the number of market invariants. Each row of this matrix
+corresponds to a joint observation ${\bf x}_t$ of the invariants at a specific date. In
+some rows one or more entry might be missing:
+
+
+
+\begin{eqnarray}\label{4.255}
+\begin{aligned}
+{\bf x}_t \equiv {\bf x}_t,\mathrm{mis}(t)\cup {\bf x}_t,\mathrm{obs}(t)
+\end{aligned}
+\end{eqnarray}
+
+
+
+\begin{example}
+
+where we stressed that the set of missing and observed values depends on the
+specific date $t$. Notice that for most w the set ${\bf x}_{t,mis(t)}$ is empty.
+
+\begin{eqnarray}\label{4.256}
+\begin{aligned}
+\mathrm{mis}(7)\equiv \{2\}, \mathrm{obs}(7)\equiv \{1,3,4\}
+\end{aligned}
+\end{eqnarray}
+\end{example}
+
+\end{frame}
+
+\begin{frame}{Practical tips}{Missing data}\small
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=4cm]{4_21.png}\\
+  \caption{EM algorithm for data recovery}
+\end{figure}
+
+Following Little and Rubin (1987) we make the simplifying assumption
+that prior to their realization the invariants are independent and normally
+distributed:
+
+\begin{eqnarray}\label{4.257}
+\begin{pmatrix}
+{\bf X}_{t,{\mathrm {mis}(t)}}\\
+{\bf X}_{t,{\mathrm {obs}(t)}}\\
+\end{pmatrix}
+\sim \mathrm{N}
+\begin{pmatrix}
+\begin{pmatrix}
+{\bm\mu}_{\mathrm{mis}(t)}\\
+{\bm\mu}_{\mathrm{obs}(t)}\\
+\end{pmatrix}
+,
+\begin{pmatrix}
+{\bf\Sigma}_{\mathrm{mis}(t),\mathrm{mis}(t)}{\bf\Sigma}_{\mathrm{mis}(t),\mathrm{obs}(t)}\\
+{\bf\Sigma}_{\mathrm{obs}(t),\mathrm{mis}(t)}{\bf\Sigma}_{\mathrm{obs}(t),\mathrm{obs}(t)}\\
+\end{pmatrix}
+\end{pmatrix}
+\end{eqnarray}
+
+The algorithm we propose is a specific instance of a general approach called
+$expectation-maximization$ (EM) algorithm, see Dempster, Laird, and Rubin
+(1977) and also Bilmes (1998). In Figure 4.21 we recovered a few missing
+values with the EM algorithm.
+
+
+
+\end{frame}
+
+
+
+
+\begin{frame}{Practical tips}{Missing data}\small
+
+\begin{eqnarray}\label{4.258}
+\begin{aligned}
+\mu_{n}^{(u)} \equiv \frac{1}{T_n} \sum_{t\in \mathrm{avail.obs}} x_{t,n}
+\end{aligned}
+\end{eqnarray}
+
+The algorithm proceeds as follows, see Appendix www.4.8 for the proofs.
+Step 0. Set $u\equiv 0$and initialize both the location and the dispersion
+parameters. For all $n=1,...,N $ set:
+
+\begin{eqnarray}\label{4.259}
+\begin{aligned}
+\Sigma_{nn}^{(u)} \equiv \frac{1}{T_n} \sum_{t\in \mathrm{avail.obs}}
+(x_{t,n}-\mu_{n}^{(u)} )^2,
+\end{aligned}
+\end{eqnarray}
+
+where $T_n$ is the number of available observations for the generic $n$-th market
+invariant. For all $n,m=1,...,N, n\neq m$set:
+
+\begin{eqnarray}\label{4.260}
+\begin{aligned}
+\Sigma_{nm}^{(u)}\equiv 0
+\end{aligned}
+\end{eqnarray}
+
+
+Step 1. For each $t=1,...,T$fill in the missing entries by replacing the
+missing values with their expected value conditional on the observations. For
+the observed values we have
+
+\begin{eqnarray}\label{4.261}
+\begin{aligned}
+{\bf x}_{t,\mathrm{obs}(t)}^{(u)}\equiv {\bf x}_{t,\mathrm{obs}(t)};
+\end{aligned}
+\end{eqnarray}
+
+\end{frame}
+
+\begin{frame}{Practical tips}{Missing data}\small
+
+and for the missing values we have:
+
+\begin{eqnarray}\label{4.262}
+\begin{aligned}
+{\bf x}_{t,\mathrm{mis}(t)}^{(u)}\equiv & {\bm \mu}_{\mathrm{mis}(t)}^{(u)}\\
+                                        & +\Sigma_{\mathrm{mis}(t),\mathrm{obs}(t)}^{(u)}
+                                        \left( \Sigma_{\mathrm{obs}(t),\mathrm{obs}(t)}^{(u)}            \right)^{-1}
+                                        \left(
+                                        {\bf x}_{t,\mathrm{obs}(t)}-{\bm \mu}_{\mathrm{obs}(t)}^{(u)}
+                                        \right)
+\end{aligned}
+\end{eqnarray}
+
+Step 2. For each $t=1,...,T$compute the conditional covariance, which
+is zero if at least one of the invariants is observed:
+
+\begin{eqnarray}\label{4.263}
+\begin{aligned}
+{\bf C}^{(u)}_{t,\mathrm{obs}(t),\mathrm{mis}(t)} \equiv {\bf 0}, ~
+{\bf C}^{(u)}_{t,\mathrm{obs}(t),\mathrm{obs}(t)} \equiv {\bf 0},
+\end{aligned}
+\end{eqnarray}
+
+and otherwise reads:
+
+\begin{eqnarray}\label{4.264}
+\begin{aligned}
+{\bf C}^{(u)}_{t,\mathrm{mis}(t),\mathrm{mis}(t)}
+\equiv
+& {\bf \Sigma}^{(u)}_{\mathrm{mis}(t),\mathrm{mis}(t)}\\
+& {\bf \Sigma}^{(u)}_{\mathrm{mis}(t),\mathrm{obs}(t)}
+  ({\bf \Sigma}^{(u)}_{\mathrm{obs}(t),\mathrm{obs}(t)})^{-1}
+   {\bf \Sigma}^{(u)}_{\mathrm{obs}(t),\mathrm{mis}(t)}.
+\end{aligned}
+\end{eqnarray}
+
+Step 3. Update the estimate of the location parameter:
+
+\begin{eqnarray}\label{4.265}
+\begin{aligned}
+{\bm \mu}^{(u+1)}
+\equiv
+\frac{1}{T}\sum_{{\bf x}_t}^{(u)}
+\end{aligned}
+\end{eqnarray}
+
+Step 4. Update the estimate of the dispersion parameter:
+
+\begin{eqnarray}\label{4.266}
+\begin{aligned}
+{\bf \Sigma}^{(u+1)}
+\equiv
+\frac{1}{T}\sum_{t}{\bf C}_t^{(u)}
+-({\bm \mu}^{(u+1)}-{\bm \mu}^{(u)})({\bm \mu}^{(u+1)}-{\bm \mu}^{(u)})^{\prime}
+\end{aligned}
+\end{eqnarray}
+
+Step 5. If convergence has been reached, stop. Otherwise, set $u \equiv  u + 1$
+and go to Step 1.
+
+\end{frame}
+
+% 267.....................................................................
+
+\begin{frame}{Weighted estimates}
+
+We have seen in (4.167) and comments that follow that any estimator  $\widehat {\bf G}$ can
+be represented as a functional Ge  $\widetilde {\bf G}[f_{i_T}]$that acts on the empirical probability
+density function of the time series of the market invariants:
+
+\begin{eqnarray}\label{4.267}
+\begin{aligned}
+i_T\equiv  \{\bf{x}_1,...\bf{x}_T\}
+\end{aligned}
+\end{eqnarray}
+
+
+In the definition of the empirical density function (4=168) and thus in the
+definition of the estimator $\widehat {\bf G}$ the order of the realization of the market invariants does not play a role. This is correct, since the invariants are independent
+and identically distributed across time, see (4=5).
+
+Nevertheless, intuition suggests that the most recent observations should
+somehow play a more important role than observations farther back in the
+past. To account for this remark, it su!ces to replace the definition of the
+empirical probability density function (4=168) as follows:
+
+\begin{eqnarray}\label{4.268}
+\begin{aligned}
+f_{i_T}\mapsto f_{i_T} \equiv
+\frac{1}{\sum^{T}_{s=1}W_s}
+\sum^{T}_{t=1}w_t\delta^{(\bf{x}_t)}
+,
+\end{aligned}
+\end{eqnarray}
+
+where $\delta$ is the Dirac delta (B.17) and where the weights $w_t$ are positive,
+non-decreasing functions of the time index w. We present below two notable
+cases.
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{frame}{Practical tips}{Rolling Window}\small
+
+A simple way to give more weight to the last observations is to assume that
+only the last set of observations is good at forecasting, whereas considering
+the previous observations might be disruptive. Therefore, we consider only
+the rolling window of the last $T$ observations among the $W$ in the whole time
+series. This corresponds to setting in (4=268) the following weights:
+
+\begin{eqnarray}\label{4.269}
+\begin{aligned}
+w_t \equiv 1, \mathrm{if}~ t> T-W
+\end{aligned}
+\end{eqnarray}
+
+
+
+\begin{eqnarray}\label{4.270}
+\begin{aligned}
+w_t \equiv 0, \mathrm{if} ~t\leq T-W
+\end{aligned}
+\end{eqnarray}
+
+Each time a new observation is added to the time series, we roll over the
+window and again we only consider the last $W$ observations.
+
+
+
+\begin{example}
+
+For example, if we are at time $T$ , the sample mean (4.41) becomes:
+
+\begin{eqnarray}\label{4.271}
+\begin{aligned}
+\widehat{E}_W \equiv \frac{1}{W}\sum^{T}_{t=T-W+1} {\bf{x}}_t
+\end{aligned}
+\end{eqnarray}
+
+and the sample covariance (4.42) becomes:
+
+\begin{eqnarray}\label{4.272}
+\begin{aligned}
+\widehat{\mathrm{Cov}}_W \equiv \frac{1}{W}\sum^{T}_{t=T-W+1}
+({\bf{x}}_t-\widehat{\bm{\mu}}_w)({\bf{x}}_t-\widehat{\bm{\mu}}_w)^{\prime}
+\end{aligned}
+\end{eqnarray}
+\end{example}
+
+
+\end{frame}
+\begin{frame}{Practical tips}{Rolling Window}\small
+To determine the most appropriate value of the rolling window one should
+keep in mind the specific investment horizon
+
+\end{frame}
+
+\begin{frame}{Practical tips}{Exponential smoothing}\small
+
+A less dramatic approach consists in giving less and less weight to past observations in a smooth fashion. The $exponential smoothing$ consists in setting in
+(4.268) weights that decay exponentially:
+
+\begin{eqnarray}\label{4.273}
+\begin{aligned}
+w_t\equiv (1-\lambda)^{T-t} ,
+\end{aligned}
+\end{eqnarray}
+
+where $\lambda$ is a fixed decay factor between zero and one. Notice that the case $\lambda \equiv {\bf 0}$ recovers the standard empirical pdf. If the decay factor is strictly positive,
+the weight of past observations in the estimate tapers at an exponential rate.
+
+\begin{example}
+\begin{eqnarray}\label{4.274}
+\begin{aligned}
+\widehat{\bf{E}}_{\lambda}
+\equiv
+\frac{\lambda}{1-(1-\lambda)^{T}}
+\sum^{T}_{t=1}(1-\lambda)^{T-t}\bf{X}_t;
+\end{aligned}
+\end{eqnarray}
+
+\begin{eqnarray}\label{4.275}
+\begin{aligned}
+\widehat{\mathrm{Cov}}_{\lambda} \equiv
+\frac{\lambda}{1-(1-\lambda)^{T}}
+\sum^{T}_{t=1}(1-\lambda)^{T-t}
+(\bf{x}_t-\widehat{E}_{\lambda})(\bf{x}_t-\widehat{E}_{\lambda})^{\prime}
+\end{aligned}
+\end{eqnarray}
+\end{example}
+
+
+\end{frame}
+
+
+\begin{frame}{Practical tips}{Exponential smoothing}\small
+
+The exponential smoothing estimate is used, among others, by RiskMetrics and Goldman Sachs, see Litterman and Winkelmann (1998). To assign a
+suitable value to the decay factor a possible approach is to choose a parametric form for the probability density function and then apply the maximum
+likelihood principle (4.66).
+
+\begin{eqnarray}\label{4.276}
+\begin{aligned}
+\widetilde{\lambda}\equiv \underset{0 \leq \lambda <1}{\mathrm{argmax}}
+\left(-\frac{T}{2}\ln|\widehat{\mathrm{Cov}}_{\lambda}|
+-\frac{1}{2}\sum^{T}_{t=1}
+(\bf{x}_t-\widehat{E}_{\lambda})^{\prime}
+\widehat{\mathrm{Cov}}_{\lambda}^{-1}
+(\bf{x}_t-\widehat{E}_{\lambda}) \right)
+\end{aligned}
+\end{eqnarray}
+
+The exponential smoothing presents an interesting link to $GARCH$ models, an acronym for Generalized AutoRegressive Conditionally Heteroskedastic
+models, see Engle (1982) and Bollerslev (1986). Indeed, by recursive substitution we can check that in the presence of an infinite series of observations
+the exponential smoothing is consistent with the following $GARCH$ model:
+
+\begin{eqnarray}\label{4.277}
+\begin{aligned}
+X_t \equiv \mu +\epsilon_t,
+\end{aligned}
+\end{eqnarray}
+
+where $\epsilon_t$ are random perturbations such that:
+
+\begin{eqnarray}\label{4.278}
+\begin{aligned}
+\mathrm{Var}\{\epsilon_t\}=\lambda\epsilon^2_{t-1}+(1-\lambda)\mathrm{Var}\{\epsilon_{t-1}\}.
+\end{aligned}
+\end{eqnarray}
+
+\end{frame}
+
+In order for the market invariants to be independent across time it is necessary
+that they refer to non-overlapping time intervals as in Figure 3.11.
+
+
+\begin{frame}{Practical tips}{Overlapping data}\small
+\begin{example}
+
+For example, consider the case of the equity market where the invariants
+are the compounded returns (3.11). Suppose that the returns are identically
+normally distributed and independent:
+
+\begin{eqnarray}\label{4.279}
+\begin{pmatrix}
+C_{t,\tau}\\
+C_{t+\tau,\tau}\\
+\vdots\\
+\end{pmatrix}
+\sim N
+\begin{pmatrix}
+\begin{pmatrix}
+\mu\\
+\mu\\
+\vdots
+\end{pmatrix}
+,
+&
+\begin{pmatrix}
+\sigma^2&0&\ddots\\
+0&\sigma^2&\ddots\\
+\ddots&\ddots&\ddots
+\end{pmatrix}
+\end{pmatrix}
+\end{eqnarray}
+
+From (2.163) we immediately derive the distribution of the overlapping time
+series:
+
+\begin{eqnarray}\label{4.280}
+\begin{pmatrix}
+C_{t,2\tau}\\
+C_{t+\tau,2\tau}\\
+\vdots\\
+\end{pmatrix}
+=
+\begin{pmatrix}
+C_{t,\tau}+C_{t-\tau,\tau}\\
+C_{t+\tau,\tau}+C_{t,\tau}\\
+\vdots\\
+\end{pmatrix}
+\sim \mathrm{N}(\bm{m},\bf{S})
+\end{eqnarray}
+This expression shows that that the overlapping observations are not independent.
+
+\end{example}
+\end{frame}
+
+\begin{frame}{Practical tips}{Overlapping data}\small
+\begin{example}
+\begin{eqnarray}\label{4.281}
+\bm{m} \equiv
+\begin{pmatrix}
+2\mu\\
+2\mu\\
+\vdots\\
+\end{pmatrix}
+,
+\bf{S}\equiv
+\begin{pmatrix}
+2\sigma^2  &  \sigma^2 &\cdots\\
+\sigma^2   & 2\sigma^2  &  \ddots\\
+\ddots      &  \ddots   &  \ddots\\
+\end{pmatrix}
+\end{eqnarray}
+\end{example}
+In some circumstances it is possible and even advisable to consider overlapping data, see Campbell, Lo, and MacKinlay (1997).
+\end{frame}
+
+
+\begin{frame}{Practical tips}{Zero-mean invariants}\small
+When a location parameter such as the expected value of a market invariant
+is close to null with respect to a dispersion parameter such as its standard
+deviation, it might be convenient to assume that the location parameter is
+zero, instead of estimating it. We can interpret this approach as an extreme
+case of shrinkage, see Section 4.4.
+
+This approach often leads to better results, see Alexander (1998) and
+therefore it is often embraced by practitioners. For instance we made this
+assumption in (3.233) regarding the expected changes in yield in the swap
+market.
+\end{frame}
+
+
+\begin{frame}{Practical tips}{Model-implied estimation}\small
+
+Time-series analysis is by definition backward-looking. An alternative approach to estimation makes use of pricing models, which reflects the expectations on the market and thus is forward-looking.
+Consider a parametric model $f_{\theta}$ for the market invariants. Assume there
+exist pricing functions ${\bf{F}}(\bm{\theta})$ of financial products which depend on those parameters and which trade at the price ${\bf P}_T$ at the time the estimate is made.
+In these circumstances we can compute the estimate of the parameters
+as the best fit to the data, i.e. as the solution of the following optimization
+problem:
+
+\begin{eqnarray}\label{4.282}
+\begin{aligned}
+\widehat{\bm{\theta}}= \underset{\bm{\theta}}{argmin}\{(\bf{P}-{\bf{F}}(\bm{\theta}))^{\prime}\bf{Q}(\bf{P}-\bf{F}(\bm{\theta}))  \},
+\end{aligned}
+\end{eqnarray}
+
+where $ \bf{Q}$  is a suitably chosen symmetric and positive matrix.
+Depending on the applications, some authors suggest mixed approaches,
+where time series analysis is used together with implied estimation.
+
+
+\begin{example}
+
+For example, to estimate the correlation matrix of swap yield changes
+we can proceed as in Longstaff, Santa-Clara, and Schwartz (2001). First we
+estimate from (4.41) and (4.42) the sample correlation matrix:
+
+\begin{eqnarray}\label{4.283}
+\begin{aligned}
+\widehat{C}_{mn} \equiv
+\frac{\widehat{\mathrm{Cov}}\{X_m,X_n\}  }
+{\sqrt{\widehat{\mathrm{Cov}}\{X_m,X_m\},\widehat{\mathrm{Cov}}\{X_n,X_n\}}}
+\end{aligned}
+\end{eqnarray}
+\end{example}
+\end{frame}
+
+
+\begin{frame}{Practical tips}{Model-implied estimation}\small
+\begin{example}
+
+Then we perform the principal component decomposition (A.70) of the correlation matrix:
+
+\begin{eqnarray}\label{4.284}
+\begin{aligned}
+\widehat{C}_{mn} \equiv
+\widehat{\bf C} =\widehat{\bf E}\widehat{\bf \Lambda}\widehat{\bf E}^{\prime}
+\end{aligned}
+\end{eqnarray}
+
+where $\widehat{\bf \Lambda}$ is the diagonal matrix of the estimated eigenvalues and $\widehat{\bf E}$ is the
+orthogonal matrix of the respective estimated eigenvectors. Next, we assume
+that a more suitable estimate of the correlation matrix is of this form:
+
+\begin{eqnarray}\label{4.285}
+\begin{aligned}
+\widehat{C}_{mn} \equiv
+{\bf C} =\widehat{\bf E}\widehat{\bf \Psi}\widehat{\bf E}^{\prime}
+\end{aligned}
+\end{eqnarray}
+
+where ${\bf \Psi}$ is a diagonal matrix of positive entries. Finally we fit an estimate $\widetilde{\bf \Psi}$
+from the prices of a set of swaptions which depend on the correlation through
+suitable pricing function.
+
+
+\end{example}
+
+The main problem with the model-implied approach is that the pricing
+functions ${\bf F} ({\bm \theta}) $give rise to model risk. This risk is equivalent to the risk
+of assuming an incorrect parametric distribution for the invariants in the
+derivation of maximum likelihood estimators.
+
+\end{frame}
+
+
+
+\end{CJK*}     % ½áÊøÖÐÎÄ»·¾³
+\end{document}
